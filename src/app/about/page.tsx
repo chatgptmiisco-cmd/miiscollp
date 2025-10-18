@@ -1,398 +1,195 @@
 "use client";
-import {
-  Box,
-  Container,
-  Typography,
-  Card,
-  CardContent,
-  Avatar,
-  Chip,
-  Paper,
-} from "@mui/material";
-import Grid from "@mui/material/Grid";
-import { motion, Variants, Transition } from "framer-motion";
-import Person from "@mui/icons-material/Person";
-import Engineering from "@mui/icons-material/Engineering";
-import ManageAccounts from "@mui/icons-material/ManageAccounts";
-import TrendingUp from "@mui/icons-material/TrendingUp";
-import Groups from "@mui/icons-material/Groups";
-import CheckCircle from "@mui/icons-material/CheckCircle";
-import Star from "@mui/icons-material/Star";
-
-const teamData = [
-  {
-    name: "Rajesh Maheshwari",
-    role: "Founder & CEO",
-    icon: Person,
-    color: "#1e3a8a",
-    description:
-      "Visionary leader with 15+ years in quality assurance and business strategy.",
-    skills: ["Leadership", "Strategy", "QA Excellence"],
-  },
-  {
-    name: "Priya Sharma",
-    role: "Lead QA Engineer",
-    icon: Engineering,
-    color: "#7c3aed",
-    description:
-      "Expert in automation frameworks and quality engineering processes.",
-    skills: ["Automation", "Selenium", "CI/CD"],
-  },
-  {
-    name: "Amit Kumar",
-    role: "Project Manager",
-    icon: ManageAccounts,
-    color: "#10b981",
-    description:
-      "Experienced project manager ensuring timely delivery and client satisfaction.",
-    skills: ["Agile", "Scrum", "Client Relations"],
-  },
-];
-
-const stats = [
-  {
-    label: "Projects Completed",
-    value: "150+",
-    icon: CheckCircle,
-    color: "#10b981",
-  },
-  { label: "Happy Clients", value: "50+", icon: Groups, color: "#3b82f6" },
-  {
-    label: "Years Experience",
-    value: "8+",
-    icon: TrendingUp,
-    color: "#f59e0b",
-  },
-  { label: "Team Members", value: "25+", icon: Star, color: "#ef4444" },
-];
-
-const values = [
-  {
-    title: "Quality First",
-    description:
-      "We never compromise on quality and ensure every deliverable meets the highest standards.",
-  },
-  {
-    title: "Innovation",
-    description:
-      "Constantly evolving our methodologies and adopting cutting-edge technologies.",
-  },
-  {
-    title: "Reliability",
-    description:
-      "Our clients trust us to deliver consistent, dependable results every time.",
-  },
-  {
-    title: "Partnership",
-    description:
-      "We work as an extension of your team, understanding your business goals deeply.",
-  },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { y: 50, opacity: 0, scale: 0.9 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
-  },
-};
-
-const floatAnimation = {
-  y: [-3, 3, -3],
-  transition: {
-    duration: 4,
-    repeat: Infinity,
-    ease: "easeInOut",
-  },
-};
+import { Box, Container, Typography, Avatar, Paper } from "@mui/material";
+import Grid from "@mui/material/Grid"; // ✅ Updated import
+import { motion } from "framer-motion";
 
 export default function AboutPage() {
   return (
-    <Box
-      sx={{
-        py: 12,
-        background:
-          "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)",
-        minHeight: "100vh",
-        position: "relative",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          inset: 0,
-          background:
-            "radial-gradient(circle at 20% 30%, rgba(30, 58, 138, 0.05) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(124, 58, 237, 0.05) 0%, transparent 50%)",
-          pointerEvents: "none",
-        },
-      }}
-    >
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Box sx={{ textAlign: "center", mb: 8 }}>
-            <Typography
-              variant="h2"
-              sx={{
-                fontWeight: 800,
-                mb: 3,
-                background:
-                  "linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #3b82f6 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                fontSize: { xs: "2.5rem", md: "3rem" },
-              }}
-            >
-              About Us
-            </Typography>
-            <Typography
-              variant="h5"
-              color="text.secondary"
-              sx={{
-                maxWidth: "800px",
-                mx: "auto",
-                fontWeight: 400,
-                lineHeight: 1.6,
-                mb: 6,
-              }}
-            >
-              Maheshwari Innovatives IT Services LLP is a leading provider of
-              comprehensive QA and testing services, committed to delivering
-              excellence through innovation, reliability, and partnership.
-            </Typography>
-          </Box>
-        </motion.div>
+    <Box sx={{ py: 10 }}>
+      <Container maxWidth="lg">
+        <Typography variant="h2" sx={{ mb: 3 }}>
+          About Maheshwari Innovatives
+        </Typography>
 
-        {/* Stats Section */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <Grid container spacing={3} sx={{ mb: 10 }}>
-            {stats.map((stat, idx) => {
-              const IconComponent = stat.icon;
-              return (
-                <Grid size={{ xs: 6, md: 3 }} key={idx}>
-                  <motion.div variants={itemVariants}>
-                    <Paper
+        <Typography variant="body1" color="text.secondary" sx={{ mb: 4 }}>
+          Founded in 2022, we deliver dependable QA & Testing solutions to
+          global product teams...
+        </Typography>
+
+        {/* Mission / Vision / Values Section */}
+        <Grid container spacing={4}>
+          {[
+            {
+              title: "Mission",
+              text: "Deliver high-quality software with reduced risk.",
+            },
+            {
+              title: "Vision", 
+              text: "Be the trusted QA partner for growing product companies.",
+            },
+            {
+              title: "Values",
+              text: "Quality · Trust · Timely delivery · Continuous learning",
+            },
+          ].map((item, i) => (
+            <Grid size={{ xs: 12, md: 4 }} key={i}>
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2, duration: 0.6 }}
+                whileHover={{ y: -8, scale: 1.02 }}
+              >
+                <Paper
+                  sx={{
+                    p: 4,
+                    height: "100%",
+                    borderRadius: 4,
+                    bgcolor: "#fff",
+                    border: "2px solid transparent",
+                    background: "linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #667eea, #764ba2) border-box",
+                    boxShadow: "0 8px 32px rgba(0,0,0,0.1)",
+                    position: "relative",
+                    overflow: "hidden",
+                    "&:hover": {
+                      transform: "translateY(-4px)",
+                      boxShadow: "0 16px 48px rgba(0,0,0,0.15)",
+                    },
+                    "&::before": {
+                      content: '""',
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: 4,
+                      background: `linear-gradient(90deg, ${i === 0 ? '#667eea' : i === 1 ? '#f093fb' : '#4facfe'}, ${i === 0 ? '#764ba2' : i === 1 ? '#f5576c' : '#00f2fe'})`,
+                    },
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                  }}
+                >
+                  <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+                    <Box
                       sx={{
-                        p: 3,
-                        textAlign: "center",
-                        background: "rgba(255, 255, 255, 0.9)",
-                        backdropFilter: "blur(20px)",
-                        border: "1px solid rgba(226, 232, 240, 0.8)",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          transform: "translateY(-8px) scale(1.02)",
-                          boxShadow: "0 20px 40px -10px rgba(0, 0, 0, 0.15)",
-                        },
+                        width: 48,
+                        height: 48,
+                        borderRadius: 2,
+                        background: `linear-gradient(135deg, ${i === 0 ? '#667eea' : i === 1 ? '#f093fb' : '#4facfe'}, ${i === 0 ? '#764ba2' : i === 1 ? '#f5576c' : '#00f2fe'})`,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        mr: 2,
                       }}
                     >
-                      <IconComponent
-                        sx={{ fontSize: 40, color: stat.color, mb: 2 }}
-                      />
-                      <Typography
-                        variant="h4"
-                        sx={{ fontWeight: 800, color: stat.color, mb: 1 }}
-                      >
-                        {stat.value}
+                      <Typography variant="h6" sx={{ color: "white", fontWeight: 800 }}>
+                        {item.title[0]}
                       </Typography>
-                      <Typography
-                        variant="body2"
-                        color="text.secondary"
-                        sx={{ fontWeight: 500 }}
+                    </Box>
+                    <Typography variant="h5" sx={{ fontWeight: 800, color: "text.primary" }}>
+                      {item.title}
+                    </Typography>
+                  </Box>
+                  <Typography variant="body1" sx={{ lineHeight: 1.7, color: "text.secondary", fontSize: "1.1rem" }}>
+                    {item.text}
+                  </Typography>
+                </Paper>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+
+        {/* Leadership Section */}
+        <Box sx={{ mt: 8 }}>
+          <Typography variant="h4" sx={{ mb: 4, fontWeight: 900, textAlign: "center" }}>
+            Leadership
+          </Typography>
+
+          <Grid container spacing={4} justifyContent="center">
+            {[{ name: "Ram Maheshwari", title: "Founder & CEO" }].map(
+              (p, i) => (
+                <Grid size={{ xs: 12, sm: 8, md: 6 }} key={i}>
+                  <motion.div 
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    whileHover={{ y: -6 }}
+                  >
+                    <Paper
+                      sx={{
+                        p: 5,
+                        borderRadius: 4,
+                        bgcolor: "#fff",
+                        border: "2px solid transparent",
+                        background: "linear-gradient(#fff, #fff) padding-box, linear-gradient(135deg, #667eea, #764ba2) border-box",
+                        boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
+                        position: "relative",
+                        overflow: "hidden",
+                        "&:hover": {
+                          transform: "translateY(-6px)",
+                          boxShadow: "0 20px 60px rgba(0,0,0,0.15)",
+                        },
+                        "&::before": {
+                          content: '""',
+                          position: "absolute",
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          height: 4,
+                          background: "linear-gradient(90deg, #667eea, #764ba2)",
+                        },
+                        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                        textAlign: "center",
+                      }}
+                    >
+                      <Box
+                        sx={{
+                          position: "relative",
+                          display: "inline-block",
+                          mb: 3,
+                        }}
                       >
-                        {stat.label}
+                        <Avatar 
+                          sx={{ 
+                            width: 90, 
+                            height: 90, 
+                            background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                            fontSize: "1.8rem",
+                            fontWeight: 800,
+                            boxShadow: "0 8px 24px rgba(102, 126, 234, 0.3)",
+                          }}
+                        >
+                          {p.name
+                            .split(" ")
+                            .map((n) => n[0])
+                            .join("")}
+                        </Avatar>
+                        <Box
+                          sx={{
+                            position: "absolute",
+                            bottom: -8,
+                            right: -8,
+                            width: 24,
+                            height: 24,
+                            borderRadius: "50%",
+                            bgcolor: "success.main",
+                            border: "3px solid white",
+                          }}
+                        />
+                      </Box>
+                      <Typography variant="h4" sx={{ fontWeight: 800, mb: 1, color: "text.primary" }}>
+                        {p.name}
                       </Typography>
+                      <Typography variant="h6" sx={{ color: "primary.main", fontWeight: 600, mb: 2 }}>
+                        {p.title}
+                      </Typography>
+                      <Box sx={{ width: 60, height: 3, bgcolor: "primary.main", mx: "auto", borderRadius: 2 }} />
                     </Paper>
                   </motion.div>
                 </Grid>
-              );
-            })}
+              )
+            )}
           </Grid>
-        </motion.div>
-
-        {/* Team Section */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 700,
-              mb: 6,
-              textAlign: "center",
-              color: "text.primary",
-            }}
-          >
-            Meet Our Team
-          </Typography>
-          <Grid container spacing={4} sx={{ mb: 10 }}>
-            {teamData.map((member, idx) => {
-              const IconComponent = member.icon;
-              return (
-                <Grid size={{ xs: 12, md: 4 }} key={idx}>
-                  <motion.div
-                    variants={itemVariants}
-                    whileHover={{
-                      y: -12,
-                      scale: 1.02,
-                      rotateY: 5,
-                      transition: { duration: 0.4, ease: "easeOut" },
-                    }}
-                    animate={floatAnimation}
-                  >
-                    <Card
-                      sx={{
-                        p: 4,
-                        textAlign: "center",
-                        height: "100%",
-                        background: "rgba(255, 255, 255, 0.9)",
-                        backdropFilter: "blur(20px)",
-                        border: "1px solid rgba(226, 232, 240, 0.8)",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.15)",
-                          "& .team-avatar": {
-                            transform: "scale(1.15) rotate(5deg)",
-                          },
-                          "& .team-content": {
-                            transform: "translateY(-2px)",
-                          },
-                        },
-                      }}
-                    >
-                      <Avatar
-                        className="team-avatar"
-                        sx={{
-                          width: 80,
-                          height: 80,
-                          mx: "auto",
-                          mb: 3,
-                          bgcolor: member.color,
-                          transition: "all 0.3s ease",
-                        }}
-                      >
-                        <IconComponent sx={{ fontSize: 40 }} />
-                      </Avatar>
-                      <Box className="team-content" sx={{ transition: "all 0.3s ease" }}>
-                        <Typography
-                          variant="h6"
-                          sx={{ fontWeight: 700, mb: 1, color: "text.primary" }}
-                        >
-                          {member.name}
-                        </Typography>
-                        <Typography
-                          variant="subtitle1"
-                          sx={{ color: member.color, fontWeight: 600, mb: 2 }}
-                        >
-                          {member.role}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          color="text.secondary"
-                          sx={{ mb: 3, lineHeight: 1.6 }}
-                        >
-                          {member.description}
-                        </Typography>
-                      </Box>
-                      <Box>
-                        {member.skills.map((skill, skillIdx) => (
-                          <Chip
-                            key={skillIdx}
-                            label={skill}
-                            size="small"
-                            sx={{
-                              mr: 1,
-                              mb: 1,
-                              backgroundColor: `${member.color}15`,
-                              color: member.color,
-                              border: `1px solid ${member.color}30`,
-                              fontWeight: 500,
-                            }}
-                          />
-                        ))}
-                      </Box>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              );
-            })}
-          </Grid>
-        </motion.div>
-
-        {/* Values Section */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 700,
-              mb: 6,
-              textAlign: "center",
-              color: "text.primary",
-            }}
-          >
-            Our Values
-          </Typography>
-          <Grid container spacing={4}>
-            {values.map((value, idx) => (
-              <Grid size={{ xs: 12, sm: 6 }} key={idx}>
-                <motion.div variants={itemVariants}>
-                  <Paper
-                    sx={{
-                      p: 4,
-                      height: "100%",
-                      background: "rgba(255, 255, 255, 0.9)",
-                      backdropFilter: "blur(20px)",
-                      border: "1px solid rgba(226, 232, 240, 0.8)",
-                      transition: "all 0.3s ease",
-                      "&:hover": {
-                        transform: "translateY(-4px)",
-                        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-                      },
-                    }}
-                  >
-                    <Typography
-                      variant="h6"
-                      sx={{ fontWeight: 700, mb: 2, color: "primary.main" }}
-                    >
-                      {value.title}
-                    </Typography>
-                    <Typography
-                      variant="body1"
-                      color="text.secondary"
-                      sx={{ lineHeight: 1.6 }}
-                    >
-                      {value.description}
-                    </Typography>
-                  </Paper>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </motion.div>
+        </Box>
       </Container>
     </Box>
   );

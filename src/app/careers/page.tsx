@@ -1,294 +1,173 @@
 "use client";
+import React from "react";
 import {
   Box,
   Container,
+  Grid,
   Typography,
   Card,
   CardContent,
   Button,
   Chip,
-  Avatar,
+  Stack,
   Paper,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
 } from "@mui/material";
-import Grid from "@mui/material/Grid"; // ✅ Updated Grid import
-import { motion, Variants } from "framer-motion";
-import Work from "@mui/icons-material/Work";
-import LocationOn from "@mui/icons-material/LocationOn";
-import Schedule from "@mui/icons-material/Schedule";
-import AttachMoney from "@mui/icons-material/AttachMoney";
-import HealthAndSafety from "@mui/icons-material/HealthAndSafety";
-import School from "@mui/icons-material/School";
-import FlightTakeoff from "@mui/icons-material/FlightTakeoff";
-import Coffee from "@mui/icons-material/Coffee";
+import { motion } from "framer-motion";
+import WorkIcon from "@mui/icons-material/Work";
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import TrendingUpIcon from "@mui/icons-material/TrendingUp";
+import GroupsIcon from "@mui/icons-material/Groups";
+import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 
 const jobs = [
   {
-    title: "Senior QA Engineer",
-    location: "Remote / Mathura, UP",
-    type: "Full-time",
-    experience: "3-5 years",
-    salary: "₹8-12 LPA",
-    description:
-      "Lead manual and automated testing initiatives, mentor junior team members, and ensure quality standards across projects.",
-    skills: ["Manual Testing", "Selenium", "API Testing", "Test Planning"],
-    color: "#1e3a8a",
-    icon: Work,
-  },
-  {
-    title: "Automation Test Engineer",
-    location: "Mathura, UP",
-    type: "Full-time",
-    experience: "2-4 years",
-    salary: "₹6-10 LPA",
-    description:
-      "Design and implement robust automation frameworks using modern tools and best practices.",
-    skills: ["Cypress", "Playwright", "JavaScript", "CI/CD"],
-    color: "#7c3aed",
-    icon: Work,
-  },
-  {
-    title: "QA Project Manager",
+    title: "QA Engineer",
     location: "Remote",
     type: "Full-time",
-    experience: "5-8 years",
-    salary: "₹12-18 LPA",
     description:
-      "Manage end-to-end QA projects, coordinate with stakeholders, and ensure timely delivery of quality solutions.",
-    skills: [
-      "Project Management",
-      "Agile",
-      "Team Leadership",
-      "Client Relations",
-    ],
-    color: "#10b981",
-    icon: Work,
+      "Join our team to ensure quality across web and mobile applications.",
+    skills: ["Testing", "Automation", "Selenium"],
+    salary: "₹6-12 LPA",
   },
   {
-    title: "Performance Test Engineer",
-    location: "Remote / Hybrid",
+    title: "Automation Engineer",
+    location: "Mathura",
     type: "Full-time",
-    experience: "2-5 years",
-    salary: "₹7-11 LPA",
     description:
-      "Conduct performance testing, identify bottlenecks, and optimize application performance.",
-    skills: ["JMeter", "LoadRunner", "Performance Analysis", "Monitoring"],
-    color: "#f59e0b",
-    icon: Work,
+      "Build and maintain automated testing frameworks and CI/CD pipelines.",
+    skills: ["Python", "Jenkins", "Docker"],
+    salary: "₹8-15 LPA",
   },
   {
-    title: "Junior QA Analyst",
-    location: "Mathura, UP",
+    title: "Full Stack Developer",
+    location: "Hybrid",
     type: "Full-time",
-    experience: "0-2 years",
-    salary: "₹3-5 LPA",
     description:
-      "Start your QA career with hands-on training and mentorship from experienced professionals.",
-    skills: [
-      "Manual Testing",
-      "Test Cases",
-      "Bug Reporting",
-      "Learning Mindset",
-    ],
-    color: "#3b82f6",
-    icon: Work,
+      "Develop end-to-end web applications using modern technologies.",
+    skills: ["React", "Node.js", "MongoDB"],
+    salary: "₹10-18 LPA",
   },
-  {
-    title: "DevOps Engineer",
-    location: "Remote",
-    type: "Full-time",
-    experience: "3-6 years",
-    salary: "₹10-15 LPA",
-    description:
-      "Build and maintain CI/CD pipelines, manage cloud infrastructure, and support development teams.",
-    skills: ["AWS", "Docker", "Kubernetes", "Jenkins"],
-    color: "#ef4444",
-    icon: Work,
-  },
-];
+] as const;
 
 const benefits = [
-  {
-    title: "Competitive Salary",
-    description: "Industry-leading compensation packages",
-    icon: AttachMoney,
-    color: "#10b981",
-  },
-  {
-    title: "Health Insurance",
-    description: "Comprehensive medical coverage for you and family",
-    icon: HealthAndSafety,
-    color: "#ef4444",
-  },
-  {
-    title: "Learning & Development",
-    description: "Continuous learning opportunities and certifications",
-    icon: School,
-    color: "#3b82f6",
-  },
-  {
-    title: "Flexible Work",
-    description: "Remote work options and flexible hours",
-    icon: Schedule,
-    color: "#7c3aed",
-  },
-  {
-    title: "Paid Time Off",
-    description: "Generous vacation and personal time policies",
-    icon: FlightTakeoff,
-    color: "#f59e0b",
-  },
-  {
-    title: "Team Events",
-    description: "Regular team building and social activities",
-    icon: Coffee,
-    color: "#06b6d4",
-  },
+  { icon: TrendingUpIcon, title: "Growth", desc: "Career advancement" },
+  { icon: GroupsIcon, title: "Team", desc: "Collaborative culture" },
+  { icon: EmojiEventsIcon, title: "Recognition", desc: "Performance rewards" },
 ];
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { y: 30, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.17, 0.67, 0.83, 0.67],
-    },
-  },
-};
-
-export default function CareersPage() {
+export default function CareersPage(): React.ReactElement {
   return (
-    <Box
-      sx={{
-        py: 12,
-        background:
-          "linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%)",
-        minHeight: "100vh",
-        position: "relative",
-        "&::before": {
-          content: '""',
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background:
-            "radial-gradient(circle at 25% 25%, rgba(30, 58, 138, 0.05) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(124, 58, 237, 0.05) 0%, transparent 50%)",
-          pointerEvents: "none",
-        },
-      }}
-    >
-      <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Box sx={{ textAlign: "center", mb: 8 }}>
+    <Box>
+      {/* Hero Section */}
+      <Box
+        sx={{
+          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          color: "white",
+          py: 12,
+          position: "relative",
+          overflow: "hidden",
+          "&::before": {
+            content: '""',
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background:
+              "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><pattern id=%22grain%22 width=%22100%22 height=%22100%22 patternUnits=%22userSpaceOnUse%22><circle cx=%2250%22 cy=%2250%22 r=%221%22 fill=%22%23ffffff%22 opacity=%220.1%22/></pattern></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23grain)%22/></svg>') repeat",
+            opacity: 0.3,
+          },
+        }}
+      >
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+          <motion.div
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8 }}
+          >
             <Typography
               variant="h2"
               sx={{
                 fontWeight: 800,
                 mb: 3,
-                background:
-                  "linear-gradient(135deg, #1e3a8a 0%, #7c3aed 50%, #3b82f6 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                fontSize: { xs: "2.5rem", md: "3rem" },
+                textAlign: "center",
+                fontSize: { xs: "2.5rem", md: "3.5rem" },
               }}
             >
               Join Our Team
             </Typography>
             <Typography
               variant="h5"
-              color="text.secondary"
               sx={{
-                maxWidth: "600px",
+                textAlign: "center",
+                opacity: 0.9,
+                maxWidth: 600,
                 mx: "auto",
-                fontWeight: 400,
                 lineHeight: 1.6,
               }}
             >
-              Build your career with us and be part of innovative QA solutions
+              Build the future with innovative solutions and cutting-edge
+              technology
             </Typography>
-          </Box>
-        </motion.div>
+          </motion.div>
+        </Container>
+      </Box>
 
-        {/* Benefits */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+      {/* Benefits Section */}
+      <Box sx={{ py: 8, bgcolor: "#f8fafc" }}>
+        <Container maxWidth="lg">
           <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 700,
-              mb: 6,
-              textAlign: "center",
-              color: "text.primary",
-            }}
+            variant="h4"
+            sx={{ textAlign: "center", mb: 6, fontWeight: 700 }}
           >
             Why Work With Us?
           </Typography>
-
-          <Grid container spacing={3} sx={{ mb: 10 }}>
-            {benefits.map((benefit, idx) => {
+          <Grid container spacing={4}>
+            {benefits.map((benefit, i) => {
               const IconComponent = benefit.icon;
               return (
-                <Grid key={idx} size={{ xs: 12, sm: 6, md: 4 }}>
-                  <motion.div variants={itemVariants}>
+                <Grid key={i} size={{ xs: 12, md: 4 }}>
+                  <motion.div
+                    initial={{ y: 30, opacity: 0 }}
+                    whileInView={{ y: 0, opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.2, duration: 0.6 }}
+                  >
                     <Paper
                       sx={{
-                        p: 3,
+                        p: 4,
                         textAlign: "center",
-                        height: "100%",
-                        background: "rgba(255, 255, 255, 0.9)",
-                        backdropFilter: "blur(20px)",
-                        border: "1px solid rgba(226, 232, 240, 0.8)",
-                        transition: "all 0.3s ease",
+                        borderRadius: 3,
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
                         "&:hover": {
                           transform: "translateY(-4px)",
-                          boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1)",
-                          "& .benefit-icon": { transform: "scale(1.1)" },
+                          boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
                         },
+                        transition: "all 0.3s ease",
                       }}
                     >
-                      <Avatar
-                        className="benefit-icon"
+                      <Box
                         sx={{
-                          width: 60,
-                          height: 60,
+                          width: 64,
+                          height: 64,
+                          borderRadius: "50%",
+                          background:
+                            "linear-gradient(135deg, #667eea, #764ba2)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
                           mx: "auto",
                           mb: 2,
-                          bgcolor: benefit.color,
-                          transition: "all 0.3s ease",
                         }}
                       >
-                        <IconComponent sx={{ fontSize: 30 }} />
-                      </Avatar>
+                        <IconComponent sx={{ color: "white", fontSize: 32 }} />
+                      </Box>
                       <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                         {benefit.title}
                       </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {benefit.description}
+                      <Typography color="text.secondary">
+                        {benefit.desc}
                       </Typography>
                     </Paper>
                   </motion.div>
@@ -296,169 +175,203 @@ export default function CareersPage() {
               );
             })}
           </Grid>
-        </motion.div>
+        </Container>
+      </Box>
 
-        {/* Jobs */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
+      {/* Jobs Section */}
+      <Box sx={{ py: 10 }}>
+        <Container maxWidth="lg">
           <Typography
-            variant="h3"
-            sx={{
-              fontWeight: 700,
-              mb: 6,
-              textAlign: "center",
-              color: "text.primary",
-            }}
+            variant="h4"
+            sx={{ textAlign: "center", mb: 8, fontWeight: 700 }}
           >
             Open Positions
           </Typography>
 
           <Grid container spacing={4}>
-            {jobs.map((job, idx) => {
-              const IconComponent = job.icon;
-              return (
-                <Grid key={idx} size={{ xs: 12, md: 6 }}>
-                  <motion.div variants={itemVariants} whileHover={{ y: -8 }}>
-                    <Card
-                      sx={{
-                        p: 4,
-                        height: "100%",
-                        display: "flex",
-                        flexDirection: "column",
-                        background: "rgba(255, 255, 255, 0.9)",
-                        backdropFilter: "blur(20px)",
-                        border: "1px solid rgba(226, 232, 240, 0.8)",
-                        transition: "all 0.3s ease",
-                        "&:hover": {
-                          boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1)",
-                        },
-                      }}
-                    >
-                      <CardContent sx={{ flexGrow: 1, p: 0 }}>
-                        <Box
-                          sx={{ display: "flex", alignItems: "center", mb: 3 }}
-                        >
-                          <Avatar
+            {jobs.map((job, i) => (
+              <Grid key={i} size={{ xs: 12, md: 6, lg: 4 }}>
+                <motion.div
+                  initial={{ y: 30, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.2, duration: 0.6 }}
+                >
+                  <Card
+                    sx={{
+                      height: "100%",
+                      borderRadius: 4,
+                      border: "1px solid #e2e8f0",
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
+                      position: "relative",
+                      overflow: "hidden",
+                      "&:hover": {
+                        transform: "translateY(-8px)",
+                        boxShadow: "0 12px 40px rgba(0,0,0,0.15)",
+                        borderColor: "#667eea",
+                      },
+                      "&::before": {
+                        content: '""',
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: 4,
+                        background: `linear-gradient(90deg, ${
+                          i === 0 ? "#667eea" : i === 1 ? "#f093fb" : "#4facfe"
+                        }, ${
+                          i === 0 ? "#764ba2" : i === 1 ? "#f5576c" : "#00f2fe"
+                        })`,
+                      },
+                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+                    }}
+                  >
+                    <CardContent sx={{ p: 4 }}>
+                      <Stack spacing={3}>
+                        <Box>
+                          <Box
                             sx={{
-                              bgcolor: job.color,
-                              width: 50,
-                              height: 50,
-                              mr: 2,
+                              display: "flex",
+                              alignItems: "center",
+                              mb: 2,
                             }}
                           >
-                            <IconComponent sx={{ fontSize: 24 }} />
-                          </Avatar>
-                          <Box>
-                            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                              {job.title}
-                            </Typography>
+                            <Box
+                              sx={{
+                                width: 48,
+                                height: 48,
+                                borderRadius: 2,
+                                background: `linear-gradient(135deg, ${
+                                  i === 0
+                                    ? "#667eea"
+                                    : i === 1
+                                    ? "#f093fb"
+                                    : "#4facfe"
+                                }, ${
+                                  i === 0
+                                    ? "#764ba2"
+                                    : i === 1
+                                    ? "#f5576c"
+                                    : "#00f2fe"
+                                })`,
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                mr: 2,
+                              }}
+                            >
+                              <WorkIcon sx={{ color: "white", fontSize: 24 }} />
+                            </Box>
+                            <Box>
+                              <Typography
+                                variant="h6"
+                                sx={{ fontWeight: 700, mb: 0.5 }}
+                              >
+                                {job.title}
+                              </Typography>
+                              <Typography
+                                variant="body2"
+                                color="primary"
+                                sx={{ fontWeight: 600 }}
+                              >
+                                {job.salary}
+                              </Typography>
+                            </Box>
+                          </Box>
+
+                          <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
                             <Chip
+                              icon={<LocationOnIcon sx={{ fontSize: 16 }} />}
+                              label={job.location}
+                              size="small"
+                              sx={{
+                                bgcolor: "#e3f2fd",
+                                color: "#1976d2",
+                                fontWeight: 600,
+                                borderRadius: 2,
+                              }}
+                            />
+                            <Chip
+                              icon={<AccessTimeIcon sx={{ fontSize: 16 }} />}
                               label={job.type}
                               size="small"
                               sx={{
-                                backgroundColor: `${job.color}15`,
-                                color: job.color,
-                                fontWeight: 500,
+                                bgcolor: "#e8f5e8",
+                                color: "#2e7d32",
+                                fontWeight: 600,
+                                borderRadius: 2,
                               }}
                             />
-                          </Box>
-                        </Box>
+                          </Stack>
 
-                        <List dense sx={{ mb: 2 }}>
-                          <ListItem sx={{ px: 0 }}>
-                            <ListItemIcon sx={{ minWidth: 36 }}>
-                              <LocationOn
-                                sx={{ fontSize: 20, color: "text.secondary" }}
+                          <Stack
+                            direction="row"
+                            spacing={1}
+                            flexWrap="wrap"
+                            gap={1}
+                          >
+                            {job.skills.map((skill, idx) => (
+                              <Chip
+                                key={idx}
+                                label={skill}
+                                size="small"
+                                sx={{
+                                  bgcolor: "#f3e5f5",
+                                  color: "#7b1fa2",
+                                  fontSize: "0.75rem",
+                                  fontWeight: 500,
+                                }}
                               />
-                            </ListItemIcon>
-                            <ListItemText
-                              primary={job.location}
-                              primaryTypographyProps={{
-                                variant: "body2",
-                                color: "text.secondary",
-                              }}
-                            />
-                          </ListItem>
-                          <ListItem sx={{ px: 0 }}>
-                            <ListItemIcon sx={{ minWidth: 36 }}>
-                              <Schedule
-                                sx={{ fontSize: 20, color: "text.secondary" }}
-                              />
-                            </ListItemIcon>
-                            <ListItemText
-                              primary={job.experience}
-                              primaryTypographyProps={{
-                                variant: "body2",
-                                color: "text.secondary",
-                              }}
-                            />
-                          </ListItem>
-                          <ListItem sx={{ px: 0 }}>
-                            <ListItemIcon sx={{ minWidth: 36 }}>
-                              <AttachMoney
-                                sx={{ fontSize: 20, color: "text.secondary" }}
-                              />
-                            </ListItemIcon>
-                            <ListItemText
-                              primary={job.salary}
-                              primaryTypographyProps={{
-                                variant: "body2",
-                                color: "text.secondary",
-                              }}
-                            />
-                          </ListItem>
-                        </List>
+                            ))}
+                          </Stack>
+                        </Box>
 
                         <Typography
                           variant="body2"
-                          color="text.secondary"
-                          sx={{ mb: 3, lineHeight: 1.6 }}
+                          sx={{ lineHeight: 1.6, color: "text.secondary" }}
                         >
                           {job.description}
                         </Typography>
-
-                        <Box sx={{ mb: 3 }}>
-                          {job.skills.map((skill, skillIdx) => (
-                            <Chip
-                              key={skillIdx}
-                              label={skill}
-                              size="small"
-                              sx={{
-                                mr: 1,
-                                mb: 1,
-                                backgroundColor: `${job.color}10`,
-                                color: job.color,
-                                border: `1px solid ${job.color}30`,
-                                fontWeight: 500,
-                              }}
-                            />
-                          ))}
-                        </Box>
 
                         <Button
                           variant="contained"
                           fullWidth
                           sx={{
-                            background: `linear-gradient(135deg, ${job.color} 0%, ${job.color}dd 100%)`,
+                            background: `linear-gradient(135deg, ${
+                              i === 0
+                                ? "#667eea"
+                                : i === 1
+                                ? "#f093fb"
+                                : "#4facfe"
+                            }, ${
+                              i === 0
+                                ? "#764ba2"
+                                : i === 1
+                                ? "#f5576c"
+                                : "#00f2fe"
+                            })`,
+                            fontWeight: 600,
+                            borderRadius: 2,
+                            py: 1.2,
+                            boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
                             "&:hover": {
-                              background: `linear-gradient(135deg, ${job.color}dd 0%, ${job.color}bb 100%)`,
+                              transform: "translateY(-2px)",
+                              boxShadow: "0 6px 20px rgba(0,0,0,0.3)",
                             },
+                            transition: "all 0.3s ease",
                           }}
                         >
                           Apply Now
                         </Button>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              );
-            })}
+                      </Stack>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </Grid>
+            ))}
           </Grid>
-        </motion.div>
-      </Container>
+        </Container>
+      </Box>
     </Box>
   );
 }
