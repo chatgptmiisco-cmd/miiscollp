@@ -14,26 +14,49 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    title: "QA Automation",
-    blurb:
-      "Scale coverage with robust automation frameworks and maintainable test suites.",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1400&q=80",
+    title: "Web Development",
+    blurb: "Modern web applications with React, Next.js, and cutting-edge technologies.",
+    image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=80",
   },
   {
-    title: "API Testing",
-    blurb:
-      "Thorough contract & functional API verification with CI integration.",
+    title: "Backend Development",
+    blurb: "Scalable APIs and server solutions with Node.js, Python, and cloud services.",
     image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80",
   },
   {
-    title: "Performance Testing",
-    blurb: "Detect bottlenecks and model production loads.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+    title: "Frontend Development",
+    blurb: "Responsive UI/UX with React, Vue.js, and modern JavaScript frameworks.",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1400&q=80",
   },
   {
-    title: "Mobile Testing",
-    blurb: "Real-device validation and cross-device consistency.",
+    title: "Mobile Development",
+    blurb: "Cross-platform mobile apps using Flutter and React Native for iOS and Android.",
     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    title: "Figma UI Designing",
+    blurb: "Professional UI/UX design and prototyping with Figma.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    title: "Web UI Automation",
+    blurb: "Stable, data-driven, cross-browser suites for CI pipelines.",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    title: "Mobile QA (iOS/Android)",
+    blurb: "Real devices • Appium • BrowserStack • Detox.",
+    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    title: "API Testing",
+    blurb: "Postman • Pact • REST/GraphQL • contract & regression.",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80",
+  },
+  {
+    title: "Manual Testing",
+    blurb: "Comprehensive manual testing • Exploratory • Usability • User acceptance testing.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
   },
 ] as const;
 
@@ -42,7 +65,7 @@ export default function ServicesPage(): React.ReactElement {
     <Box sx={{ py: 10 }}>
       <Container maxWidth="lg">
         <Typography variant="h2" sx={{ mb: 4 }}>
-          Solutions
+          Services
         </Typography>
 
         {/* Services Section */}
@@ -81,36 +104,7 @@ export default function ServicesPage(): React.ReactElement {
           ))}
         </Grid>
 
-        {/* Case Studies Section */}
-        <Box sx={{ mt: 6 }}>
-          <Typography variant="h4" sx={{ mb: 3 }}>
-            Selected Case Studies
-          </Typography>
-          <Grid container spacing={3}>
-            {[1, 2, 3].map((n) => (
-              <Grid key={n} size={{ xs: 12, md: 4 }}>
-                <motion.div
-                  whileHover={{ y: -6 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <Card>
-                    <CardContent>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-                        Case Study {n}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Problem solved, key metrics improved, delivery timeline.
-                      </Typography>
-                      <Button sx={{ mt: 2 }} variant="outlined">
-                        View
-                      </Button>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </Box>
+
       </Container>
     </Box>
   );

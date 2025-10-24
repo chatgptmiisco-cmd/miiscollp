@@ -70,51 +70,6 @@ const quickServices = [
   },
 ] as const;
 
-const serviceCards = [
-  {
-    title: "Web UI Automation",
-    desc: "Stable, data-driven, cross-browser suites for CI pipelines.",
-    icon: <Devices />,
-    image:
-      "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "Mobile QA (iOS/Android)",
-    desc: "Real devices • Appium • BrowserStack • Detox.",
-    icon: <MobileFriendly />,
-    image:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "API Testing",
-    desc: "Postman • Pact • REST/GraphQL • contract & regression.",
-    icon: <Api />,
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "Performance & Resilience",
-    desc: "JMeter • k6 • failover drills • capacity planning.",
-    icon: <Assessment />,
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "Security Assistance",
-    desc: "OWASP checks • ZAP • input fuzzing • secrets scans.",
-    icon: <Security />,
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=1400&q=80",
-  },
-  {
-    title: "Release Readiness",
-    desc: "PVT gates • canary checks • rollback rehearsal.",
-    icon: <Verified />,
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1400&q=80",
-  },
-];
-
 const metrics = [
   { label: "Automation Coverage", value: "85%+" },
   { label: "Defect Leakage", value: "< 1.5%" },
@@ -190,24 +145,25 @@ const testimonials = [
 ];
 const featured = [
   {
-    title: "QA Automation",
+    title: "QA Automation & Testing",
     description:
-      "Robust Playwright/Selenium suites wired to CI with flaky-test triage.",
+      "Robust Playwright/Selenium suites, API testing with Pact, Mobile QA (iOS/Android), and comprehensive test automation wired to CI.",
     image:
       "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1400&q=80",
   },
   {
-    title: "API Testing",
+    title: "Development Services",
     description:
-      "Contract (Pact) + regression across REST/GraphQL with data snapshots.",
+      "Full-stack development: Web, Backend, Frontend, and Mobile apps using modern technologies.",
     image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=80",
   },
   {
-    title: "Performance & Resilience",
-    description: "JMeter/k6 load, failover drills, capacity KPIs & dashboards.",
+    title: "Figma UI Designing",
+    description:
+      "Professional UI/UX design and prototyping with Figma for modern user experiences.",
     image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=1400&q=80",
   },
 ];
 
@@ -537,13 +493,7 @@ export default function HomePage(): React.ReactElement {
               spacing={4}
               sx={{ flexWrap: "wrap", gap: 3 }}
             >
-              {[
-                "Everlight",
-                "AITRCM",
-                "Miisco",
-                "MarketBriefs",
-                "Delight DRG",
-              ].map((brand, i) => (
+              {["Everlight", "AITRCM", "Delight DRG"].map((brand, i) => (
                 <Typography
                   key={i}
                   variant="h6"
@@ -616,28 +566,6 @@ export default function HomePage(): React.ReactElement {
         </Grid>
       </Container> */}
 
-      {/* Services Section */}
-      <Container maxWidth="lg" sx={{ pb: 8 }}>
-        <Typography
-          variant="h4"
-          sx={{ fontWeight: 900, mb: 6, textAlign: "center", color: "#fff" }}
-        >
-          Our Services
-        </Typography>
-        <Grid container spacing={3}>
-          {serviceCards.map((s, i) => (
-            <Grid key={i} size={{ xs: 12, sm: 6, md: 4 }}>
-              <AnimatedRevealCard
-                title={s.title}
-                description={s.desc}
-                image={s.image}
-                priority={i < 3}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-
       <Box
         sx={{
           py: 8,
@@ -662,6 +590,151 @@ export default function HomePage(): React.ReactElement {
           </Grid>
         </Container>
       </Box>
+
+      {/* Our Products */}
+      <Box sx={{ py: 8, bgcolor: theme.palette.primary.main }}>
+        <Container maxWidth="lg">
+          <Typography
+            variant="h4"
+            sx={{ fontWeight: 900, mb: 6, textAlign: "center", color: "#fff" }}
+          >
+            Our Products
+          </Typography>
+          <Grid container spacing={4}>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                whileHover={{ y: -8 }}
+              >
+                <Paper
+                  sx={{
+                    p: 4,
+                    borderRadius: 4,
+                    background:
+                      "linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    backdropFilter: "blur(20px)",
+                    color: "#fff",
+                    height: "100%",
+                  }}
+                >
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
+                    Smart Matrimony
+                  </Typography>
+                  <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
+                    Complete matrimonial platform with mobile app and website
+                    for connecting people and families.
+                  </Typography>
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    flexWrap="wrap"
+                    useFlexGap
+                    sx={{ mb: 3 }}
+                  >
+                    <Chip
+                      label="Mobile App"
+                      size="small"
+                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
+                    />
+                    <Chip
+                      label="Website"
+                      size="small"
+                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
+                    />
+                    <Chip
+                      label="Matrimonial"
+                      size="small"
+                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
+                    />
+                  </Stack>
+                  <Button
+                    variant="contained"
+                    href="https://smartmatrimony.ai/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      bgcolor: theme.palette.secondary.main,
+                      "&:hover": { bgcolor: theme.palette.secondary.dark },
+                    }}
+                  >
+                    Learn More
+                  </Button>
+                </Paper>
+              </motion.div>
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <motion.div
+                initial={{ y: 30, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                whileHover={{ y: -8 }}
+              >
+                <Paper
+                  sx={{
+                    p: 4,
+                    borderRadius: 4,
+                    background:
+                      "linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
+                    border: "1px solid rgba(255,255,255,0.2)",
+                    backdropFilter: "blur(20px)",
+                    color: "#fff",
+                    height: "100%",
+                  }}
+                >
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
+                    Market Briefs
+                  </Typography>
+                  <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
+                    Comprehensive market analysis and financial insights
+                    platform with mobile app and web interface.
+                  </Typography>
+                  <Stack
+                    direction="row"
+                    spacing={1}
+                    flexWrap="wrap"
+                    useFlexGap
+                    sx={{ mb: 3 }}
+                  >
+                    <Chip
+                      label="Mobile App"
+                      size="small"
+                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
+                    />
+                    <Chip
+                      label="Website"
+                      size="small"
+                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
+                    />
+                    <Chip
+                      label="Market Analysis"
+                      size="small"
+                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
+                    />
+                  </Stack>
+                  <Button
+                    variant="contained"
+                    href="https://marketbriefs.co.in/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    sx={{
+                      bgcolor: theme.palette.secondary.main,
+                      "&:hover": { bgcolor: theme.palette.secondary.dark },
+                    }}
+                  >
+                    Learn More
+                  </Button>
+                </Paper>
+              </motion.div>
+            </Grid>
+          </Grid>
+        </Container>
+      </Box>
+
       {/* Process Timeline */}
       {/* Process Timeline — upgraded */}
       <Box

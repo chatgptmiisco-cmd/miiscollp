@@ -21,11 +21,11 @@ export default function Navbar() {
 
   const nav = [
     { label: "Home", href: "/" }, // ✅ Added Home link
-    { label: "Solutions", href: "/services" },
+    { label: "Services", href: "/services" },
     // { label: "Industries", href: "/services#industries" },
     // { label: "Case Studies", href: "/caseStudies" },
     { label: "About", href: "/about" },
-    { label: "Careers", href: "/careers" },
+    // { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ];
 

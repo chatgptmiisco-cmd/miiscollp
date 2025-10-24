@@ -104,9 +104,24 @@ export default function AboutPage() {
           </Typography>
 
           <Grid container spacing={4} justifyContent="center">
-            {[{ name: "Ram Maheshwari", title: "Founder & CEO" }].map(
-              (p, i) => (
-                <Grid size={{ xs: 12, sm: 8, md: 6 }} key={i}>
+            {[
+              { 
+                name: "Mohit Maheshwari", 
+                title: "Founder/CEO",
+                description: "Committed to driving innovation, growth, and fostering a culture of excellence."
+              },
+              { 
+                name: "Shobhit Maheshwari", 
+                title: "Founder/CFO",
+                description: "Driving financial growth, and maintaining the company's financial health."
+              },
+              { 
+                name: "Vishal Maheshwari", 
+                title: "Co-Founder/CMO",
+                description: "Lead cutting-edge development, ensuring that innovation in it's industry."
+              }
+            ].map((p, i) => (
+                <Grid size={{ xs: 12, md: 4 }} key={i}>
                   <motion.div 
                     initial={{ scale: 0.9, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
@@ -181,6 +196,9 @@ export default function AboutPage() {
                       </Typography>
                       <Typography variant="h6" sx={{ color: "primary.main", fontWeight: 600, mb: 2 }}>
                         {p.title}
+                      </Typography>
+                      <Typography variant="body1" sx={{ color: "text.secondary", lineHeight: 1.6, mb: 2 }}>
+                        {p.description}
                       </Typography>
                       <Box sx={{ width: 60, height: 3, bgcolor: "primary.main", mx: "auto", borderRadius: 2 }} />
                     </Paper>

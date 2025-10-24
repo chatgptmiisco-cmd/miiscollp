@@ -22,7 +22,7 @@ const footerLinks = {
   company: [
     { label: "About Us", href: "/about" },
     { label: "Our Services", href: "/services" },
-    { label: "Careers", href: "/careers" },
+    // { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
   ],
   services: [
@@ -195,7 +195,7 @@ export default function Footer() {
             </Grid>
 
             {/* Services Links */}
-            <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+            {/* <Grid size={{ xs: 12, sm: 6, md: 3 }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -229,10 +229,10 @@ export default function Footer() {
                   ))}
                 </Box>
               </motion.div>
-            </Grid>
+            </Grid> */}
 
             {/* Newsletter */}
-            <Grid size={{ xs: 12, md: 3 }}>
+            <Grid size={{ xs: 12, md: 3 }} sx={{ ml: "auto" }}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
