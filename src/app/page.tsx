@@ -28,6 +28,11 @@ import {
   IntegrationInstructions,
   AutoFixHigh,
   MobileFriendly,
+  Language,
+  Engineering,
+  AssignmentOutlined,
+  AccountTreeOutlined,
+  SupportAgent,
 } from "@mui/icons-material";
 import { motion, Variants, useScroll, useSpring } from "framer-motion";
 import AnimatedRevealCard from "@/components/animatedRevealCards/animatedRevealCards";
@@ -143,6 +148,39 @@ const testimonials = [
       "Clean frameworks, clear reporting, zero drama. Exactly what we needed for compliance-heavy releases.",
   },
 ];
+const whyChooseUs = [
+  {
+    title: "Multi-Domain Expertise",
+    description: "Our extensive experience spans various domains, industries, and software types, allowing us to adapt to diverse project requirements.",
+    icon: <Language sx={{ fontSize: 32 }} />,
+  },
+  {
+    title: "Intellectual Property Rights",
+    description: "We prioritize the protection of intellectual property rights, ensuring that creators' rights are preserved without conflicts.",
+    icon: <Security sx={{ fontSize: 32 }} />,
+  },
+  {
+    title: "Experienced Engineering Team",
+    description: "Our skilled team delivers cost-effective, high-quality software testing solutions based on years of experience.",
+    icon: <Engineering sx={{ fontSize: 32 }} />,
+  },
+  {
+    title: "Efficient Reporting Structure",
+    description: "Miisco's organizational efficiency and clear reporting structure eliminate redundancy, ensuring timely, high-quality solutions.",
+    icon: <AssignmentOutlined sx={{ fontSize: 32 }} />,
+  },
+  {
+    title: "Optimized Hierarchy and Escalation Path",
+    description: "Our defined hierarchy and structured escalation path follow best practices in quality assurance, delivering performance-driven results.",
+    icon: <AccountTreeOutlined sx={{ fontSize: 32 }} />,
+  },
+  {
+    title: "24/7 Client Support",
+    description: "We offer 24/7 client support to provide timely assistance and peace of mind for your software testing needs.",
+    icon: <SupportAgent sx={{ fontSize: 32 }} />,
+  },
+];
+
 const featured = [
   {
     title: "QA Automation & Testing",
@@ -568,23 +606,250 @@ export default function HomePage(): React.ReactElement {
 
       <Box
         sx={{
-          py: 8,
-          background: `linear-gradient(180deg,${theme.palette.background.default},${theme.palette.background.paper})`,
+          py: { xs: 10, md: 14 },
+          position: "relative",
+          overflow: "hidden",
+          background: `linear-gradient(180deg, ${theme.palette.background.default} 0%, #fff 100%)`,
         }}
       >
-        <Container maxWidth="lg">
-          <Typography variant="h4" sx={{ fontWeight: 900, mb: 3 }}>
-            Featured Work
-          </Typography>
-          <Grid container spacing={3}>
+        {/* Decorative background blobs */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: "10%",
+            right: "-5%",
+            width: "400px",
+            height: "400px",
+            background: `radial-gradient(circle, ${theme.palette.secondary.main}11 0%, transparent 70%)`,
+            filter: "blur(60px)",
+            zIndex: 0,
+          }}
+        />
+        <Box
+          sx={{
+            position: "absolute",
+            bottom: "5%",
+            left: "-5%",
+            width: "350px",
+            height: "350px",
+            background: `radial-gradient(circle, ${theme.palette.primary.main}08 0%, transparent 70%)`,
+            filter: "blur(50px)",
+            zIndex: 0,
+          }}
+        />
+
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+          <Box sx={{ mb: 8, textAlign: { xs: "center", md: "left" } }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <Typography 
+                variant="h3" 
+                sx={{ 
+                  fontWeight: 900, 
+                  mb: 2, 
+                  letterSpacing: "-0.02em",
+                  fontSize: { xs: "2.5rem", md: "3rem" }
+                }}
+              >
+                Featured Work
+              </Typography>
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  color: "text.secondary", 
+                  maxWidth: "600px",
+                  mx: { xs: "auto", md: 0 },
+                  fontSize: "1.1rem"
+                }}
+              >
+                Showcasing our expertise in delivering high-performance solutions across diverse industries and technologies.
+              </Typography>
+            </motion.div>
+          </Box>
+
+          <Grid 
+            container 
+            spacing={4}
+            component={motion.div}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                },
+              },
+            }}
+          >
             {featured.map((c, i) => (
+              <Grid key={i} size={{ xs: 12, sm: 12, md: 4 }}>
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+                  }}
+                >
+                  <AnimatedRevealCard
+                    title={c.title}
+                    description={c.description}
+                    image={c.image}
+                    priority={i < 2}
+                  />
+                </motion.div>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>
+      
+      {/* Why Choose Miisco Section */}
+      <Box
+        sx={{
+          py: { xs: 10, md: 14 },
+          position: "relative",
+          overflow: "hidden",
+          background: `linear-gradient(180deg, #fff 0%, ${theme.palette.background.default} 100%)`,
+        }}
+      >
+        {/* Decorative background blobs */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: "20%",
+            left: "50%",
+            transform: "translateX(-50%)",
+            width: "800px",
+            height: "800px",
+            background: `radial-gradient(circle, ${theme.palette.info.main}08 0%, transparent 70%)`,
+            filter: "blur(80px)",
+            zIndex: 0,
+          }}
+        />
+
+        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
+          <Box sx={{ mb: 8, textAlign: "center" }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
+              <Typography 
+                variant="h3" 
+                sx={{ 
+                  fontWeight: 900, 
+                  mb: 2, 
+                  letterSpacing: "-0.02em",
+                  fontSize: { xs: "2.5rem", md: "3rem" },
+                  color: "primary.main"
+                }}
+              >
+                Why Choose Miisco?
+              </Typography>
+              <Typography 
+                variant="body1" 
+                sx={{ 
+                  color: "text.secondary", 
+                  maxWidth: "700px",
+                  mx: "auto",
+                  fontSize: "1.1rem"
+                }}
+              >
+                Discover the reasons to partner with Miisco for your software testing needs. Client satisfaction is our top priority.
+              </Typography>
+            </motion.div>
+          </Box>
+
+          <Grid 
+            container 
+            spacing={4}
+            component={motion.div}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.1,
+                },
+              },
+            }}
+          >
+            {whyChooseUs.map((item, i) => (
               <Grid key={i} size={{ xs: 12, sm: 6, md: 4 }}>
-                <AnimatedRevealCard
-                  title={c.title}
-                  description={c.description}
-                  image={c.image}
-                  priority={i < 2}
-                />
+                <motion.div
+                  variants={{
+                    hidden: { opacity: 0, y: 20 },
+                    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+                  }}
+                  whileHover={{ y: -8 }}
+                >
+                  <Paper
+                    sx={{
+                      p: 4,
+                      height: "100%",
+                      borderRadius: 4,
+                      bgcolor: "#fff",
+                      border: "1px solid rgba(0,0,0,0.04)",
+                      boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
+                      transition: "all 0.3s ease",
+                      "&:hover": {
+                        boxShadow: "0 20px 40px rgba(0,0,0,0.06)",
+                        borderColor: `${theme.palette.secondary.main}22`,
+                      },
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: { xs: "center", md: "flex-start" },
+                      textAlign: { xs: "center", md: "left" }
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: 64,
+                        height: 64,
+                        borderRadius: 3,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        mb: 3,
+                        background: `linear-gradient(135deg, ${theme.palette.secondary.main}11 0%, ${theme.palette.secondary.main}22 100%)`,
+                        color: theme.palette.secondary.main,
+                      }}
+                    >
+                      {item.icon}
+                    </Box>
+                    <Typography 
+                      variant="h6" 
+                      sx={{ 
+                        fontWeight: 800, 
+                        mb: 1.5, 
+                        lineHeight: 1.3,
+                        color: "primary.main"
+                      }}
+                    >
+                      {item.title}
+                    </Typography>
+                    <Typography 
+                      variant="body2" 
+                      sx={{ 
+                        color: "text.secondary", 
+                        lineHeight: 1.6,
+                        fontSize: "0.95rem"
+                      }}
+                    >
+                      {item.description}
+                    </Typography>
+                  </Paper>
+                </motion.div>
               </Grid>
             ))}
           </Grid>

@@ -1,10 +1,8 @@
 "use client";
-
 import * as React from "react";
-import { Card, CardContent, Typography, Box } from "@mui/material";
+import { Card, CardContent, Typography, Box, useTheme, Button } from "@mui/material";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-
-const BRAND = "#f00757";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 export interface AccentureStyleCardProps {
   title: string;
@@ -19,6 +17,8 @@ export default function AccentureStyleCard({
   image,
   priority,
 }: AccentureStyleCardProps) {
+  const theme = useTheme();
+  const BRAND = theme.palette.secondary.main;
   const ref = React.useRef<HTMLDivElement | null>(null);
 
   // cursor (-0.5..0.5)
@@ -68,8 +68,8 @@ export default function AccentureStyleCard({
       animate="rest"
       style={{
         perspective: 1200,
-        borderRadius: 16, // outer radius
-        overflow: "hidden", // clip children like sheen and hotspot
+        borderRadius: 20,
+        overflow: "hidden",
       }}
     >
       <motion.div
@@ -85,15 +85,15 @@ export default function AccentureStyleCard({
           <Card
             sx={{
               cursor: "pointer",
-              borderRadius: "inherit", // inherit the radius
+              borderRadius: "inherit",
               overflow: "hidden",
               position: "relative",
               bgcolor: "#fff",
+              border: "1px solid rgba(0,0,0,0.05)",
             }}
           >
             {/* Media area */}
-            <Box sx={{ height: 280, position: "relative", overflow: "hidden" }}>
-              {/* Image: hard bias to bottom-right + zoom */}
+            <Box sx={{ height: 320, position: "relative", overflow: "hidden" }}>
               <motion.img
                 src={image}
                 alt={title}
@@ -116,74 +116,65 @@ export default function AccentureStyleCard({
                 variants={{
                   rest: { scale: 1, x: 0, y: 0 },
                   hover: {
-                    scale: 1.18,
-                    x: 36, // push right
-                    y: 28, // push down
-                    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
+                    scale: 1.15,
+                    x: 20,
+                    y: 15,
+                    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
                   },
                 }}
                 style={{
                   width: "100%",
                   height: "100%",
                   objectFit: "cover",
-                  objectPosition: "right bottom",
-                  transformOrigin: "bottom right",
+                  objectPosition: "center",
                   display: "block",
-                  translateZ: 18 as unknown as string,
                 }}
               />
 
-              {/* Gradient darken for contrast */}
               <motion.div
-                variants={{ rest: { opacity: 0.08 }, hover: { opacity: 0.24 } }}
-                transition={{ duration: 0.25 }}
+                variants={{ rest: { opacity: 0.1 }, hover: { opacity: 0.3 } }}
+                transition={{ duration: 0.3 }}
                 style={{
                   position: "absolute",
                   inset: 0,
                   background:
-                    "linear-gradient(180deg, rgba(0,0,0,0.0) 10%, rgba(0,0,0,0.45) 100%)",
+                    "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%)",
                   pointerEvents: "none",
                 }}
               />
 
-              {/* Hotspot following cursor */}
+              {/* Hotspot */}
               <motion.div
                 style={{
                   position: "absolute",
                   inset: 0,
                   pointerEvents: "none",
-                  background: `radial-gradient(300px 300px at ${hotspotX.get()} ${hotspotY.get()}, ${BRAND}30, transparent 60%)`,
+                  background: `radial-gradient(400px 400px at ${hotspotX.get()} ${hotspotY.get()}, ${BRAND}20, transparent 70%)`,
                   mixBlendMode: "soft-light",
                 }}
               />
 
-              {/* One-time sheen sweep on hover */}
+              {/* Sheen */}
               <motion.div
-                key="sheen"
                 variants={{
-                  rest: { x: "-130%", opacity: 0 },
+                  rest: { x: "-150%", opacity: 0 },
                   hover: {
-                    x: "160%",
+                    x: "150%",
                     opacity: 1,
-                    transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] },
+                    transition: { duration: 1, ease: "easeInOut" },
                   },
                 }}
                 style={{
                   position: "absolute",
-                  top: "-25%",
-                  left: sheenX.get(),
-                  width: "32%",
-                  height: "150%",
-                  transform: "skewX(-12deg)",
+                  inset: 0,
                   background:
-                    "linear-gradient(75deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0) 100%)",
-                  filter: "blur(2px)",
+                    "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%)",
+                  transform: "skewX(-20deg)",
                   pointerEvents: "none",
-                  mixBlendMode: "screen",
                 }}
               />
 
-              {/* RIGHT REVEAL PANEL — clip-path sweep from edge */}
+              {/* RIGHT REVEAL PANEL */}
               <motion.div
                 variants={{
                   rest: {
@@ -192,11 +183,8 @@ export default function AccentureStyleCard({
                   },
                   hover: {
                     opacity: 1,
-                    clipPath: "polygon(40% 0, 100% 0, 100% 100%, 40% 100%)",
-                    transition: {
-                      duration: 0.42,
-                      ease: [0.22, 1, 0.36, 1],
-                    },
+                    clipPath: "polygon(35% 0, 100% 0, 100% 100%, 35% 100%)",
+                    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
                   },
                 }}
                 style={{
@@ -204,90 +192,94 @@ export default function AccentureStyleCard({
                   inset: 0,
                   display: "flex",
                   justifyContent: "flex-end",
-                  pointerEvents: "none", // panel is decorative; text container handles pointer
+                  pointerEvents: "none",
                 }}
               >
                 <Box
                   sx={{
-                    width: "60%",
+                    width: "65%",
                     height: "100%",
-                    background: "rgba(255,255,255,0.92)",
-                    backdropFilter: "blur(6px)",
-                    WebkitBackdropFilter: "blur(6px)",
-                    boxShadow: "-20px 0 40px rgba(0,0,0,0.18)",
+                    background: "rgba(255,255,255,0.94)",
+                    backdropFilter: "blur(8px)",
+                    WebkitBackdropFilter: "blur(8px)",
                     display: "flex",
-                    alignItems: "flex-end",
+                    flexDirection: "column",
+                    justifyContent: "flex-end",
                     pointerEvents: "auto",
+                    p: 4,
                   }}
                 >
-                  <CardContent sx={{ p: 3, width: "100%" }}>
+                  <CardContent sx={{ p: 0, mb: 2 }}>
                     <motion.div
                       variants={{
-                        rest: { transition: { staggerChildren: 0 } },
+                        rest: { y: 20, opacity: 0 },
                         hover: {
-                          transition: {
-                            staggerChildren: 0.06,
-                            delayChildren: 0.06,
-                          },
+                          y: 0,
+                          opacity: 1,
+                          transition: { staggerChildren: 0.1, delayChildren: 0.1 },
                         },
                       }}
                     >
                       <motion.div
                         variants={{
-                          rest: { y: 12, opacity: 0 },
-                          hover: {
-                            y: 0,
-                            opacity: 1,
-                            transition: { duration: 0.25 },
-                          },
+                          rest: { y: 10, opacity: 0 },
+                          hover: { y: 0, opacity: 1 },
                         }}
                       >
                         <Typography
-                          variant="h6"
-                          sx={{ fontWeight: 900, mb: 0.5 }}
+                          variant="h5"
+                          sx={{ fontWeight: 900, mb: 1, color: "primary.main", lineHeight: 1.2 }}
                         >
                           {title}
                         </Typography>
                       </motion.div>
                       <motion.div
                         variants={{
-                          rest: { y: 12, opacity: 0 },
-                          hover: {
-                            y: 0,
-                            opacity: 1,
-                            transition: { duration: 0.25 },
-                          },
+                          rest: { y: 10, opacity: 0 },
+                          hover: { y: 0, opacity: 1 },
                         }}
                       >
                         <Typography
                           variant="body2"
-                          sx={{ color: "text.secondary" }}
+                          sx={{ color: "text.secondary", mb: 3, lineHeight: 1.6 }}
                         >
                           {description}
                         </Typography>
                       </motion.div>
                       <motion.div
                         variants={{
-                          rest: { width: "18%", opacity: 0.25 },
-                          hover: {
-                            width: "34%",
-                            opacity: 1,
-                            transition: { duration: 0.28 },
-                          },
+                          rest: { scale: 0.8, opacity: 0 },
+                          hover: { scale: 1, opacity: 1 },
                         }}
-                        style={{ height: 2, borderRadius: 2, marginTop: 14 }}
                       >
-                        <Box
+                        <Button
+                          size="small"
+                          endIcon={<ArrowForwardIcon />}
                           sx={{
-                            height: "100%",
-                            width: "100%",
-                            background: `linear-gradient(90deg, ${BRAND}, ${BRAND}55)`,
-                            borderRadius: 2,
+                            p: 0,
+                            minWidth: 0,
+                            color: BRAND,
+                            fontWeight: 700,
+                            textTransform: "none",
+                            "&:hover": { bgcolor: "transparent", color: theme.palette.secondary.dark },
                           }}
-                        />
+                        >
+                          View Details
+                        </Button>
                       </motion.div>
                     </motion.div>
                   </CardContent>
+                  <motion.div
+                    variants={{
+                      rest: { width: 0 },
+                      hover: { width: "100%", transition: { duration: 0.4, delay: 0.2 } },
+                    }}
+                    style={{
+                      height: 4,
+                      background: `linear-gradient(90deg, ${theme.palette.primary.main}, ${BRAND})`,
+                      borderRadius: 2,
+                    }}
+                  />
                 </Box>
               </motion.div>
             </Box>
