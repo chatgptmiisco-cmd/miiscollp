@@ -231,35 +231,39 @@ function ProcessCardMinimal({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.25 }}
-      whileHover={{ y: -2 }}
+      whileHover={{ y: -5 }}
       transition={{ type: "tween" }}
       sx={{
-        p: 3,
+        p: 4,
         height: "100%",
-        borderRadius: 3,
-        border: "1px solid rgba(0,0,0,0.06)",
-        bgcolor: "#fff",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.04)",
+        borderRadius: "20px",
+        bgcolor: "rgba(255, 255, 255, 0.02)",
+        border: "1px solid rgba(255, 255, 255, 0.05)",
+        transition: "all 0.3s ease",
+        "&:hover": {
+          bgcolor: "rgba(255, 255, 255, 0.04)",
+          borderColor: "rgba(13, 127, 242, 0.3)",
+        }
       }}
     >
-      <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 1 }}>
+      <Stack direction="row" spacing={2} alignItems="center" sx={{ mb: 2 }}>
         <Avatar
-          sx={{ bgcolor: `${BRAND}14`, color: BRAND, width: 40, height: 40 }}
+          sx={{ bgcolor: "rgba(13, 127, 242, 0.1)", color: "#0d7ff2", width: 48, height: 48 }}
         >
           {p.icon}
         </Avatar>
         <Typography
           variant="overline"
-          sx={{ letterSpacing: 1, fontWeight: 700, color: "text.secondary" }}
+          sx={{ letterSpacing: 2, fontWeight: 800, color: "#0d7ff2" }}
         >
           {p.step}
         </Typography>
       </Stack>
 
-      <Typography variant="h6" sx={{ fontWeight: 800, mb: 0.5 }}>
+      <Typography variant="h6" sx={{ fontWeight: 800, mb: 1, color: "white" }}>
         {p.title}
       </Typography>
-      <Typography variant="body2" color="text.secondary">
+      <Typography variant="body2" sx={{ color: "#94a3b8", lineHeight: 1.6 }}>
         {p.text}
       </Typography>
     </Paper>
@@ -308,46 +312,49 @@ export default function HomePage(): React.ReactElement {
   const sectionRef = React.useRef<HTMLDivElement | null>(null);
   const processSectionRef = React.useRef<HTMLDivElement>(null);
   return (
-    <Box sx={{ pt: 0, bgcolor: theme.palette.primary.main }}>
+    <Box sx={{ pt: 0, bgcolor: "#0a0f1c" }}>
       {/* Hero */}
       <Box
         sx={{
           position: "relative",
           color: "#fff",
-          pb: { xs: 8, md: 12 },
-          pt: { xs: 8, md: 12 },
+          pb: { xs: 12, md: 20 },
+          pt: { xs: 15, md: 25 },
           overflow: "hidden",
         }}
       >
-        {/* Animated backgrounds */}
         <motion.div
           aria-hidden
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1.2 }}
           style={{
             position: "absolute",
-            top: "-20%",
+            top: "-10%",
             left: "-10%",
-            width: "60vw",
-            height: "60vw",
-            background: `radial-gradient(40% 40% at 50% 50%, ${theme.palette.secondary.main}33, transparent 70%)`,
-            filter: "blur(40px)",
+            width: "80vw",
+            height: "80vw",
+            background: `radial-gradient(circle at 20% 20%, rgba(13, 127, 242, 0.15), transparent 60%)`,
+            filter: "blur(100px)",
+            zIndex: 0
           }}
         />
         <motion.div
           aria-hidden
-          animate={{ x: ["0%", "2%", "-2%", "0%"] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+          animate={{ 
+            x: ["0%", "5%", "-5%", "0%"],
+            y: ["0%", "2%", "-2%", "0%"]
+          }}
+          transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
           style={{
             position: "absolute",
-            bottom: "-25%",
+            bottom: "-20%",
             right: "-10%",
-            width: "60vw",
-            height: "60vw",
-            background:
-              "radial-gradient(35% 35% at 50% 50%, rgba(255,255,255,0.06), transparent 70%)",
-            filter: "blur(44px)",
+            width: "70vw",
+            height: "70vw",
+            background: `radial-gradient(circle at 80% 80%, rgba(106, 17, 203, 0.1), transparent 60%)`,
+            filter: "blur(120px)",
+            zIndex: 0
           }}
         />
 
@@ -363,23 +370,33 @@ export default function HomePage(): React.ReactElement {
                 <Typography
                   variant="h1"
                   sx={{
-                    mb: 2,
-                    lineHeight: 1.2,
-                    fontWeight: 900,
-                    letterSpacing: "-0.02em",
+                    mb: 4,
+                    lineHeight: 1.1,
+                    fontWeight: 950,
+                    letterSpacing: "-0.04em",
                     color: "white",
-                    fontSize: { xs: "1.9rem", md: "3rem" },
+                    fontSize: { xs: "2.8rem", md: "5.5rem" },
                   }}
                 >
-                  Quality-first QA for mission-critical software
+                  Engineering <Box component="span" sx={{ 
+                    background: "linear-gradient(90deg, #0d7ff2 0%, #00d4ff 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent"
+                  }}>Quality</Box> for Digital Scale
                 </Typography>
                 <Typography
-                  variant="subtitle1"
-                  sx={{ mb: 4, color: "rgba(255,255,255,0.86)" }}
+                  variant="h6"
+                  sx={{ 
+                    mb: 6, 
+                    color: "#94a3b8", 
+                    maxWidth: "600px", 
+                    lineHeight: 1.6,
+                    fontSize: { xs: "1.1rem", md: "1.25rem" },
+                    fontWeight: 400
+                  }}
                 >
-                  We partner with product teams to reduce risk, accelerate
-                  delivery, and guarantee trustworthy user experiences across
-                  web, mobile, and APIs.
+                  We partner with ambitious product teams to harden releases, 
+                  eliminate regression bottlenecks, and guarantee premium user experiences.
                 </Typography>
 
                 <Stack direction="row" spacing={2} flexWrap="wrap">
@@ -387,11 +404,18 @@ export default function HomePage(): React.ReactElement {
                     variant="contained"
                     size="large"
                     sx={{
-                      px: 3,
-                      py: 1.2,
-                      fontWeight: 700,
-                      bgcolor: theme.palette.secondary.main,
-                      "&:hover": { bgcolor: theme.palette.secondary.dark },
+                      px: 4,
+                      py: 1.5,
+                      fontWeight: 800,
+                      fontSize: "1rem",
+                      background: "linear-gradient(90deg, #0d7ff2, #2563eb)",
+                      boxShadow: "0 8px 24px rgba(13, 127, 242, 0.3)",
+                      "&:hover": { 
+                        background: "linear-gradient(90deg, #2563eb, #0d7ff2)",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 12px 32px rgba(13, 127, 242, 0.4)",
+                      },
+                      transition: "all 0.3s ease"
                     }}
                   >
                     Get a Quote
@@ -399,6 +423,7 @@ export default function HomePage(): React.ReactElement {
                   <Button
                     variant="outlined"
                     size="large"
+                    href="/services"
                     sx={{
                       px: 3,
                       py: 1.2,
@@ -415,36 +440,33 @@ export default function HomePage(): React.ReactElement {
                 </Stack>
 
                 {/* Metrics */}
-                <Grid container spacing={2} sx={{ mt: 4 }}>
+                <Grid container spacing={3} sx={{ mt: 6 }}>
                   {metrics.map((m, i) => (
                     <Grid key={i} size={{ xs: 6, sm: 3 }}>
-                      <Paper
-                        component={motion.div}
+                      <motion.div
                         variants={itemUp}
                         initial="hidden"
                         animate="visible"
-                        elevation={0}
-                        sx={{
-                          p: 2,
-                          textAlign: "center",
-                          bgcolor: "rgba(255,255,255,0.04)",
-                          border: "1px solid rgba(255,255,255,0.08)",
-                          borderRadius: 2,
-                        }}
+                        transition={{ delay: 0.5 + i * 0.1 }}
                       >
                         <Typography
-                          variant="h5"
-                          sx={{ fontWeight: 900, color: "#fff" }}
+                          variant="h4"
+                          sx={{ fontWeight: 900, color: "#fff", mb: 0.5 }}
                         >
                           {m.value}
                         </Typography>
                         <Typography
                           variant="caption"
-                          sx={{ color: "rgba(255,255,255,0.8)" }}
+                          sx={{ 
+                            color: "#94a3b8", 
+                            textTransform: "uppercase", 
+                            fontWeight: 700,
+                            letterSpacing: 1
+                          }}
                         >
                           {m.label}
                         </Typography>
-                      </Paper>
+                      </motion.div>
                     </Grid>
                   ))}
                 </Grid>
@@ -460,46 +482,44 @@ export default function HomePage(): React.ReactElement {
               >
                 <Paper
                   sx={{
-                    p: 3,
-                    borderRadius: 3,
-                    bgcolor: "rgba(255,255,255,0.05)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    backdropFilter: "blur(6px)",
+                    p: 4,
+                    borderRadius: "24px",
+                    bgcolor: "rgba(255, 255, 255, 0.02)",
+                    border: "1px solid rgba(255, 255, 255, 0.05)",
+                    backdropFilter: "blur(20px)",
+                    boxShadow: "0 40px 100px rgba(0,0,0,0.5)"
                   }}
                 >
                   <Typography
                     variant="h6"
-                    sx={{ fontWeight: 800, color: "#fff", mb: 2 }}
+                    sx={{ fontWeight: 800, color: "#fff", mb: 3 }}
                   >
-                    How we help
+                    Precision Engineering
                   </Typography>
                   <Typography
-                    variant="body2"
-                    sx={{ color: "rgba(255,255,255,0.85)" }}
+                    variant="body1"
+                    sx={{ color: "#94a3b8", mb: 4, lineHeight: 1.7 }}
                   >
-                    Rapid automation onboarding • CI/CD gating • Performance and
-                    API testing • Web/Mobile coverage • Release readiness & PVT
-                    checks
+                    Rapid automation onboarding • CI/CD gating • Performance 
+                    and API testing • Web/Mobile coverage • Full Security Audits
                   </Typography>
                   <Divider
-                    sx={{ my: 2, borderColor: "rgba(255,255,255,0.08)" }}
+                    sx={{ my: 3, borderColor: "rgba(255,255,255,0.05)" }}
                   />
-                  <Stack direction="row" spacing={1} flexWrap="wrap" useFlexGap>
+                  <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
                     {quickServices.map((s, i) => (
                       <Chip
                         key={i}
                         icon={s.icon}
                         label={`${s.title}`}
+                        variant="outlined"
                         sx={{
                           color: "#fff",
-                          borderColor: "rgba(255,255,255,0.16)",
-                          bgcolor: "rgba(255,255,255,0.04)",
-                          "& .MuiChip-icon": {
-                            color: theme.palette.secondary.main,
-                          },
-                          border: "1px solid rgba(255,255,255,0.12)",
+                          borderColor: "rgba(255,255,255,0.1)",
+                          bgcolor: "rgba(255,255,255,0.03)",
+                          "& .MuiChip-icon": { color: "#0d7ff2" },
+                          "&:hover": { bgcolor: "rgba(255,255,255,0.05)" }
                         }}
-                        variant="outlined"
                       />
                     ))}
                   </Stack>
@@ -511,36 +531,37 @@ export default function HomePage(): React.ReactElement {
       </Box>
 
       {/* Trust Bar */}
-      <Box sx={{ py: 6, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
+      <Box sx={{ py: 10, borderTop: "1px solid rgba(255,255,255,0.05)", bgcolor: "rgba(0,0,0,0.2)" }}>
         <Container maxWidth="lg">
           <Typography
-            variant="body2"
-            sx={{ textAlign: "center", color: "rgba(255,255,255,0.6)", mb: 3 }}
+            variant="overline"
+            sx={{ textAlign: "center", display: "block", color: "#94a3b8", mb: 6, fontWeight: 700, letterSpacing: 2 }}
           >
-            Trusted by leading companies
+            Trusted by Industry Leaders
           </Typography>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             <Stack
               direction="row"
               alignItems="center"
               justifyContent="center"
-              spacing={4}
-              sx={{ flexWrap: "wrap", gap: 3 }}
+              spacing={{ xs: 4, md: 10 }}
+              sx={{ flexWrap: "wrap", gap: 3, opacity: 0.6 }}
             >
-              {["Everlight", "AITRCM", "Delight DRG"].map((brand, i) => (
+              {["Everlight", "AITRCM", "Delight DRG", "FinServ Plus"].map((brand, i) => (
                 <Typography
                   key={i}
-                  variant="h6"
+                  variant="h5"
                   sx={{
-                    color: "rgba(255,255,255,0.4)",
-                    fontWeight: 600,
-                    letterSpacing: 1,
-                    "&:hover": { color: theme.palette.secondary.main },
-                    transition: "color 0.3s ease",
+                    color: "white",
+                    fontWeight: 900,
+                    letterSpacing: -1,
+                    transition: "all 0.3s ease",
+                    cursor: "default",
+                    "&:hover": { color: "#0d7ff2", opacity: 1, transform: "scale(1.1)" },
                   }}
                 >
                   {brand}
@@ -606,10 +627,10 @@ export default function HomePage(): React.ReactElement {
 
       <Box
         sx={{
-          py: { xs: 10, md: 14 },
+          py: { xs: 15, md: 20 },
           position: "relative",
           overflow: "hidden",
-          background: `linear-gradient(180deg, ${theme.palette.background.default} 0%, #fff 100%)`,
+          bgcolor: "#0a0f1c",
         }}
       >
         {/* Decorative background blobs */}
@@ -639,34 +660,36 @@ export default function HomePage(): React.ReactElement {
         />
 
         <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-          <Box sx={{ mb: 8, textAlign: { xs: "center", md: "left" } }}>
+          <Box sx={{ mb: 10, textAlign: { xs: "center", md: "left" } }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
               <Typography 
-                variant="h3" 
+                variant="h2" 
                 sx={{ 
-                  fontWeight: 900, 
-                  mb: 2, 
-                  letterSpacing: "-0.02em",
-                  fontSize: { xs: "2.5rem", md: "3rem" }
+                  fontWeight: 950, 
+                  mb: 3, 
+                  letterSpacing: "-0.03em",
+                  fontSize: { xs: "2.5rem", md: "4rem" },
+                  color: "white"
                 }}
               >
-                Featured Work
+                Featured <Box component="span" sx={{ color: "#0d7ff2" }}>Showcase</Box>
               </Typography>
               <Typography 
                 variant="body1" 
                 sx={{ 
-                  color: "text.secondary", 
+                  color: "#94a3b8", 
                   maxWidth: "600px",
                   mx: { xs: "auto", md: 0 },
-                  fontSize: "1.1rem"
+                  fontSize: "1.2rem",
+                  lineHeight: 1.6
                 }}
               >
-                Showcasing our expertise in delivering high-performance solutions across diverse industries and technologies.
+                Explore our landmark projects where engineering precision meets creative digital solutions.
               </Typography>
             </motion.div>
           </Box>
@@ -712,10 +735,11 @@ export default function HomePage(): React.ReactElement {
       {/* Why Choose Miisco Section */}
       <Box
         sx={{
-          py: { xs: 10, md: 14 },
+          py: { xs: 15, md: 20 },
           position: "relative",
           overflow: "hidden",
-          background: `linear-gradient(180deg, #fff 0%, ${theme.palette.background.default} 100%)`,
+          bgcolor: "#0a0f1c",
+          borderTop: "1px solid rgba(255,255,255,0.05)"
         }}
       >
         {/* Decorative background blobs */}
@@ -734,35 +758,36 @@ export default function HomePage(): React.ReactElement {
         />
 
         <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-          <Box sx={{ mb: 8, textAlign: "center" }}>
+          <Box sx={{ mb: 10, textAlign: "center" }}>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
               <Typography 
-                variant="h3" 
+                variant="h2" 
                 sx={{ 
-                  fontWeight: 900, 
-                  mb: 2, 
-                  letterSpacing: "-0.02em",
-                  fontSize: { xs: "2.5rem", md: "3rem" },
-                  color: "primary.main"
+                  fontWeight: 950, 
+                  mb: 3, 
+                  letterSpacing: "-0.03em",
+                  fontSize: { xs: "2.5rem", md: "4rem" },
+                  color: "white"
                 }}
               >
-                Why Choose Miisco?
+                The Miisco <Box component="span" sx={{ color: "#0d7ff2" }}>Edge</Box>
               </Typography>
               <Typography 
                 variant="body1" 
                 sx={{ 
-                  color: "text.secondary", 
+                  color: "#94a3b8", 
                   maxWidth: "700px",
                   mx: "auto",
-                  fontSize: "1.1rem"
+                  fontSize: "1.2rem",
+                  lineHeight: 1.6
                 }}
               >
-                Discover the reasons to partner with Miisco for your software testing needs. Client satisfaction is our top priority.
+                We don&apos;t just test code; we engineer confidence. Discover how our strategic approach transforms quality into a competitive advantage.
               </Typography>
             </motion.div>
           </Box>
@@ -795,16 +820,18 @@ export default function HomePage(): React.ReactElement {
                 >
                   <Paper
                     sx={{
-                      p: 4,
+                      p: 5,
                       height: "100%",
-                      borderRadius: 4,
-                      bgcolor: "#fff",
-                      border: "1px solid rgba(0,0,0,0.04)",
-                      boxShadow: "0 10px 30px rgba(0,0,0,0.03)",
-                      transition: "all 0.3s ease",
+                      borderRadius: "24px",
+                      bgcolor: "rgba(255, 255, 255, 0.02)",
+                      border: "1px solid rgba(255,255,255,0.05)",
+                      transition: "all 0.4s ease",
+                      position: "relative",
+                      overflow: "hidden",
                       "&:hover": {
-                        boxShadow: "0 20px 40px rgba(0,0,0,0.06)",
-                        borderColor: `${theme.palette.secondary.main}22`,
+                        bgcolor: "rgba(255,255,255,0.04)",
+                        borderColor: "#0d7ff233",
+                        transform: "translateY(-10px)"
                       },
                       display: "flex",
                       flexDirection: "column",
@@ -816,34 +843,33 @@ export default function HomePage(): React.ReactElement {
                       sx={{
                         width: 64,
                         height: 64,
-                        borderRadius: 3,
+                        borderRadius: "16px",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        mb: 3,
-                        background: `linear-gradient(135deg, ${theme.palette.secondary.main}11 0%, ${theme.palette.secondary.main}22 100%)`,
-                        color: theme.palette.secondary.main,
+                        mb: 4,
+                        background: "rgba(13, 127, 242, 0.1)",
+                        color: "#0d7ff2",
                       }}
                     >
                       {item.icon}
                     </Box>
                     <Typography 
-                      variant="h6" 
+                      variant="h5" 
                       sx={{ 
                         fontWeight: 800, 
-                        mb: 1.5, 
-                        lineHeight: 1.3,
-                        color: "primary.main"
+                        mb: 2, 
+                        color: "white"
                       }}
                     >
                       {item.title}
                     </Typography>
                     <Typography 
-                      variant="body2" 
+                      variant="body1" 
                       sx={{ 
-                        color: "text.secondary", 
-                        lineHeight: 1.6,
-                        fontSize: "0.95rem"
+                        color: "#94a3b8", 
+                        lineHeight: 1.7,
+                        fontSize: "1rem"
                       }}
                     >
                       {item.description}
@@ -857,13 +883,13 @@ export default function HomePage(): React.ReactElement {
       </Box>
 
       {/* Our Products */}
-      <Box sx={{ py: 8, bgcolor: theme.palette.primary.main }}>
+      <Box sx={{ py: 15, bgcolor: "#0a0f1c", position: "relative" }}>
         <Container maxWidth="lg">
           <Typography
-            variant="h4"
-            sx={{ fontWeight: 900, mb: 6, textAlign: "center", color: "#fff" }}
+            variant="h2"
+            sx={{ fontWeight: 950, mb: 10, textAlign: "center", color: "#fff", letterSpacing: "-0.02em" }}
           >
-            Our Products
+            Digital <Box component="span" sx={{ color: "#0d7ff2" }}>Solutions</Box>
           </Typography>
           <Grid container spacing={4}>
             <Grid size={{ xs: 12, md: 6 }}>
@@ -876,12 +902,11 @@ export default function HomePage(): React.ReactElement {
               >
                 <Paper
                   sx={{
-                    p: 4,
-                    borderRadius: 4,
-                    background:
-                      "linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    backdropFilter: "blur(20px)",
+                    p: 4.5,
+                    borderRadius: 6,
+                    background: "rgba(255, 255, 255, 0.02)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    backdropFilter: "blur(24px)",
                     color: "#fff",
                     height: "100%",
                   }}
@@ -898,23 +923,21 @@ export default function HomePage(): React.ReactElement {
                     spacing={1}
                     flexWrap="wrap"
                     useFlexGap
-                    sx={{ mb: 3 }}
+                    sx={{ mb: 4 }}
                   >
-                    <Chip
-                      label="Mobile App"
-                      size="small"
-                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
-                    />
-                    <Chip
-                      label="Website"
-                      size="small"
-                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
-                    />
-                    <Chip
-                      label="Matrimonial"
-                      size="small"
-                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
-                    />
+                    {["Mobile App", "Website", "Matrimonial"].map((tag) => (
+                      <Chip
+                        key={tag}
+                        label={tag}
+                        size="small"
+                        sx={{ 
+                          bgcolor: "rgba(13, 127, 242, 0.1)", 
+                          color: "#0d7ff2", 
+                          border: "1px solid rgba(13, 127, 242, 0.2)",
+                          fontWeight: 700 
+                        }}
+                      />
+                    ))}
                   </Stack>
                   <Button
                     variant="contained"
@@ -922,8 +945,16 @@ export default function HomePage(): React.ReactElement {
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{
-                      bgcolor: theme.palette.secondary.main,
-                      "&:hover": { bgcolor: theme.palette.secondary.dark },
+                      bgcolor: "#0d7ff2",
+                      fontWeight: 800,
+                      px: 4,
+                      borderRadius: 3,
+                      "&:hover": { 
+                        bgcolor: "#0b6ed1",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 10px 20px rgba(13, 127, 242, 0.2)"
+                      },
+                      transition: "all 0.3s ease"
                     }}
                   >
                     Learn More
@@ -941,12 +972,11 @@ export default function HomePage(): React.ReactElement {
               >
                 <Paper
                   sx={{
-                    p: 4,
-                    borderRadius: 4,
-                    background:
-                      "linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))",
-                    border: "1px solid rgba(255,255,255,0.2)",
-                    backdropFilter: "blur(20px)",
+                    p: 4.5,
+                    borderRadius: 6,
+                    background: "rgba(255, 255, 255, 0.02)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    backdropFilter: "blur(24px)",
                     color: "#fff",
                     height: "100%",
                   }}
@@ -963,23 +993,21 @@ export default function HomePage(): React.ReactElement {
                     spacing={1}
                     flexWrap="wrap"
                     useFlexGap
-                    sx={{ mb: 3 }}
+                    sx={{ mb: 4 }}
                   >
-                    <Chip
-                      label="Mobile App"
-                      size="small"
-                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
-                    />
-                    <Chip
-                      label="Website"
-                      size="small"
-                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
-                    />
-                    <Chip
-                      label="Market Analysis"
-                      size="small"
-                      sx={{ bgcolor: "rgba(255,255,255,0.2)", color: "#fff" }}
-                    />
+                    {["Mobile App", "Website", "Market Analysis"].map((tag) => (
+                      <Chip
+                        key={tag}
+                        label={tag}
+                        size="small"
+                        sx={{ 
+                          bgcolor: "rgba(13, 127, 242, 0.1)", 
+                          color: "#0d7ff2", 
+                          border: "1px solid rgba(13, 127, 242, 0.2)",
+                          fontWeight: 700 
+                        }}
+                      />
+                    ))}
                   </Stack>
                   <Button
                     variant="contained"
@@ -987,8 +1015,16 @@ export default function HomePage(): React.ReactElement {
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{
-                      bgcolor: theme.palette.secondary.main,
-                      "&:hover": { bgcolor: theme.palette.secondary.dark },
+                      bgcolor: "#0d7ff2",
+                      fontWeight: 800,
+                      px: 4,
+                      borderRadius: 3,
+                      "&:hover": { 
+                        bgcolor: "#0b6ed1",
+                        transform: "translateY(-2px)",
+                        boxShadow: "0 10px 20px rgba(13, 127, 242, 0.2)"
+                      },
+                      transition: "all 0.3s ease"
                     }}
                   >
                     Learn More
@@ -1004,9 +1040,10 @@ export default function HomePage(): React.ReactElement {
       {/* Process Timeline — upgraded */}
       <Box
         sx={{
-          py: 8,
-          bgcolor: theme.palette.background.default,
+          py: 15,
+          bgcolor: "#0a0f1c",
           position: "relative",
+          borderTop: "1px solid rgba(255,255,255,0.05)"
         }}
         ref={processSectionRef}
       >
@@ -1017,8 +1054,8 @@ export default function HomePage(): React.ReactElement {
         />
 
         <Container maxWidth="lg">
-          <Typography variant="h4" sx={{ fontWeight: 900, mb: 3 }}>
-            Our Process
+          <Typography variant="h2" sx={{ fontWeight: 950, mb: 8, color: "white", letterSpacing: "-0.02em" }}>
+            The Miisco <Box component="span" sx={{ color: "#0d7ff2" }}>Workflow</Box>
           </Typography>
 
           {/* subtle left connector line on md+ to suggest a path */}
@@ -1059,10 +1096,11 @@ export default function HomePage(): React.ReactElement {
       {/* Tech Stack */}
       <Box
         sx={{
-          py: 8,
-          background: `linear-gradient(135deg, ${theme.palette.primary.main} 0%, ${theme.palette.primary.dark} 100%)`,
+          py: 15,
+          bgcolor: "#0a0f1c",
           position: "relative",
           overflow: "hidden",
+          borderTop: "1px solid rgba(255,255,255,0.05)"
         }}
       >
         {/* Background decoration */}
@@ -1079,15 +1117,16 @@ export default function HomePage(): React.ReactElement {
         />
         <Container maxWidth="lg" sx={{ position: "relative" }}>
           <Typography
-            variant="h4"
+            variant="h2"
             sx={{
-              fontWeight: 900,
-              mb: 4,
+              fontWeight: 950,
+              mb: 10,
               color: "#fff",
               textAlign: "center",
+              letterSpacing: "-0.02em"
             }}
           >
-            Tools we work with
+            Proprietary <Box component="span" sx={{ color: "#0d7ff2" }}>Tech Stack</Box>
           </Typography>
           <Grid container spacing={4}>
             {techCategories.map((category, i) => (
@@ -1104,17 +1143,18 @@ export default function HomePage(): React.ReactElement {
                   }}
                   whileHover={{ y: -8, scale: 1.02 }}
                   sx={{
-                    p: 4,
+                    p: 4.5,
                     height: "100%",
-                    borderRadius: 4,
-                    background: `linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05))`,
-                    border: `1px solid rgba(255,255,255,0.2)`,
-                    backdropFilter: "blur(20px)",
-                    boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+                    borderRadius: 5,
+                    background: "rgba(255, 255, 255, 0.02)",
+                    border: "1px solid rgba(255,255,255,0.06)",
+                    backdropFilter: "blur(24px)",
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
                     "&:hover": {
-                      background: `linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.08))`,
-                      borderColor: theme.palette.secondary.main,
-                      boxShadow: `0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px ${theme.palette.secondary.main}50`,
+                      bgcolor: "rgba(255, 255, 255, 0.04)",
+                      borderColor: "#0d7ff244",
+                      transform: "translateY(-10px)",
+                      boxShadow: "0 30px 60px rgba(0,0,0,0.5)",
                     },
                     transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                     cursor: "pointer",
@@ -1186,48 +1226,60 @@ export default function HomePage(): React.ReactElement {
       </Box>
 
       {/* Testimonials */}
-      <Box sx={{ py: 8, bgcolor: theme.palette.primary.main }}>
+      <Box sx={{ py: 15, bgcolor: "#0a0f1c", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <Container maxWidth="lg">
           <Typography
-            variant="h4"
-            sx={{ color: "#fff", fontWeight: 900, mb: 3 }}
+            variant="h2"
+            sx={{ color: "#fff", fontWeight: 950, mb: 10, textAlign: "center", letterSpacing: "-0.02em" }}
           >
-            What partners say
+            Client <Box component="span" sx={{ color: "#0d7ff2" }}>Feedback</Box>
           </Typography>
-          <Grid container spacing={3}>
+          <Grid container spacing={4}>
             {testimonials.map((t, i) => (
               <Grid key={i} size={{ xs: 12, md: 6 }}>
                 <Paper
                   sx={{
-                    p: 3,
-                    borderRadius: 3,
-                    bgcolor: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
+                    p: 5,
+                    borderRadius: "24px",
+                    bgcolor: "rgba(255, 255, 255, 0.02)",
+                    border: "1px solid rgba(255, 255, 255, 0.05)",
                     color: "#fff",
+                    height: "100%",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "space-between",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      bgcolor: "rgba(255, 255, 255, 0.04)",
+                      borderColor: "rgba(13, 127, 242, 0.2)"
+                    }
                   }}
                 >
-                  <Typography variant="body1" sx={{ mb: 2 }}>
+                  <Typography variant="h6" sx={{ mb: 4, lineHeight: 1.6, fontWeight: 400, fontStyle: "italic", color: "#e2e8f0" }}>
                     “{t.quote}”
                   </Typography>
                   <Stack direction="row" spacing={2} alignItems="center">
                     <Avatar
                       sx={{
-                        bgcolor: `${theme.palette.secondary.main}25`,
-                        color: "#fff",
+                        width: 50,
+                        height: 50,
+                        bgcolor: "rgba(13, 127, 242, 0.1)",
+                        color: "#0d7ff2",
+                        fontWeight: 700
                       }}
                     >
                       {t.name[0]}
                     </Avatar>
                     <Box>
                       <Typography
-                        variant="subtitle2"
+                        variant="subtitle1"
                         sx={{ fontWeight: 800, color: "#fff" }}
                       >
                         {t.name}
                       </Typography>
                       <Typography
                         variant="caption"
-                        sx={{ color: "rgba(255,255,255,0.8)" }}
+                        sx={{ color: "#0d7ff2", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}
                       >
                         {t.role}
                       </Typography>
@@ -1243,35 +1295,42 @@ export default function HomePage(): React.ReactElement {
       {/* CTA Band */}
       <Box
         sx={{
-          py: 8,
-          background: `linear-gradient(180deg, ${theme.palette.secondary.main} 0%, ${theme.palette.secondary.dark} 100%)`,
+          py: 15,
+          background: "linear-gradient(135deg, #0d7ff2 0%, #6a11cb 100%)",
           color: "#fff",
         }}
       >
         <Container maxWidth="lg">
-          <Grid container spacing={3} alignItems="center">
+          <Grid container spacing={6} alignItems="center">
             <Grid size={{ xs: 12, md: 8 }}>
-              <Typography variant="h4" sx={{ fontWeight: 900, mb: 1 }}>
+              <Typography variant="h2" sx={{ fontWeight: 950, mb: 2, letterSpacing: "-0.02em" }}>
                 Ready to harden your releases?
               </Typography>
-              <Typography sx={{ opacity: 0.9 }}>
-                Let’s plug into your CI/CD and raise quality gates without
-                slowing the team.
+              <Typography variant="h6" sx={{ opacity: 0.9, fontWeight: 400, maxWidth: "600px" }}>
+                Let&apos;s plug into your CI/CD and raise quality gates without
+                slowing the team down.
               </Typography>
             </Grid>
             <Grid size={{ xs: 12, md: 4 }}>
               <Stack
-                direction="row"
+                direction={{ xs: "column", sm: "row" }}
                 spacing={2}
                 justifyContent={{ xs: "flex-start", md: "flex-end" }}
               >
                 <Button
+                  variant="contained"
                   size="large"
                   sx={{
                     bgcolor: "#fff",
-                    color: "#111",
+                    color: "#0a0f1c",
+                    px: 4,
+                    py: 2,
+                    borderRadius: "12px",
                     fontWeight: 800,
-                    "&:hover": { bgcolor: "#fdf2f6" },
+                    fontSize: "1.1rem",
+                    textTransform: "none",
+                    "&:hover": { bgcolor: "#f1f5f9", transform: "translateY(-2px)" },
+                    transition: "all 0.3s ease"
                   }}
                 >
                   Book a Call
@@ -1280,8 +1339,14 @@ export default function HomePage(): React.ReactElement {
                   size="large"
                   variant="outlined"
                   sx={{
-                    borderColor: "rgba(255,255,255,0.9)",
+                    borderColor: "rgba(255,255,255,0.4)",
                     color: "#fff",
+                    px: 4,
+                    py: 2,
+                    borderRadius: "12px",
+                    fontWeight: 800,
+                    fontSize: "1.1rem",
+                    textTransform: "none",
                     "&:hover": {
                       borderColor: "#fff",
                       bgcolor: "rgba(255,255,255,0.1)",

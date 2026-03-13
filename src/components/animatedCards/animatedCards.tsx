@@ -120,7 +120,8 @@ export default function AnimatedCard({
             borderRadius: 3,
             overflow: "hidden",
             position: "relative",
-            backgroundColor: "#fff",
+            backgroundColor: "#0d111b",
+            border: "1px solid rgba(255,255,255,0.05)",
           }}
         >
           {/* Media area */}
@@ -137,9 +138,9 @@ export default function AnimatedCard({
                   "data:image/svg+xml;utf8," +
                   encodeURIComponent(
                     `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
-                      <rect width='100%' height='100%' fill='#f6f8fb'/>
+                      <rect width='100%' height='100%' fill='#0a0f1c'/>
                       <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-                        font-family='Inter, Arial' font-size='26' fill='rgba(0,0,0,.5)'>
+                        font-family='Inter, Arial' font-size='26' fill='rgba(255,255,255,.3)'>
                         Image unavailable
                       </text>
                     </svg>`
@@ -158,13 +159,13 @@ export default function AnimatedCard({
 
             {/* Darken overlay on hover for contrast */}
             <motion.div
-              variants={{ rest: { opacity: 0.06 }, hover: { opacity: 0.22 } }}
+              variants={{ rest: { opacity: 0.1 }, hover: { opacity: 0.3 } }}
               transition={{ duration: 0.25 }}
               style={{
                 position: "absolute",
                 inset: 0,
                 background:
-                  "linear-gradient(180deg, rgba(0,0,0,0.0) 10%, rgba(0,0,0,0.45) 100%)",
+                  "linear-gradient(180deg, rgba(10,15,28,0.0) 10%, rgba(10,15,28,0.6) 100%)",
                 pointerEvents: "none",
               }}
             />
@@ -184,9 +185,6 @@ export default function AnimatedCard({
                   position: "absolute",
                   width: 0,
                   height: 0,
-                  // we fake a hotspot by using a radial-gradient on a pseudo layer:
-                  // using CSS variables via transform values
-                  // We render it by setting background on the parent:
                 }}
               />
             </motion.div>
@@ -195,7 +193,7 @@ export default function AnimatedCard({
                 position: "absolute",
                 inset: 0,
                 pointerEvents: "none",
-                background: `radial-gradient(280px 280px at ${hotspotX.get()} ${hotspotY.get()}, rgba(240,7,87,0.20), transparent 60%)`,
+                background: `radial-gradient(280px 280px at ${hotspotX.get()} ${hotspotY.get()}, rgba(13,127,242,0.25), transparent 60%)`,
               }}
             />
 
@@ -208,7 +206,7 @@ export default function AnimatedCard({
                 height: "150%",
                 transform: "skewX(-12deg)",
                 background:
-                  "linear-gradient(75deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0.0) 100%)",
+                  "linear-gradient(75deg, rgba(255,255,255,0.0) 0%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.0) 100%)",
                 filter: "blur(2px)",
                 pointerEvents: "none",
                 mixBlendMode: "screen",
@@ -226,27 +224,28 @@ export default function AnimatedCard({
                 top: 0,
                 right: 0,
                 height: "100%",
-                width: "64%",
-                background: "rgba(255,255,255,0.92)",
-                backdropFilter: "blur(6px)",
-                WebkitBackdropFilter: "blur(6px)",
-                boxShadow: "-20px 0 40px rgba(0,0,0,0.18)",
+                width: "68%",
+                background: "rgba(13, 17, 27, 0.95)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                boxShadow: "-20px 0 60px rgba(0,0,0,0.4)",
                 display: "flex",
                 alignItems: "flex-end",
                 translateZ: 24 as unknown as string,
+                borderLeft: "1px solid rgba(255,255,255,0.06)"
               }}
             >
               <motion.div variants={group} style={{ width: "100%" }}>
-                <CardContent sx={{ p: 3 }}>
+                <CardContent sx={{ p: 4 }}>
                   <motion.div variants={item}>
-                    <Typography variant="h6" sx={{ fontWeight: 800, mb: 0.5 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 900, mb: 1, color: "white", lineHeight: 1.2 }}>
                       {title}
                     </Typography>
                   </motion.div>
                   <motion.div variants={item}>
                     <Typography
                       variant="body2"
-                      sx={{ color: "text.secondary" }}
+                      sx={{ color: "#94a3b8", lineHeight: 1.6 }}
                     >
                       {description}
                     </Typography>
@@ -254,12 +253,12 @@ export default function AnimatedCard({
                   <motion.div variants={item}>
                     <Box
                       sx={{
-                        mt: 1.5,
-                        height: 2,
-                        width: "34%",
+                        mt: 2.5,
+                        height: 3,
+                        width: "40px",
                         borderRadius: 2,
                         background:
-                          "linear-gradient(90deg, #f00757, rgba(240,7,87,0.35))",
+                          "linear-gradient(90deg, #0d7ff2, rgba(13,127,242,0.4))",
                       }}
                     />
                   </motion.div>

@@ -1,4 +1,5 @@
 "use client";
+import React from "react";
 import { 
   Box, 
   Container, 
@@ -8,72 +9,187 @@ import {
   Paper,
   Stack,
   Avatar,
-  useTheme
+  useTheme,
+  Grid
 } from "@mui/material";
-import Grid from "@mui/material/Grid";
 import { motion } from "framer-motion";
 import { 
   LocationOn, 
   Phone, 
   Email, 
-  Send 
+  Send,
+  Business
 } from "@mui/icons-material";
 
 export default function ContactPage() {
   const theme = useTheme();
   
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const textFieldStyles = {
+    '& .MuiOutlinedInput-root': {
+      borderRadius: 2,
+      bgcolor: 'rgba(255, 255, 255, 0.03)',
+      color: 'white',
+      '& fieldset': {
+        borderColor: 'rgba(255, 255, 255, 0.1)',
+      },
+      '&:hover fieldset': {
+        borderColor: 'rgba(13, 127, 242, 0.5)',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#0d7ff2',
+      },
+    },
+    '& .MuiInputLabel-root': {
+      color: 'rgba(255, 255, 255, 0.5)',
+      '&.Mui-focused': {
+        color: '#0d7ff2',
+      },
+    },
+  };
+  
   return (
     <Box sx={{ 
-      py: { xs: 8, md: 12 }, 
-      background: `linear-gradient(135deg, ${theme.palette.primary.main}08 0%, ${theme.palette.secondary.main}08 100%)`,
-      minHeight: '100vh'
+      bgcolor: "#0a0f1c", 
+      color: "white", 
+      minHeight: "100vh",
+      pt: { xs: 15, md: 20 },
+      pb: 15,
+      position: 'relative',
+      overflow: 'hidden'
     }}>
-      <Container maxWidth="lg">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Box textAlign="center" sx={{ mb: 8 }}>
+      {/* Decorative Blur Backgrounds */}
+      <Box sx={{
+        position: 'absolute',
+        top: '10%',
+        left: '-5%',
+        width: '400px',
+        height: '400px',
+        background: 'radial-gradient(circle, rgba(13, 127, 242, 0.1) 0%, transparent 70%)',
+        zIndex: 0,
+        pointerEvents: 'none'
+      }} />
+      <Box sx={{
+        position: 'absolute',
+        bottom: '10%',
+        right: '-5%',
+        width: '500px',
+        height: '500px',
+        background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%)',
+        zIndex: 0,
+        pointerEvents: 'none'
+      }} />
+
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+        {/* Header Section */}
+        <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
+          <Box textAlign="center" sx={{ mb: { xs: 8, md: 12 } }}>
             <Typography 
-              variant="h2" 
+              variant="h1" 
               sx={{ 
-                mb: 2, 
-                fontWeight: 800,
-                background: `linear-gradient(45deg, ${theme.palette.primary.main}, ${theme.palette.secondary.main})`,
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
+                fontSize: { xs: "2.8rem", md: "5.5rem" },
+                fontWeight: 950,
+                mb: 4,
+                lineHeight: 1.1,
+                letterSpacing: "-0.04em",
+                color: "white"
               }}
             >
-              Get In Touch
+              Get In <Box component="span" sx={{ color: "#0d7ff2" }}>Touch</Box>
             </Typography>
-            <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
-              Ready to transform your ideas into reality? Let's discuss your next project.
+            <Typography 
+              variant="h6" 
+              sx={{ 
+                color: "#94a3b8", 
+                maxWidth: 650, 
+                mx: 'auto',
+                lineHeight: 1.6,
+                fontWeight: 400,
+                fontSize: { xs: "1.1rem", md: "1.25rem" }
+              }}
+            >
+              Ready to transform your ideas into reality? Let&apos;s discuss how our precision engineering and quality assurance can power your next project.
             </Typography>
           </Box>
         </motion.div>
 
-        <Grid container spacing={4}>
-          {/* Contact Form */}
-          <Grid size={{ xs: 12, md: 8 }}>
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
+        <Grid container spacing={6}>
+          {/* Contact Info Deck */}
+          <Grid size={{ xs: 12, md: 5 }}>
+            <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
+              <Stack spacing={3}>
+                <Typography variant="h5" sx={{ fontWeight: 800, mb: 1, color: "white" }}>
+                  Contact Information
+                </Typography>
+                <Typography variant="body1" sx={{ color: "#94a3b8", mb: 3 }}>
+                  Fill out the form and our team will get back to you within 24 hours.
+                </Typography>
+
+                {[
+                  { icon: <LocationOn />, title: "Office Location", content: "Mathura, Uttar Pradesh, India", color: "#0d7ff2" },
+                  { icon: <Phone />, title: "Phone Support", content: "+91 9911065583", color: "#0d7ff2" },
+                  { icon: <Email />, title: "Email Address", content: "info@miiscollp.com", color: "#0d7ff2" },
+                  { icon: <Business />, title: "Business Hours", content: "Mon - Fri: 9:00 AM - 6:00 PM", color: "#0d7ff2" }
+                ].map((item, idx) => (
+                  <Paper 
+                    key={idx}
+                    sx={{ 
+                      p: 3, 
+                      borderRadius: 4,
+                      bgcolor: 'rgba(255, 255, 255, 0.03)',
+                      border: '1px solid rgba(255, 255, 255, 0.05)',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        bgcolor: 'rgba(255, 255, 255, 0.05)',
+                        borderColor: 'rgba(255, 255, 255, 0.1)',
+                        transform: 'translateX(10px)'
+                      }
+                    }}
+                  >
+                    <Stack direction="row" spacing={3} alignItems="center">
+                      <Avatar sx={{ 
+                        bgcolor: `${item.color}20`, 
+                        color: item.color,
+                        width: 50,
+                        height: 50,
+                        border: `1px solid ${item.color}40`
+                      }}>
+                        {item.icon}
+                      </Avatar>
+                      <Box>
+                        <Typography variant="overline" sx={{ color: item.color, fontWeight: 800, letterSpacing: 1 }}>
+                          {item.title}
+                        </Typography>
+                        <Typography variant="body1" sx={{ fontWeight: 600, color: "white" }}>
+                          {item.content}
+                        </Typography>
+                      </Box>
+                    </Stack>
+                  </Paper>
+                ))}
+              </Stack>
+            </motion.div>
+          </Grid>
+
+          {/* Contact Form Card */}
+          <Grid size={{ xs: 12, md: 7 }}>
+            <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
               <Paper 
-                elevation={0}
                 sx={{ 
-                  p: 4, 
-                  borderRadius: 3,
-                  border: '1px solid rgba(0,0,0,0.08)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.08)'
+                  p: { xs: 4, md: 6 }, 
+                  borderRadius: "32px",
+                  bgcolor: "rgba(255, 255, 255, 0.02)",
+                  backdropFilter: "blur(20px)",
+                  border: "1px solid rgba(255, 255, 255, 0.05)",
+                  boxShadow: "0 40px 100px rgba(0,0,0,0.5)"
                 }}
               >
-                <Typography variant="h5" sx={{ mb: 3, fontWeight: 700 }}>
-                  Send us a message
+                <Typography variant="h4" sx={{ mb: 4, fontWeight: 800, color: "white" }}>
+                  Send Message
                 </Typography>
                 
                 <Box component="form" noValidate>
@@ -83,11 +199,7 @@ export default function ContactPage() {
                         label="Full Name" 
                         fullWidth 
                         variant="outlined"
-                        sx={{
-                          '& .MuiOutlinedInput-root': {
-                            borderRadius: 2
-                          }
-                        }}
+                        sx={textFieldStyles}
                       />
                     </Grid>
                     <Grid size={{ xs: 12, sm: 6 }}>
@@ -95,142 +207,61 @@ export default function ContactPage() {
                         label="Email Address" 
                         fullWidth 
                         variant="outlined"
-                        sx={{
-                          '& .MuiOutlinedInput-root': {
-                            borderRadius: 2
-                          }
-                        }}
+                        sx={textFieldStyles}
                       />
                     </Grid>
                     <Grid size={{ xs: 12 }}>
                       <TextField 
-                        label="Subject" 
+                        label="Project Type" 
                         fullWidth 
                         variant="outlined"
+                        placeholder="e.g. Web Development, QA Testing"
                         sx={{
-                          '& .MuiOutlinedInput-root': {
-                            borderRadius: 2
+                          ...textFieldStyles,
+                          '& .MuiOutlinedInput-input::placeholder': {
+                            color: 'rgba(255, 255, 255, 0.4)',
+                            opacity: 1
                           }
                         }}
                       />
                     </Grid>
                     <Grid size={{ xs: 12 }}>
                       <TextField 
-                        label="Message" 
+                        label="How can we help?" 
                         fullWidth 
                         multiline 
-                        rows={6}
+                        rows={5}
                         variant="outlined"
-                        sx={{
-                          '& .MuiOutlinedInput-root': {
-                            borderRadius: 2
-                          }
-                        }}
+                        sx={textFieldStyles}
                       />
                     </Grid>
                     <Grid size={{ xs: 12 }}>
                       <Button 
                         variant="contained" 
+                        fullWidth
                         size="large"
                         endIcon={<Send />}
                         sx={{ 
-                          px: 4, 
-                          py: 1.5,
-                          borderRadius: 2,
+                          py: 2,
+                          borderRadius: 3,
                           textTransform: 'none',
                           fontSize: '1.1rem',
-                          fontWeight: 600
+                          fontWeight: 800,
+                          bgcolor: "#0d7ff2",
+                          boxShadow: "0 10px 20px rgba(13, 127, 242, 0.2)",
+                          '&:hover': {
+                            bgcolor: "#0b6ed1",
+                            transform: "scale(1.02)"
+                          },
+                          transition: "all 0.3s ease"
                         }}
                       >
-                        Send Message
+                        Send Inquiry
                       </Button>
                     </Grid>
                   </Grid>
                 </Box>
               </Paper>
-            </motion.div>
-          </Grid>
-
-          {/* Contact Info */}
-          <Grid size={{ xs: 12, md: 4 }}>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-            >
-              <Stack spacing={3}>
-                <Paper 
-                  elevation={0}
-                  sx={{ 
-                    p: 3, 
-                    borderRadius: 3,
-                    border: '1px solid rgba(0,0,0,0.08)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.08)'
-                  }}
-                >
-                  <Stack direction="row" spacing={2} alignItems="center">
-                    <Avatar sx={{ bgcolor: theme.palette.primary.main }}>
-                      <LocationOn />
-                    </Avatar>
-                    <Box>
-                      <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                        Office Location
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Mathura, Uttar Pradesh, India
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </Paper>
-
-                <Paper 
-                  elevation={0}
-                  sx={{ 
-                    p: 3, 
-                    borderRadius: 3,
-                    border: '1px solid rgba(0,0,0,0.08)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.08)'
-                  }}
-                >
-                  <Stack direction="row" spacing={2} alignItems="center">
-                    <Avatar sx={{ bgcolor: theme.palette.secondary.main }}>
-                      <Phone />
-                    </Avatar>
-                    <Box>
-                      <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                        Phone Number
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        +91 9911065583
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </Paper>
-
-                <Paper 
-                  elevation={0}
-                  sx={{ 
-                    p: 3, 
-                    borderRadius: 3,
-                    border: '1px solid rgba(0,0,0,0.08)',
-                    boxShadow: '0 8px 32px rgba(0,0,0,0.08)'
-                  }}
-                >
-                  <Stack direction="row" spacing={2} alignItems="center">
-                    <Avatar sx={{ bgcolor: theme.palette.success.main }}>
-                      <Email />
-                    </Avatar>
-                    <Box>
-                      <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                        Email Address
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        info@miiscollp.com
-                      </Typography>
-                    </Box>
-                  </Stack>
-                </Paper>
-              </Stack>
             </motion.div>
           </Grid>
         </Grid>

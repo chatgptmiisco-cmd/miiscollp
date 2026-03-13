@@ -3,375 +3,336 @@ import React from "react";
 import {
   Box,
   Container,
-  Grid,
   Typography,
-  Card,
-  CardContent,
-  Button,
+  Grid,
   Chip,
   Stack,
   Paper,
+  Button,
+  useTheme,
+  Avatar,
 } from "@mui/material";
 import { motion } from "framer-motion";
-import WorkIcon from "@mui/icons-material/Work";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
-import TrendingUpIcon from "@mui/icons-material/TrendingUp";
-import GroupsIcon from "@mui/icons-material/Groups";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import {
+  Work,
+  LocationOn,
+  AccessTime,
+  TrendingUp,
+  Groups,
+  EmojiEvents,
+  CurrencyRupee,
+  ArrowForward,
+} from "@mui/icons-material";
+import Link from "next/link";
 
 const jobs = [
   {
-    title: "QA Engineer",
+    title: "QA Engineer (Manual & Automation)",
+    location: "Remote / Hybrid",
+    type: "Full-time",
+    description: "Ensure the highest quality of our digital products. You'll lead test strategies and build robust automation suites using Playwright/Selenium.",
+    skills: ["Testing", "Automation", "Playwright", "CI/CD"],
+    salary: "₹8 - 15 LPA",
+    color: "#0d7ff2",
+  },
+  {
+    title: "Senior Full Stack Developer",
+    location: "Remote / Mathura",
+    type: "Full-time",
+    description: "Build scalable web applications using React, Next.js, and Node.js. Join our core engineering team to deliver high-impact solutions.",
+    skills: ["React", "Next.js", "Node.js", "PostgreSQL"],
+    salary: "₹12 - 25 LPA",
+    color: "#0d7ff2",
+  },
+  {
+    title: "UI/UX Designer",
     location: "Remote",
-    type: "Full-time",
-    description:
-      "Join our team to ensure quality across web and mobile applications.",
-    skills: ["Testing", "Automation", "Selenium"],
-    salary: "₹6-12 LPA",
-  },
-  {
-    title: "Automation Engineer",
-    location: "Mathura",
-    type: "Full-time",
-    description:
-      "Build and maintain automated testing frameworks and CI/CD pipelines.",
-    skills: ["Python", "Jenkins", "Docker"],
-    salary: "₹8-15 LPA",
-  },
-  {
-    title: "Full Stack Developer",
-    location: "Hybrid",
-    type: "Full-time",
-    description:
-      "Develop end-to-end web applications using modern technologies.",
-    skills: ["React", "Node.js", "MongoDB"],
-    salary: "₹10-18 LPA",
+    type: "Contract",
+    description: "Create stunning, user-centric designs. You will be responsible for end-to-end design from wireframing to high-fidelity prototypes.",
+    skills: ["Figma", "Adobe CC", "Prototyping", "UX Research"],
+    salary: "Competitive",
+    color: "#0d7ff2",
   },
 ] as const;
 
 const benefits = [
-  { icon: TrendingUpIcon, title: "Growth", desc: "Career advancement" },
-  { icon: GroupsIcon, title: "Team", desc: "Collaborative culture" },
-  { icon: EmojiEventsIcon, title: "Recognition", desc: "Performance rewards" },
+  { icon: <TrendingUp />, title: "Exponential Growth", desc: "Fast-paced environment with clear paths for career advancement." },
+  { icon: <Groups />, title: "Inclusive Culture", desc: "Join a diverse team that values collaboration and innovative ideas." },
+  { icon: <EmojiEvents />, title: "Impactful Work", desc: "Build technology that powers global enterprises and startups." },
 ];
 
-export default function CareersPage(): React.ReactElement {
+export default function CareersPage() {
+  const theme = useTheme();
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
   return (
-    <Box>
+    <Box sx={{ bgcolor: "#0a0f1c", color: "white", minHeight: "100vh", pb: 15 }}>
       {/* Hero Section */}
-      <Box
-        sx={{
-          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-          color: "white",
-          py: 12,
-          position: "relative",
-          overflow: "hidden",
-          "&::before": {
-            content: '""',
-            position: "absolute",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background:
-              "url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><pattern id=%22grain%22 width=%22100%22 height=%22100%22 patternUnits=%22userSpaceOnUse%22><circle cx=%2250%22 cy=%2250%22 r=%221%22 fill=%22%23ffffff%22 opacity=%220.1%22/></pattern></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23grain)%22/></svg>') repeat",
-            opacity: 0.3,
-          },
+      <Box 
+        sx={{ 
+          pt: { xs: 15, md: 25 }, 
+          pb: 10,
+          background: "radial-gradient(circle at 20% 30%, rgba(13, 127, 242, 0.08) 0%, transparent 60%)"
         }}
       >
-        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-          <motion.div
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8 }}
-          >
+        <Container maxWidth="lg">
+          <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
             <Typography
-              variant="h2"
+              variant="h1"
               sx={{
-                fontWeight: 800,
-                mb: 3,
-                textAlign: "center",
-                fontSize: { xs: "2.5rem", md: "3.5rem" },
+                fontSize: { xs: "2.8rem", md: "5.5rem" },
+                fontWeight: 950,
+                mb: 4,
+                letterSpacing: "-0.04em",
+                lineHeight: 1.1,
+                maxWidth: "1000px"
               }}
             >
-              Join Our Team
+              Building the next era of <Box component="span" sx={{ color: "#0d7ff2" }}>Digital Trust</Box>
             </Typography>
             <Typography
-              variant="h5"
+              variant="h6"
               sx={{
-                textAlign: "center",
-                opacity: 0.9,
-                maxWidth: 600,
-                mx: "auto",
+                color: "#94a3b8",
+                maxWidth: "700px",
                 lineHeight: 1.6,
+                fontWeight: 400,
+                fontSize: { xs: "1.1rem", md: "1.25rem" },
+                mb: 8
               }}
             >
-              Build the future with innovative solutions and cutting-edge
-              technology
+              Join a high-performance team of engineers and visionaries dedicated to hardening the world&apos;s most critical software.
             </Typography>
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#0d7ff2",
+                color: "white",
+                px: 6,
+                py: 2.5,
+                borderRadius: "15px",
+                fontWeight: 800,
+                fontSize: "1.1rem",
+                textTransform: "none",
+                boxShadow: "0 10px 20px rgba(13, 127, 242, 0.2)",
+                "&:hover": { bgcolor: "#0b6ed1", transform: "translateY(-2px)" },
+                transition: "all 0.3s ease"
+              }}
+            >
+              Explore Open Roles
+            </Button>
           </motion.div>
         </Container>
       </Box>
 
-      {/* Benefits Section */}
-      <Box sx={{ py: 8, bgcolor: "#f8fafc" }}>
-        <Container maxWidth="lg">
-          <Typography
-            variant="h4"
-            sx={{ textAlign: "center", mb: 6, fontWeight: 700 }}
-          >
-            Why Work With Us?
+      {/* Why Join Us? (Benefits) */}
+      <Container maxWidth="lg" sx={{ py: 10 }}>
+        <Grid container spacing={4} component={motion.div} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}>
+          {benefits.map((benefit, i) => (
+            <Grid size={{ xs: 12, md: 4 }} key={i}>
+              <motion.div variants={fadeInUp}>
+                <Paper
+                  sx={{
+                    p: 4,
+                    height: "100%",
+                    borderRadius: "20px",
+                    bgcolor: "rgba(255, 255, 255, 0.02)",
+                    border: "1px solid rgba(255, 255, 255, 0.05)",
+                    transition: "all 0.3s ease",
+                    "&:hover": {
+                      bgcolor: "rgba(255, 255, 255, 0.04)",
+                      borderColor: "rgba(13, 127, 242, 0.3)",
+                      transform: "translateY(-5px)"
+                    }
+                  }}
+                >
+                  <Avatar sx={{ bgcolor: "rgba(13, 127, 242, 0.1)", color: "#0d7ff2", mb: 3, width: 56, height: 56 }}>
+                    {benefit.icon}
+                  </Avatar>
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
+                    {benefit.title}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "#94a3b8", lineHeight: 1.6 }}>
+                    {benefit.desc}
+                  </Typography>
+                </Paper>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
+      {/* Open Positions Section */}
+      <Container maxWidth="lg" sx={{ py: 15 }}>
+        <Box sx={{ mb: 10 }}>
+          <Typography variant="h2" sx={{ fontWeight: 950, mb: 3, letterSpacing: "-0.03em" }}>
+            Current <Box component="span" sx={{ color: "#0d7ff2" }}>Openings</Box>
           </Typography>
-          <Grid container spacing={4}>
-            {benefits.map((benefit, i) => {
-              const IconComponent = benefit.icon;
-              return (
-                <Grid key={i} size={{ xs: 12, md: 4 }}>
-                  <motion.div
-                    initial={{ y: 30, opacity: 0 }}
-                    whileInView={{ y: 0, opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.2, duration: 0.6 }}
-                  >
-                    <Paper
+          <Typography variant="body1" sx={{ color: "#94a3b8", fontSize: "1.2rem", maxWidth: "600px" }}>
+            Join a culture where technical mastery meets creative problem-solving.
+          </Typography>
+        </Box>
+
+        <Stack spacing={4}>
+          {jobs.map((job, idx) => (
+            <motion.div
+              key={idx}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeInUp}
+            >
+              <Paper
+                sx={{
+                  p: { xs: 5, md: 6 },
+                  borderRadius: "32px",
+                  bgcolor: "rgba(255, 255, 255, 0.02)",
+                  border: "1px solid rgba(255, 255, 255, 0.05)",
+                  transition: "all 0.4s ease",
+                  overflow: "hidden",
+                  position: "relative",
+                  "&:hover": {
+                    bgcolor: "rgba(255, 255, 255, 0.04)",
+                    borderColor: "rgba(13, 127, 242, 0.2)",
+                    transform: "translateY(-5px)"
+                  },
+                  "&::before": {
+                    content: '""',
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "6px",
+                    height: "100%",
+                    bgcolor: job.color,
+                    opacity: 0.8
+                  }
+                }}
+              >
+                <Grid container spacing={4} alignItems="center">
+                  <Grid size={{ xs: 12, md: 8 }}>
+                    <Stack spacing={2}>
+                      <Typography variant="h4" sx={{ fontWeight: 800, color: "white" }}>
+                        {job.title}
+                      </Typography>
+                      
+                      <Stack direction="row" spacing={3} sx={{ color: "#94a3b8" }} flexWrap="wrap" gap={1}>
+                        <Stack direction="row" spacing={1} alignItems="center">
+                          <LocationOn sx={{ fontSize: 18 }} />
+                          <Typography variant="body2">{job.location}</Typography>
+                        </Stack>
+                        <Stack direction="row" spacing={1} alignItems="center">
+                          <AccessTime sx={{ fontSize: 18 }} />
+                          <Typography variant="body2">{job.type}</Typography>
+                        </Stack>
+                        <Stack direction="row" spacing={1} alignItems="center">
+                          <CurrencyRupee sx={{ fontSize: 18 }} />
+                          <Typography variant="body2">{job.salary}</Typography>
+                        </Stack>
+                      </Stack>
+
+                      <Typography variant="body1" sx={{ color: "#94a3b8", lineHeight: 1.6, maxWidth: "700px" }}>
+                        {job.description}
+                      </Typography>
+
+                      <Stack direction="row" spacing={1} flexWrap="wrap" gap={1} pt={1}>
+                        {job.skills.map((skill, si) => (
+                          <Chip 
+                            key={si} 
+                            label={skill} 
+                            sx={{ 
+                              bgcolor: "rgba(255, 255, 255, 0.05)", 
+                              color: "white", 
+                              fontWeight: 600,
+                              borderRadius: "8px",
+                              border: "1px solid rgba(255, 255, 255, 0.1)"
+                            }} 
+                            size="small"
+                          />
+                        ))}
+                      </Stack>
+                    </Stack>
+                  </Grid>
+                  
+                  <Grid size={{ xs: 12, md: 4 }} sx={{ textAlign: { xs: "left", md: "right" } }}>
+                    <Button
+                      variant="contained"
+                      endIcon={<ArrowForward />}
                       sx={{
-                        p: 4,
-                        textAlign: "center",
-                        borderRadius: 3,
-                        boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                        "&:hover": {
-                          transform: "translateY(-4px)",
-                          boxShadow: "0 8px 30px rgba(0,0,0,0.12)",
-                        },
-                        transition: "all 0.3s ease",
+                        bgcolor: "#0d7ff2",
+                        color: "white",
+                        px: 5,
+                        py: 2,
+                        borderRadius: "12px",
+                        fontWeight: 800,
+                        textTransform: "none",
+                        fontSize: "1rem",
+                        boxShadow: "0 10px 25px rgba(13, 127, 242, 0.2)",
+                        "&:hover": { bgcolor: "#0b6ed1", transform: "translateY(-2px)" },
+                        transition: "all 0.3s ease"
                       }}
                     >
-                      <Box
-                        sx={{
-                          width: 64,
-                          height: 64,
-                          borderRadius: "50%",
-                          background:
-                            "linear-gradient(135deg, #667eea, #764ba2)",
-                          display: "flex",
-                          alignItems: "center",
-                          justifyContent: "center",
-                          mx: "auto",
-                          mb: 2,
-                        }}
-                      >
-                        <IconComponent sx={{ color: "white", fontSize: 32 }} />
-                      </Box>
-                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
-                        {benefit.title}
-                      </Typography>
-                      <Typography color="text.secondary">
-                        {benefit.desc}
-                      </Typography>
-                    </Paper>
-                  </motion.div>
+                      Apply Now
+                    </Button>
+                  </Grid>
                 </Grid>
-              );
-            })}
-          </Grid>
-        </Container>
-      </Box>
+              </Paper>
+            </motion.div>
+          ))}
+        </Stack>
+      </Container>
 
-      {/* Jobs Section */}
-      <Box sx={{ py: 10 }}>
-        <Container maxWidth="lg">
-          <Typography
-            variant="h4"
-            sx={{ textAlign: "center", mb: 8, fontWeight: 700 }}
-          >
-            Open Positions
+      {/* Culture Section Placeholder */}
+      <Container maxWidth="lg" sx={{ py: 15 }}>
+        <Paper
+          sx={{
+            p: { xs: 8, md: 12 },
+            borderRadius: "40px",
+            background: "linear-gradient(135deg, rgba(13, 127, 242, 0.1) 0%, rgba(10,15,28,1) 100%)",
+            border: "1px solid rgba(13, 127, 242, 0.2)",
+            textAlign: "center"
+          }}
+        >
+          <Typography variant="h2" sx={{ fontWeight: 950, mb: 3, letterSpacing: "-0.02em" }}>
+            Don&apos;t see a perfect fit?
           </Typography>
-
-          <Grid container spacing={4}>
-            {jobs.map((job, i) => (
-              <Grid key={i} size={{ xs: 12, md: 6, lg: 4 }}>
-                <motion.div
-                  initial={{ y: 30, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.2, duration: 0.6 }}
-                >
-                  <Card
-                    sx={{
-                      height: "100%",
-                      borderRadius: 4,
-                      border: "1px solid #e2e8f0",
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.08)",
-                      position: "relative",
-                      overflow: "hidden",
-                      "&:hover": {
-                        transform: "translateY(-8px)",
-                        boxShadow: "0 12px 40px rgba(0,0,0,0.15)",
-                        borderColor: "#667eea",
-                      },
-                      "&::before": {
-                        content: '""',
-                        position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: 4,
-                        background: `linear-gradient(90deg, ${
-                          i === 0 ? "#667eea" : i === 1 ? "#f093fb" : "#4facfe"
-                        }, ${
-                          i === 0 ? "#764ba2" : i === 1 ? "#f5576c" : "#00f2fe"
-                        })`,
-                      },
-                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                    }}
-                  >
-                    <CardContent sx={{ p: 4 }}>
-                      <Stack spacing={3}>
-                        <Box>
-                          <Box
-                            sx={{
-                              display: "flex",
-                              alignItems: "center",
-                              mb: 2,
-                            }}
-                          >
-                            <Box
-                              sx={{
-                                width: 48,
-                                height: 48,
-                                borderRadius: 2,
-                                background: `linear-gradient(135deg, ${
-                                  i === 0
-                                    ? "#667eea"
-                                    : i === 1
-                                    ? "#f093fb"
-                                    : "#4facfe"
-                                }, ${
-                                  i === 0
-                                    ? "#764ba2"
-                                    : i === 1
-                                    ? "#f5576c"
-                                    : "#00f2fe"
-                                })`,
-                                display: "flex",
-                                alignItems: "center",
-                                justifyContent: "center",
-                                mr: 2,
-                              }}
-                            >
-                              <WorkIcon sx={{ color: "white", fontSize: 24 }} />
-                            </Box>
-                            <Box>
-                              <Typography
-                                variant="h6"
-                                sx={{ fontWeight: 700, mb: 0.5 }}
-                              >
-                                {job.title}
-                              </Typography>
-                              <Typography
-                                variant="body2"
-                                color="primary"
-                                sx={{ fontWeight: 600 }}
-                              >
-                                {job.salary}
-                              </Typography>
-                            </Box>
-                          </Box>
-
-                          <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
-                            <Chip
-                              icon={<LocationOnIcon sx={{ fontSize: 16 }} />}
-                              label={job.location}
-                              size="small"
-                              sx={{
-                                bgcolor: "#e3f2fd",
-                                color: "#1976d2",
-                                fontWeight: 600,
-                                borderRadius: 2,
-                              }}
-                            />
-                            <Chip
-                              icon={<AccessTimeIcon sx={{ fontSize: 16 }} />}
-                              label={job.type}
-                              size="small"
-                              sx={{
-                                bgcolor: "#e8f5e8",
-                                color: "#2e7d32",
-                                fontWeight: 600,
-                                borderRadius: 2,
-                              }}
-                            />
-                          </Stack>
-
-                          <Stack
-                            direction="row"
-                            spacing={1}
-                            flexWrap="wrap"
-                            gap={1}
-                          >
-                            {job.skills.map((skill, idx) => (
-                              <Chip
-                                key={idx}
-                                label={skill}
-                                size="small"
-                                sx={{
-                                  bgcolor: "#f3e5f5",
-                                  color: "#7b1fa2",
-                                  fontSize: "0.75rem",
-                                  fontWeight: 500,
-                                }}
-                              />
-                            ))}
-                          </Stack>
-                        </Box>
-
-                        <Typography
-                          variant="body2"
-                          sx={{ lineHeight: 1.6, color: "text.secondary" }}
-                        >
-                          {job.description}
-                        </Typography>
-
-                        <Button
-                          variant="contained"
-                          fullWidth
-                          sx={{
-                            background: `linear-gradient(135deg, ${
-                              i === 0
-                                ? "#667eea"
-                                : i === 1
-                                ? "#f093fb"
-                                : "#4facfe"
-                            }, ${
-                              i === 0
-                                ? "#764ba2"
-                                : i === 1
-                                ? "#f5576c"
-                                : "#00f2fe"
-                            })`,
-                            fontWeight: 600,
-                            borderRadius: 2,
-                            py: 1.2,
-                            boxShadow: "0 4px 16px rgba(0,0,0,0.2)",
-                            "&:hover": {
-                              transform: "translateY(-2px)",
-                              boxShadow: "0 6px 20px rgba(0,0,0,0.3)",
-                            },
-                            transition: "all 0.3s ease",
-                          }}
-                        >
-                          Apply Now
-                        </Button>
-                      </Stack>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
+          <Typography variant="h6" sx={{ color: "#94a3b8", mb: 8, maxWidth: "600px", mx: "auto", fontWeight: 400, lineHeight: 1.6 }}>
+            Send us your resume anyway. We&apos;re always looking for exceptional people to join our journey and raise the bar.
+          </Typography>
+          <Button
+            component={Link}
+            href="/contact"
+            variant="contained"
+            sx={{
+              bgcolor: "#fff",
+              color: "#0a0f1c",
+              px: 6,
+              py: 2.5,
+              borderRadius: "16px",
+              fontWeight: 800,
+              fontSize: "1.1rem",
+              textTransform: "none",
+              "&:hover": { bgcolor: "#f1f5f9", transform: "translateY(-2px)" },
+              transition: "all 0.3s ease"
+            }}
+          >
+            General Inquiry
+          </Button>
+        </Paper>
+      </Container>
     </Box>
   );
 }

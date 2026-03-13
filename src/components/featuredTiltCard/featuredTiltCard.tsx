@@ -94,10 +94,11 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
             href={href}
             sx={{
               position: "relative",
-              borderRadius: 2,
+              borderRadius: 3,
               overflow: "hidden",
               textDecoration: "none",
-              bgcolor: image ? "#fff" : "background.paper",
+              bgcolor: "#0d111b",
+              border: "1px solid rgba(255,255,255,0.05)",
               cursor: href ? "pointer" : "default",
             }}
           >
@@ -106,7 +107,7 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
               sx={{
                 position: "relative",
                 height: image ? 280 : 120,
-                bgcolor: image ? "transparent" : `${brand}08`,
+                bgcolor: image ? "transparent" : "#0a0f1c",
               }}
             >
               {/* image-led look */}
@@ -133,9 +134,9 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
                       "data:image/svg+xml;utf8," +
                       encodeURIComponent(
                         `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
-                           <rect width='100%' height='100%' fill='#f6f8fb'/>
+                           <rect width='100%' height='100%' fill='#0a0f1c'/>
                            <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-                            font-family='Inter, Arial' font-size='26' fill='rgba(0,0,0,.5)'>Image unavailable</text>
+                            font-family='Inter, Arial' font-size='26' fill='rgba(255,255,255,.3)'>Image unavailable</text>
                          </svg>`
                       );
                   }}
@@ -156,9 +157,9 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
                     sx={{
                       width: 64,
                       height: 64,
-                      bgcolor: `${brand}15`,
-                      color: brand,
-                      boxShadow: `0 10px 28px ${brand}25`,
+                      bgcolor: "rgba(13, 127, 242, 0.1)",
+                      color: "#0d7ff2",
+                      boxShadow: "0 10px 28px rgba(13, 127, 242, 0.2)",
                     }}
                   >
                     {icon}
@@ -169,14 +170,14 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
               {/* darken for image contrast */}
               {image && (
                 <motion.div
-                  initial={{ opacity: 0.08 }}
-                  whileHover={{ opacity: 0.24 }}
+                  initial={{ opacity: 0.15 }}
+                  whileHover={{ opacity: 0.35 }}
                   transition={{ duration: 0.25 }}
                   style={{
                     position: "absolute",
                     inset: 0,
                     background:
-                      "linear-gradient(180deg, rgba(0,0,0,0.0) 10%, rgba(0,0,0,0.45) 100%)",
+                      "linear-gradient(180deg, rgba(10,15,28,0.0) 10%, rgba(10,15,28,0.6) 100%)",
                     pointerEvents: "none",
                   }}
                 />
@@ -208,7 +209,7 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
                   height: "150%",
                   transform: "skewX(-12deg)",
                   background:
-                    "linear-gradient(75deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.28) 50%, rgba(255,255,255,0) 100%)",
+                    "linear-gradient(75deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0) 100%)",
                   filter: "blur(2px)",
                   pointerEvents: "none",
                   mixBlendMode: "screen",
@@ -240,43 +241,48 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
                   sx={{
                     width: "60%",
                     height: "100%",
-                    background: "rgba(255,255,255,0.92)",
-                    backdropFilter: "blur(6px)",
-                    WebkitBackdropFilter: "blur(6px)",
-                    boxShadow: "-20px 0 40px rgba(0,0,0,0.18)",
+                    background: "rgba(13, 17, 27, 0.96)",
+                    backdropFilter: "blur(12px)",
+                    WebkitBackdropFilter: "blur(12px)",
+                    boxShadow: "-20px 0 60px rgba(0,0,0,0.4)",
                     display: "flex",
                     alignItems: "flex-end",
                     pointerEvents: "auto",
+                    borderLeft: "1px solid rgba(255,255,255,0.05)"
                   }}
                 >
-                  <CardContent sx={{ p: 3, width: "100%" }}>
+                  <CardContent sx={{ p: 4, width: "100%" }}>
                     {badge && (
                       <Chip
                         size="small"
                         label={badge}
                         sx={{
-                          mb: 1,
-                          bgcolor: `${brand}10`,
-                          color: "#111",
-                          border: `1px solid ${brand}30`,
+                          mb: 2,
+                          bgcolor: "rgba(13, 127, 242, 0.15)",
+                          color: "#0d7ff2",
+                          fontWeight: 700,
+                          fontSize: "0.7rem",
+                          letterSpacing: 1,
+                          textTransform: "uppercase",
+                          border: "1px solid rgba(13, 127, 242, 0.3)",
                         }}
                       />
                     )}
-                    <Typography variant="h6" sx={{ fontWeight: 900, mb: 0.5 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 950, mb: 1, color: "white", lineHeight: 1.1, letterSpacing: "-0.02em" }}>
                       {title}
                     </Typography>
                     {description && (
-                      <Typography variant="body2" color="text.secondary">
+                      <Typography variant="body2" sx={{ color: "#94a3b8", lineHeight: 1.6 }}>
                         {description}
                       </Typography>
                     )}
                     <Box
                       sx={{
-                        mt: 1.75,
-                        height: 2,
-                        width: { xs: "28%", md: "34%" },
+                        mt: 2.5,
+                        height: 3,
+                        width: "40px",
                         borderRadius: 2,
-                        background: `linear-gradient(90deg, ${brand}, ${brand}55)`,
+                        background: "linear-gradient(90deg, #0d7ff2, #2563eb)",
                       }}
                     />
                   </CardContent>
