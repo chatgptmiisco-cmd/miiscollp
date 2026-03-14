@@ -88,8 +88,8 @@ export default function AccentureStyleCard({
               borderRadius: "inherit",
               overflow: "hidden",
               position: "relative",
-              backgroundColor: "#0d111b",
-              border: "1px solid rgba(255,255,255,0.05)",
+              backgroundcolor: "var(--text-main)",
+              border: "1px solid var(--border-muted)",
             }}
           >
             {/* Media area */}
@@ -105,9 +105,9 @@ export default function AccentureStyleCard({
                     "data:image/svg+xml;utf8," +
                     encodeURIComponent(
                       `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
-                      <rect width='100%' height='100%' fill='#0a0f1c'/>
+                      <rect width='100%' height='100%' fill='var(--bg-main)'/>
                       <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-                        font-family='Inter, Arial' font-size='26' fill='rgba(255,255,255,.3)'>
+                        font-family='Inter, Arial' font-size='26' fill='rgba(0,0,0,.3)'>
                         Image unavailable
                       </text>
                     </svg>`
@@ -138,7 +138,7 @@ export default function AccentureStyleCard({
                   position: "absolute",
                   inset: 0,
                   background:
-                    "linear-gradient(180deg, rgba(10,15,28,0) 0%, rgba(10,15,28,0.7) 100%)",
+                    "linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.4) 100%)",
                   pointerEvents: "none",
                 }}
               />
@@ -168,7 +168,7 @@ export default function AccentureStyleCard({
                   position: "absolute",
                   inset: 0,
                   background:
-                    "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%)",
+                    "linear-gradient(90deg, transparent 0%, var(--border-muted) 50%, transparent 100%)",
                   transform: "skewX(-20deg)",
                   pointerEvents: "none",
                 }}
@@ -199,7 +199,7 @@ export default function AccentureStyleCard({
                   sx={{
                     width: "65%",
                     height: "100%",
-                    background: "rgba(13, 17, 27, 0.96)",
+                    background: "rgba(255, 255, 255, 0.96)",
                     backdropFilter: "blur(12px)",
                     WebkitBackdropFilter: "blur(12px)",
                     display: "flex",
@@ -207,7 +207,7 @@ export default function AccentureStyleCard({
                     justifyContent: "flex-end",
                     pointerEvents: "auto",
                     p: 4,
-                    borderLeft: "1px solid rgba(255,255,255,0.05)"
+                    borderLeft: "1px solid var(--border-muted)"
                   }}
                 >
                   <CardContent sx={{ p: 0, mb: 2 }}>
@@ -229,7 +229,7 @@ export default function AccentureStyleCard({
                       >
                         <Typography
                           variant="h5"
-                          sx={{ fontWeight: 950, mb: 1.5, color: "white", lineHeight: 1.1, letterSpacing: "-0.02em" }}
+                          sx={{ fontWeight: 950, mb: 1.5, color: "var(--text-main)", lineHeight: 1.1, letterSpacing: "-0.02em" }}
                         >
                           {title}
                         </Typography>
@@ -242,7 +242,7 @@ export default function AccentureStyleCard({
                       >
                         <Typography
                           variant="body2"
-                          sx={{ color: "#94a3b8", mb: 4, lineHeight: 1.6 }}
+                          sx={{ color: "var(--text-secondary)", mb: 4, lineHeight: 1.6 }}
                         >
                           {description}
                         </Typography>

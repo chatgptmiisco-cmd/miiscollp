@@ -1,20 +1,7 @@
 // src/theme.ts
-import { createTheme } from "@mui/material/styles";
+import { createTheme, ThemeOptions } from "@mui/material/styles";
 
-const theme = createTheme({
-  palette: {
-    mode: "dark",
-    primary: { main: "#0d7ff2" },
-    secondary: { main: "#2563eb" },
-    background: { 
-      default: "#0a0f1c", 
-      paper: "#0d111b" 
-    },
-    text: { 
-      primary: "#ffffff", 
-      secondary: "#94a3b8" 
-    },
-  },
+const commonOptions: ThemeOptions = {
   typography: {
     fontFamily: "var(--font-geist-sans), 'Inter', sans-serif",
     h1: { fontWeight: 950, letterSpacing: "-0.04em" },
@@ -27,7 +14,7 @@ const theme = createTheme({
     MuiAppBar: { 
       styleOverrides: { 
         root: { 
-          backgroundColor: "rgba(10, 15, 28, 0.8)",
+          backgroundColor: "var(--nav-bg)",
           backdropFilter: "blur(20px)"
         } 
       } 
@@ -45,6 +32,26 @@ const theme = createTheme({
       }
     }
   }
+};
+
+export const lightTheme = createTheme({
+  ...commonOptions,
+  palette: {
+    mode: "light",
+    primary: { main: "#0d7ff2" },
+    secondary: { main: "#2563eb" },
+    background: { default: "#f8fafc", paper: "#ffffff" },
+    text: { primary: "#0f172a", secondary: "#64748b" },
+  },
 });
 
-export default theme;
+export const darkTheme = createTheme({
+  ...commonOptions,
+  palette: {
+    mode: "dark",
+    primary: { main: "#0d7ff2" },
+    secondary: { main: "#2563eb" },
+    background: { default: "#0a0f1c", paper: "rgba(255, 255, 255, 0.02)" },
+    text: { primary: "#ffffff", secondary: "#94a3b8" },
+  },
+});

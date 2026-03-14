@@ -1,18 +1,25 @@
 "use client";
-import React from "react";
-import { ThemeProvider, CssBaseline, Container } from "@mui/material";
-import theme from "../../theme";
+import React, { useEffect, useState } from "react";
+import { ThemeProvider, CssBaseline } from "@mui/material";
+import { ThemeProvider as NextThemesProvider, useTheme } from "next-themes";
+import { lightTheme, darkTheme } from "../../theme";
 import Navbar from "../navbar/navbar";
 import Footer from "../footer/footer";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function ThemeWrapper({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function MUIThemeProvider({ children }: { children: React.ReactNode }) {
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Use lightTheme as default before hydration to match server-rendered output correctly
+  const currentTheme = mounted && resolvedTheme === "dark" ? darkTheme : lightTheme;
+
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={currentTheme}>
       <CssBaseline />
       <Navbar />
       <AnimatePresence mode="wait">
@@ -28,5 +35,17 @@ export default function ThemeWrapper({
       </AnimatePresence>
       <Footer />
     </ThemeProvider>
+  );
+}
+
+export default function ThemeWrapper({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <NextThemesProvider attribute="data-theme" defaultTheme="light" enableSystem>
+      <MUIThemeProvider>{children}</MUIThemeProvider>
+    </NextThemesProvider>
   );
 }

@@ -38,7 +38,7 @@ const footerLinks = {
 
 const socialLinks = [
   { icon: Facebook, href: "#", label: "Facebook" },
-  { icon: LinkedIn, href: "#", label: "LinkedIn" },
+  { icon: LinkedIn, href: "https://in.linkedin.com/company/miiscollp", label: "LinkedIn" },
   { icon: Twitter, href: "#", label: "Twitter" },
 ];
 
@@ -53,10 +53,10 @@ export default function Footer() {
     <Box
       component="footer"
       sx={{
-        bgcolor: "#0a0f1c",
-        color: "white",
+        bgcolor: "var(--bg-secondary)",
+        color: "var(--text-main)",
         position: "relative",
-        borderTop: "1px solid rgba(255, 255, 255, 0.05)",
+        borderTop: "1px solid var(--border-muted)",
         pt: 15,
         pb: 5,
         overflow: "hidden"
@@ -70,7 +70,7 @@ export default function Footer() {
           right: "-10%",
           width: "600px",
           height: "600px",
-          background: "radial-gradient(circle, rgba(13, 127, 242, 0.08) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(13, 127, 242, 0.04) 0%, transparent 70%)",
           filter: "blur(100px)",
           zIndex: 0
         }}
@@ -82,7 +82,7 @@ export default function Footer() {
           left: "-10%",
           width: "400px",
           height: "400px",
-          background: "radial-gradient(circle, rgba(13, 127, 242, 0.05) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(13, 127, 242, 0.03) 0%, transparent 70%)",
           filter: "blur(80px)",
           zIndex: 0
         }}
@@ -105,7 +105,8 @@ export default function Footer() {
                   mb: 3,
                   letterSpacing: "-0.04em",
                   display: "flex",
-                  alignItems: "center"
+                  alignItems: "center",
+                  color: "var(--text-main)"
                 }}
               >
                 MIISCO<Box component="span" sx={{ color: "#0d7ff2" }}>.</Box>
@@ -116,7 +117,7 @@ export default function Footer() {
                 sx={{
                   mb: 5,
                   lineHeight: 1.8,
-                  color: "#94a3b8",
+                  color: "var(--text-secondary)",
                   maxWidth: "400px",
                   fontSize: "1.1rem"
                 }}
@@ -136,17 +137,18 @@ export default function Footer() {
                     >
                       <IconButton
                         component={MuiLink}
+                        target="_blank"
                         href={social.href}
                         aria-label={social.label}
                         sx={{
-                          color: "#fff",
-                          backgroundColor: "rgba(255, 255, 255, 0.03)",
-                          border: "1px solid rgba(255,255,255,0.08)",
+                          color: "#475569",
+                          backgroundColor: "rgba(0, 0, 0, 0.04)",
+                          border: "1px solid var(--border-muted)",
                           p: 1.5,
                           "&:hover": {
-                            backgroundColor: "rgba(13, 127, 242, 0.15)",
+                            backgroundColor: "rgba(13, 127, 242, 0.08)",
                             color: "#0d7ff2",
-                            borderColor: "rgba(13, 127, 242, 0.4)"
+                            borderColor: "var(--border-hover)"
                           },
                         }}
                       >
@@ -169,7 +171,7 @@ export default function Footer() {
             >
               <Typography
                 variant="subtitle1"
-                sx={{ fontWeight: 800, mb: 4, color: "white", textTransform: "uppercase", letterSpacing: 1.5, fontSize: "0.85rem" }}
+                sx={{ fontWeight: 800, mb: 4, color: "var(--text-main)", textTransform: "uppercase", letterSpacing: 1.5, fontSize: "0.85rem" }}
               >
                 Company
               </Typography>
@@ -180,12 +182,12 @@ export default function Footer() {
                     component={Link}
                     href={link.href}
                     sx={{
-                      color: "#94a3b8",
+                      color: "var(--text-secondary)",
                       textDecoration: "none",
                       fontSize: "1rem",
                       transition: "all 0.3s ease",
                       "&:hover": {
-                        color: "white",
+                        color: "#0d7ff2",
                         transform: "translateX(6px)",
                       },
                     }}
@@ -207,7 +209,7 @@ export default function Footer() {
             >
               <Typography
                 variant="subtitle1"
-                sx={{ fontWeight: 800, mb: 4, color: "white", textTransform: "uppercase", letterSpacing: 1.5, fontSize: "0.85rem" }}
+                sx={{ fontWeight: 800, mb: 4, color: "var(--text-main)", textTransform: "uppercase", letterSpacing: 1.5, fontSize: "0.85rem" }}
               >
                 Get In Touch
               </Typography>
@@ -221,14 +223,14 @@ export default function Footer() {
                       sx={{
                         display: "flex",
                         alignItems: "flex-start",
-                        color: "#94a3b8",
+                        color: "var(--text-secondary)",
                       }}
                     >
                       <Box sx={{ 
                         mr: 2, 
                         p: 1.2, 
                         borderRadius: "12px", 
-                        bgcolor: "rgba(13, 127, 242, 0.05)",
+                        bgcolor: "rgba(13, 127, 242, 0.06)",
                         color: "#0d7ff2",
                         display: "flex",
                         alignItems: "center",
@@ -238,10 +240,10 @@ export default function Footer() {
                         <IconComponent sx={{ fontSize: 20 }} />
                       </Box>
                       <Box>
-                        <Typography variant="body2" sx={{ color: "rgba(255,255,255,0.4)", fontWeight: 700, mb: 0.5, textTransform: "uppercase", fontSize: "0.7rem", letterSpacing: 1 }}>
+                        <Typography variant="body2" sx={{ color: "var(--text-muted)", fontWeight: 700, mb: 0.5, textTransform: "uppercase", fontSize: "0.7rem", letterSpacing: 1 }}>
                           {contact.icon === Email ? "Email Us" : contact.icon === Phone ? "Call Us" : "Visit Us"}
                         </Typography>
-                        <Typography variant="body1" sx={{ color: "white", fontWeight: 500 }}>
+                        <Typography variant="body1" sx={{ color: "var(--text-main)", fontWeight: 500 }}>
                           {contact.text}
                         </Typography>
                       </Box>
@@ -262,6 +264,7 @@ export default function Footer() {
                     fontWeight: 800,
                     textTransform: "none",
                     bgcolor: "#0d7ff2",
+                    color: "#fff",
                     "&:hover": { bgcolor: "#0b6ed1" }
                   }}
                 >
@@ -272,7 +275,7 @@ export default function Footer() {
           </Grid>
         </Grid>
 
-        <Divider sx={{ borderColor: "rgba(255, 255, 255, 0.05)", my: 8 }} />
+        <Divider sx={{ borderColor: "var(--border-muted)", my: 8 }} />
 
         {/* Bottom Section */}
         <Box
@@ -288,7 +291,7 @@ export default function Footer() {
           <Typography
             variant="body2"
             sx={{
-              color: "#64748b",
+              color: "var(--text-muted)",
               textAlign: { xs: "center", md: "left" },
               fontWeight: 500
             }}
@@ -303,7 +306,7 @@ export default function Footer() {
                   key={idx}
                   href="#"
                   sx={{
-                    color: "#64748b",
+                    color: "var(--text-muted)",
                     textDecoration: "none",
                     fontSize: "0.85rem",
                     transition: "all 0.3s ease",

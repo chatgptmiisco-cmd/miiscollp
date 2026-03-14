@@ -237,12 +237,12 @@ function ProcessCardMinimal({
         p: 4,
         height: "100%",
         borderRadius: "20px",
-        bgcolor: "rgba(255, 255, 255, 0.02)",
-        border: "1px solid rgba(255, 255, 255, 0.05)",
+        bgcolor: "var(--bg-card)",
+        border: "1px solid var(--border-muted)",
         transition: "all 0.3s ease",
         "&:hover": {
-          bgcolor: "rgba(255, 255, 255, 0.04)",
-          borderColor: "rgba(13, 127, 242, 0.3)",
+          bgcolor: "rgba(13, 127, 242, 0.04)",
+          borderColor: "var(--border-hover)",
         }
       }}
     >
@@ -260,10 +260,10 @@ function ProcessCardMinimal({
         </Typography>
       </Stack>
 
-      <Typography variant="h6" sx={{ fontWeight: 800, mb: 1, color: "white" }}>
+      <Typography variant="h6" sx={{ fontWeight: 800, mb: 1, color: "var(--text-main)" }}>
         {p.title}
       </Typography>
-      <Typography variant="body2" sx={{ color: "#94a3b8", lineHeight: 1.6 }}>
+      <Typography variant="body2" sx={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
         {p.text}
       </Typography>
     </Paper>
@@ -312,12 +312,12 @@ export default function HomePage(): React.ReactElement {
   const sectionRef = React.useRef<HTMLDivElement | null>(null);
   const processSectionRef = React.useRef<HTMLDivElement>(null);
   return (
-    <Box sx={{ pt: 0, bgcolor: "#0a0f1c" }}>
+    <Box sx={{ pt: 0, bgcolor: "var(--bg-main)" }}>
       {/* Hero */}
       <Box
         sx={{
           position: "relative",
-          color: "#fff",
+          color: "var(--text-main)",
           pb: { xs: 12, md: 20 },
           pt: { xs: 15, md: 25 },
           overflow: "hidden",
@@ -374,7 +374,7 @@ export default function HomePage(): React.ReactElement {
                     lineHeight: 1.1,
                     fontWeight: 950,
                     letterSpacing: "-0.04em",
-                    color: "white",
+                    color: "var(--text-main)",
                     fontSize: { xs: "2.8rem", md: "5.5rem" },
                   }}
                 >
@@ -388,7 +388,7 @@ export default function HomePage(): React.ReactElement {
                   variant="h6"
                   sx={{ 
                     mb: 6, 
-                    color: "#94a3b8", 
+                    color: "var(--text-secondary)", 
                     maxWidth: "600px", 
                     lineHeight: 1.6,
                     fontSize: { xs: "1.1rem", md: "1.25rem" },
@@ -403,6 +403,7 @@ export default function HomePage(): React.ReactElement {
                   <Button
                     variant="contained"
                     size="large"
+                    href="/contact"
                     sx={{
                       px: 4,
                       py: 1.5,
@@ -427,11 +428,11 @@ export default function HomePage(): React.ReactElement {
                     sx={{
                       px: 3,
                       py: 1.2,
-                      borderColor: "rgba(255,255,255,0.25)",
-                      color: "rgba(255,255,255,0.95)",
+                      borderColor: "rgba(0, 0, 0, 0.15)",
+                      color: "var(--text-main)",
                       "&:hover": {
-                        borderColor: "rgba(255,255,255,0.45)",
-                        bgcolor: "rgba(255,255,255,0.04)",
+                        borderColor: "rgba(0, 0, 0, 0.3)",
+                        bgcolor: "rgba(13, 127, 242, 0.04)",
                       },
                     }}
                   >
@@ -451,14 +452,14 @@ export default function HomePage(): React.ReactElement {
                       >
                         <Typography
                           variant="h4"
-                          sx={{ fontWeight: 900, color: "#fff", mb: 0.5 }}
+                          sx={{ fontWeight: 900, color: "var(--text-main)", mb: 0.5 }}
                         >
                           {m.value}
                         </Typography>
                         <Typography
                           variant="caption"
                           sx={{ 
-                            color: "#94a3b8", 
+                            color: "var(--text-secondary)", 
                             textTransform: "uppercase", 
                             fontWeight: 700,
                             letterSpacing: 1
@@ -484,27 +485,27 @@ export default function HomePage(): React.ReactElement {
                   sx={{
                     p: 4,
                     borderRadius: "24px",
-                    bgcolor: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255, 255, 255, 0.05)",
+                    bgcolor: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
                     backdropFilter: "blur(20px)",
-                    boxShadow: "0 40px 100px rgba(0,0,0,0.5)"
+                    boxShadow: "var(--shadow-lg)"
                   }}
                 >
                   <Typography
                     variant="h6"
-                    sx={{ fontWeight: 800, color: "#fff", mb: 3 }}
+                    sx={{ fontWeight: 800, color: "var(--text-main)", mb: 3 }}
                   >
                     Precision Engineering
                   </Typography>
                   <Typography
                     variant="body1"
-                    sx={{ color: "#94a3b8", mb: 4, lineHeight: 1.7 }}
+                    sx={{ color: "var(--text-secondary)", mb: 4, lineHeight: 1.7 }}
                   >
                     Rapid automation onboarding • CI/CD gating • Performance 
                     and API testing • Web/Mobile coverage • Full Security Audits
                   </Typography>
                   <Divider
-                    sx={{ my: 3, borderColor: "rgba(255,255,255,0.05)" }}
+                    sx={{ my: 3, borderColor: "var(--border-muted)" }}
                   />
                   <Stack direction="row" spacing={1.5} flexWrap="wrap" useFlexGap>
                     {quickServices.map((s, i) => (
@@ -514,11 +515,11 @@ export default function HomePage(): React.ReactElement {
                         label={`${s.title}`}
                         variant="outlined"
                         sx={{
-                          color: "#fff",
-                          borderColor: "rgba(255,255,255,0.1)",
-                          bgcolor: "rgba(255,255,255,0.03)",
+                          color: "var(--text-main)",
+                          borderColor: "var(--border-light)",
+                          bgcolor: "rgba(0, 0, 0, 0.02)",
                           "& .MuiChip-icon": { color: "#0d7ff2" },
-                          "&:hover": { bgcolor: "rgba(255,255,255,0.05)" }
+                          "&:hover": { bgcolor: "rgba(0, 0, 0, 0.03)" }
                         }}
                       />
                     ))}
@@ -531,11 +532,11 @@ export default function HomePage(): React.ReactElement {
       </Box>
 
       {/* Trust Bar */}
-      <Box sx={{ py: 10, borderTop: "1px solid rgba(255,255,255,0.05)", bgcolor: "rgba(0,0,0,0.2)" }}>
+      <Box sx={{ py: 10, borderTop: "1px solid var(--border-muted)", bgcolor: "rgba(0,0,0,0.02)" }}>
         <Container maxWidth="lg">
           <Typography
             variant="overline"
-            sx={{ textAlign: "center", display: "block", color: "#94a3b8", mb: 6, fontWeight: 700, letterSpacing: 2 }}
+            sx={{ textAlign: "center", display: "block", color: "var(--text-secondary)", mb: 6, fontWeight: 700, letterSpacing: 2 }}
           >
             Trusted by Industry Leaders
           </Typography>
@@ -556,7 +557,7 @@ export default function HomePage(): React.ReactElement {
                   key={i}
                   variant="h5"
                   sx={{
-                    color: "white",
+                    color: "var(--text-main)",
                     fontWeight: 900,
                     letterSpacing: -1,
                     transition: "all 0.3s ease",
@@ -595,10 +596,10 @@ export default function HomePage(): React.ReactElement {
                     p: 3,
                     height: "100%",
                     borderRadius: 3,
-                    borderColor: "rgba(0,0,0,0.06)",
+                    borderColor: "var(--border-muted)",
                     "&:hover": {
                       borderColor: `${BRAND}44`,
-                      boxShadow: `0 8px 28px rgba(0,0,0,0.08), 0 0 0 1px ${BRAND}22 inset`,
+                      boxShadow: `0 8px 28px var(--border-light), 0 0 0 1px ${BRAND}22 inset`,
                     },
                   }}
                 >
@@ -630,7 +631,7 @@ export default function HomePage(): React.ReactElement {
           py: { xs: 15, md: 20 },
           position: "relative",
           overflow: "hidden",
-          bgcolor: "#0a0f1c",
+          bgcolor: "var(--bg-main)",
         }}
       >
         {/* Decorative background blobs */}
@@ -674,7 +675,7 @@ export default function HomePage(): React.ReactElement {
                   mb: 3, 
                   letterSpacing: "-0.03em",
                   fontSize: { xs: "2.5rem", md: "4rem" },
-                  color: "white"
+                  color: "var(--text-main)"
                 }}
               >
                 Featured <Box component="span" sx={{ color: "#0d7ff2" }}>Showcase</Box>
@@ -682,7 +683,7 @@ export default function HomePage(): React.ReactElement {
               <Typography 
                 variant="body1" 
                 sx={{ 
-                  color: "#94a3b8", 
+                  color: "var(--text-secondary)", 
                   maxWidth: "600px",
                   mx: { xs: "auto", md: 0 },
                   fontSize: "1.2rem",
@@ -738,8 +739,8 @@ export default function HomePage(): React.ReactElement {
           py: { xs: 15, md: 20 },
           position: "relative",
           overflow: "hidden",
-          bgcolor: "#0a0f1c",
-          borderTop: "1px solid rgba(255,255,255,0.05)"
+          bgcolor: "var(--bg-main)",
+          borderTop: "1px solid var(--border-muted)"
         }}
       >
         {/* Decorative background blobs */}
@@ -772,7 +773,7 @@ export default function HomePage(): React.ReactElement {
                   mb: 3, 
                   letterSpacing: "-0.03em",
                   fontSize: { xs: "2.5rem", md: "4rem" },
-                  color: "white"
+                  color: "var(--text-main)"
                 }}
               >
                 The Miisco <Box component="span" sx={{ color: "#0d7ff2" }}>Edge</Box>
@@ -780,7 +781,7 @@ export default function HomePage(): React.ReactElement {
               <Typography 
                 variant="body1" 
                 sx={{ 
-                  color: "#94a3b8", 
+                  color: "var(--text-secondary)", 
                   maxWidth: "700px",
                   mx: "auto",
                   fontSize: "1.2rem",
@@ -823,13 +824,14 @@ export default function HomePage(): React.ReactElement {
                       p: 5,
                       height: "100%",
                       borderRadius: "24px",
-                      bgcolor: "rgba(255, 255, 255, 0.02)",
-                      border: "1px solid rgba(255,255,255,0.05)",
+                      bgcolor: "var(--bg-card)",
+                      border: "1px solid var(--border-muted)",
+                      boxShadow: "var(--shadow-sm)",
                       transition: "all 0.4s ease",
                       position: "relative",
                       overflow: "hidden",
                       "&:hover": {
-                        bgcolor: "rgba(255,255,255,0.04)",
+                        bgcolor: "rgba(13, 127, 242, 0.04)",
                         borderColor: "#0d7ff233",
                         transform: "translateY(-10px)"
                       },
@@ -859,7 +861,7 @@ export default function HomePage(): React.ReactElement {
                       sx={{ 
                         fontWeight: 800, 
                         mb: 2, 
-                        color: "white"
+                        color: "var(--text-main)"
                       }}
                     >
                       {item.title}
@@ -867,7 +869,7 @@ export default function HomePage(): React.ReactElement {
                     <Typography 
                       variant="body1" 
                       sx={{ 
-                        color: "#94a3b8", 
+                        color: "var(--text-secondary)", 
                         lineHeight: 1.7,
                         fontSize: "1rem"
                       }}
@@ -883,11 +885,11 @@ export default function HomePage(): React.ReactElement {
       </Box>
 
       {/* Our Products */}
-      <Box sx={{ py: 15, bgcolor: "#0a0f1c", position: "relative" }}>
+      <Box sx={{ py: 15, bgcolor: "var(--bg-main)", position: "relative" }}>
         <Container maxWidth="lg">
           <Typography
             variant="h2"
-            sx={{ fontWeight: 950, mb: 10, textAlign: "center", color: "#fff", letterSpacing: "-0.02em" }}
+            sx={{ fontWeight: 950, mb: 10, textAlign: "center", color: "var(--text-main)", letterSpacing: "-0.02em" }}
           >
             Digital <Box component="span" sx={{ color: "#0d7ff2" }}>Solutions</Box>
           </Typography>
@@ -904,10 +906,10 @@ export default function HomePage(): React.ReactElement {
                   sx={{
                     p: 4.5,
                     borderRadius: 6,
-                    background: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255,255,255,0.06)",
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
                     backdropFilter: "blur(24px)",
-                    color: "#fff",
+                    color: "var(--text-main)",
                     height: "100%",
                   }}
                 >
@@ -974,10 +976,10 @@ export default function HomePage(): React.ReactElement {
                   sx={{
                     p: 4.5,
                     borderRadius: 6,
-                    background: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255,255,255,0.06)",
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
                     backdropFilter: "blur(24px)",
-                    color: "#fff",
+                    color: "var(--text-main)",
                     height: "100%",
                   }}
                 >
@@ -1041,9 +1043,9 @@ export default function HomePage(): React.ReactElement {
       <Box
         sx={{
           py: 15,
-          bgcolor: "#0a0f1c",
+          bgcolor: "var(--bg-main)",
           position: "relative",
-          borderTop: "1px solid rgba(255,255,255,0.05)"
+          borderTop: "1px solid var(--border-muted)"
         }}
         ref={processSectionRef}
       >
@@ -1054,7 +1056,7 @@ export default function HomePage(): React.ReactElement {
         />
 
         <Container maxWidth="lg">
-          <Typography variant="h2" sx={{ fontWeight: 950, mb: 8, color: "white", letterSpacing: "-0.02em" }}>
+          <Typography variant="h2" sx={{ fontWeight: 950, mb: 8, color: "var(--text-main)", letterSpacing: "-0.02em" }}>
             The Miisco <Box component="span" sx={{ color: "#0d7ff2" }}>Workflow</Box>
           </Typography>
 
@@ -1097,10 +1099,10 @@ export default function HomePage(): React.ReactElement {
       <Box
         sx={{
           py: 15,
-          bgcolor: "#0a0f1c",
+          bgcolor: "var(--bg-main)",
           position: "relative",
           overflow: "hidden",
-          borderTop: "1px solid rgba(255,255,255,0.05)"
+          borderTop: "1px solid var(--border-muted)"
         }}
       >
         {/* Background decoration */}
@@ -1121,7 +1123,7 @@ export default function HomePage(): React.ReactElement {
             sx={{
               fontWeight: 950,
               mb: 10,
-              color: "#fff",
+              color: "var(--text-main)",
               textAlign: "center",
               letterSpacing: "-0.02em"
             }}
@@ -1146,15 +1148,15 @@ export default function HomePage(): React.ReactElement {
                     p: 4.5,
                     height: "100%",
                     borderRadius: 5,
-                    background: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255,255,255,0.06)",
+                    background: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
                     backdropFilter: "blur(24px)",
-                    boxShadow: "0 20px 40px rgba(0,0,0,0.3)",
+                    boxShadow: "var(--shadow-md)",
                     "&:hover": {
-                      bgcolor: "rgba(255, 255, 255, 0.04)",
+                      bgcolor: "rgba(13, 127, 242, 0.04)",
                       borderColor: "#0d7ff244",
                       transform: "translateY(-10px)",
-                      boxShadow: "0 30px 60px rgba(0,0,0,0.5)",
+                      boxShadow: "var(--shadow-lg)",
                     },
                     transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                     cursor: "pointer",
@@ -1182,7 +1184,7 @@ export default function HomePage(): React.ReactElement {
                       variant="h6"
                       sx={{
                         fontWeight: 800,
-                        color: "#fff",
+                        color: "var(--text-main)",
                         fontSize: "1.1rem",
                         letterSpacing: "-0.01em",
                       }}
@@ -1202,15 +1204,15 @@ export default function HomePage(): React.ReactElement {
                         label={tool}
                         size="small"
                         sx={{
-                          bgcolor: "rgba(255,255,255,0.1)",
-                          color: "rgba(255,255,255,0.9)",
-                          border: "1px solid rgba(255,255,255,0.2)",
+                          bgcolor: "var(--border-light)",
+                          color: "var(--text-muted)",
+                          border: "1px solid var(--border-strong)",
                           fontWeight: 500,
                           fontSize: "0.75rem",
                           "&:hover": {
                             bgcolor: `${theme.palette.secondary.main}40`,
                             borderColor: theme.palette.secondary.main,
-                            color: "#fff",
+                            color: "var(--text-main)",
                             transform: "scale(1.05)",
                           },
                           transition: "all 0.2s ease",
@@ -1226,11 +1228,11 @@ export default function HomePage(): React.ReactElement {
       </Box>
 
       {/* Testimonials */}
-      <Box sx={{ py: 15, bgcolor: "#0a0f1c", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <Box sx={{ py: 15, bgcolor: "var(--bg-main)", borderTop: "1px solid var(--border-muted)" }}>
         <Container maxWidth="lg">
           <Typography
             variant="h2"
-            sx={{ color: "#fff", fontWeight: 950, mb: 10, textAlign: "center", letterSpacing: "-0.02em" }}
+            sx={{ color: "var(--text-main)", fontWeight: 950, mb: 10, textAlign: "center", letterSpacing: "-0.02em" }}
           >
             Client <Box component="span" sx={{ color: "#0d7ff2" }}>Feedback</Box>
           </Typography>
@@ -1241,21 +1243,21 @@ export default function HomePage(): React.ReactElement {
                   sx={{
                     p: 5,
                     borderRadius: "24px",
-                    bgcolor: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255, 255, 255, 0.05)",
-                    color: "#fff",
+                    bgcolor: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
+                    color: "var(--text-main)",
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "space-between",
                     transition: "all 0.3s ease",
                     "&:hover": {
-                      bgcolor: "rgba(255, 255, 255, 0.04)",
+                      bgcolor: "rgba(13, 127, 242, 0.04)",
                       borderColor: "rgba(13, 127, 242, 0.2)"
                     }
                   }}
                 >
-                  <Typography variant="h6" sx={{ mb: 4, lineHeight: 1.6, fontWeight: 400, fontStyle: "italic", color: "#e2e8f0" }}>
+                  <Typography variant="h6" sx={{ mb: 4, lineHeight: 1.6, fontWeight: 400, fontStyle: "italic", color: "var(--text-muted)" }}>
                     “{t.quote}”
                   </Typography>
                   <Stack direction="row" spacing={2} alignItems="center">
@@ -1273,7 +1275,7 @@ export default function HomePage(): React.ReactElement {
                     <Box>
                       <Typography
                         variant="subtitle1"
-                        sx={{ fontWeight: 800, color: "#fff" }}
+                        sx={{ fontWeight: 800, color: "var(--text-main)" }}
                       >
                         {t.name}
                       </Typography>
@@ -1303,10 +1305,10 @@ export default function HomePage(): React.ReactElement {
         <Container maxWidth="lg">
           <Grid container spacing={6} alignItems="center">
             <Grid size={{ xs: 12, md: 8 }}>
-              <Typography variant="h2" sx={{ fontWeight: 950, mb: 2, letterSpacing: "-0.02em" }}>
+              <Typography variant="h2" sx={{ fontWeight: 950, mb: 2, letterSpacing: "-0.02em", color: "#fff" }}>
                 Ready to harden your releases?
               </Typography>
-              <Typography variant="h6" sx={{ opacity: 0.9, fontWeight: 400, maxWidth: "600px" }}>
+              <Typography variant="h6" sx={{ opacity: 0.9, fontWeight: 400, maxWidth: "600px", color: "rgba(255,255,255,0.9)" }}>
                 Let&apos;s plug into your CI/CD and raise quality gates without
                 slowing the team down.
               </Typography>
@@ -1322,14 +1324,14 @@ export default function HomePage(): React.ReactElement {
                   size="large"
                   sx={{
                     bgcolor: "#fff",
-                    color: "#0a0f1c",
+                    color: "var(--text-main)",
                     px: 4,
                     py: 2,
                     borderRadius: "12px",
                     fontWeight: 800,
                     fontSize: "1.1rem",
                     textTransform: "none",
-                    "&:hover": { bgcolor: "#f1f5f9", transform: "translateY(-2px)" },
+                    "&:hover": { bgcolor: "var(--bg-secondary)", transform: "translateY(-2px)" },
                     transition: "all 0.3s ease"
                   }}
                 >

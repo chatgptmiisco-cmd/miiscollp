@@ -27,7 +27,7 @@ export default function AboutPage() {
   };
 
   return (
-    <Box sx={{ bgcolor: "#0a0f1c", color: "white", minHeight: "100vh" }}>
+    <Box sx={{ bgcolor: "var(--bg-main)", color: "var(--text-main)", minHeight: "100vh" }}>
       {/* Hero Section */}
       <Box sx={{ p: { xs: 4, md: 10 }, px: { lg: 15 }, pt: { xs: 15, md: 25 } }}>
         <Box
@@ -46,7 +46,7 @@ export default function AboutPage() {
             backgroundImage: `linear-gradient(rgba(10, 15, 28, 0.7), rgba(10, 15, 28, 0.9)), url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            border: "1px solid rgba(255, 255, 255, 0.05)"
+            border: "1px solid var(--border-muted)"
           }}
         >
           <motion.div initial="hidden" animate="visible" variants={fadeInUp} style={{ zIndex: 10, maxWidth: "800px" }}>
@@ -66,7 +66,7 @@ export default function AboutPage() {
             <Typography
               variant="body1"
               sx={{
-                color: "#cbd5e1",
+                color: "var(--text-secondary)",
                 fontSize: { xs: "1.1rem", md: "1.25rem" },
                 fontWeight: 400,
                 lineHeight: 1.6,
@@ -78,7 +78,7 @@ export default function AboutPage() {
               Our mission is to drive digital excellence through high-end IT services and rigorous software testing, ensuring your technology performs when it matters most.
             </Typography>
             <Stack direction="row" spacing={2} justifyContent="center">
-              <Button
+              {/* <Button
                 variant="contained"
                 sx={{
                   background: "linear-gradient(90deg, #0d7ff2, #2563eb)",
@@ -99,11 +99,12 @@ export default function AboutPage() {
                 }}
               >
                 Our Legacy
-              </Button>
+              </Button> */}
               <Button
                 variant="outlined"
+                href="/team"
                 sx={{
-                  borderColor: "rgba(255,255,255,0.2)",
+                  borderColor: " 1px solid var(--border-muted)",
                   color: "white",
                   px: 6,
                   py: 2,
@@ -112,8 +113,8 @@ export default function AboutPage() {
                   fontSize: "1rem",
                   textTransform: "none",
                   "&:hover": {
-                    borderColor: "white",
-                    bgcolor: "rgba(255,255,255,0.05)",
+                    bordercolor: "var(--text-main)",
+                    bgcolor: "var(--border-muted)",
                     transform: "translateY(-2px)"
                   },
                   transition: "all 0.3s ease"
@@ -134,7 +135,7 @@ export default function AboutPage() {
               <Typography variant="h3" sx={{ fontWeight: 800, mb: 3, letterSpacing: "-0.015em", fontSize: { xs: "2rem", md: "2.5rem" } }}>
                 Our Story
               </Typography>
-              <Stack spacing={2} sx={{ color: "#94a3b8", fontSize: "0.95rem", lineHeight: 1.8 }}>
+              <Stack spacing={2} sx={{ color: "var(--text-secondary)", fontSize: "0.95rem", lineHeight: 1.8 }}>
                 <Typography>
                   Founded on a commitment to quality, Miisco began with a vision to redefine software testing standards. In an era where digital reliability is paramount, we saw a gap between rapid development and robust assurance.
                 </Typography>
@@ -190,13 +191,13 @@ export default function AboutPage() {
       </Container>
 
       {/* Core Values Section */}
-      <Box sx={{ py: 15, bgcolor: "rgba(255, 255, 255, 0.02)", borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
+      <Box sx={{ py: 15, bgcolor: "var(--bg-card)", borderTop: "1px solid var(--border-muted)" }}>
         <Container maxWidth="lg">
           <Box sx={{ textAlign: "center", mb: 8 }}>
             <Typography variant="h4" sx={{ fontWeight: 800, mb: 2 }}>
               Core Values
             </Typography>
-            <Typography variant="body2" sx={{ color: "#94a3b8", maxWidth: "600px", mx: "auto" }}>
+            <Typography variant="body2" sx={{ color: "var(--text-secondary)", maxWidth: "600px", mx: "auto" }}>
               The principles that guide every interaction and every solution we build.
             </Typography>
           </Box>
@@ -224,21 +225,21 @@ export default function AboutPage() {
                     p: 5,
                     height: "100%",
                     borderRadius: "24px",
-                    bgcolor: "rgba(255,255,255,0.02)",
-                    border: "1px solid rgba(255,255,255,0.05)",
+                    bgcolor: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
                     transition: "all 0.4s ease",
                     "&:hover": { 
-                      bgcolor: "rgba(255,255,255,0.04)",
-                      borderColor: "rgba(13, 127, 242, 0.3)",
+                      bgcolor: "var(--bg-card-hover)",
+                      borderColor: "var(--border-hover)",
                       transform: "translateY(-5px)"
                     },
                   }}
                 >
                   <Box sx={{ mb: 2 }}>{val.icon}</Box>
-                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.5, color: "white" }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.5, color: "var(--text-main)" }}>
                     {val.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "#94a3b8", lineHeight: 1.6 }}>
+                  <Typography variant="body2" sx={{ color: "var(--text-secondary)", lineHeight: 1.6 }}>
                     {val.desc}
                   </Typography>
                 </Paper>
@@ -254,7 +255,7 @@ export default function AboutPage() {
           <Typography variant="h4" sx={{ fontWeight: 800, mb: 1.5 }}>
             Leadership Team
           </Typography>
-          <Typography variant="body2" sx={{ color: "#94a3b8" }}>
+          <Typography variant="body2" sx={{ color: "var(--text-secondary)" }}>
             Led by industry veterans with a passion for transformative technology.
           </Typography>
         </Box>
@@ -285,13 +286,13 @@ export default function AboutPage() {
                   p: 4,
                   height: "100%",
                   borderRadius: "24px",
-                  bgcolor: "rgba(255,255,255,0.02)",
-                  border: "1px solid rgba(255,255,255,0.05)",
+                  bgcolor: "var(--bg-card)",
+                  border: "1px solid var(--border-muted)",
                   transition: "all 0.4s ease",
                   textAlign: "center",
                   "&:hover": {
-                    bgcolor: "rgba(255,255,255,0.04)",
-                    borderColor: "rgba(13, 127, 242, 0.3)",
+                    bgcolor: "var(--bg-card-hover)",
+                    borderColor: "var(--border-hover)",
                     transform: "translateY(-8px)",
                     "& img": { transform: "scale(1.05)" }
                   },
@@ -310,14 +311,14 @@ export default function AboutPage() {
                     }}
                   />
                 </Box>
-                <Typography variant="h6" sx={{ fontWeight: 800, color: "white", lineHeight: 1.2, mb: 0.5 }}>
+                <Typography variant="h6" sx={{ fontWeight: 800, color: "var(--text-main)", lineHeight: 1.2, mb: 0.5 }}>
                   {leader.name}
                 </Typography>
                 <Typography variant="body2" sx={{ color: "#0d7ff2", fontWeight: 700, display: "block", mb: 2 }}>
                   {leader.title}
                 </Typography>
-                <Divider sx={{ borderColor: "rgba(255,255,255,0.05)", mb: 2 }} />
-                <Typography variant="body2" sx={{ color: "#94a3b8", lineHeight: 1.6, fontStyle: "italic" }}>
+                <Divider sx={{ borderColor: "var(--border-muted)", mb: 2 }} />
+                <Typography variant="body2" sx={{ color: "var(--text-secondary)", lineHeight: 1.6, fontStyle: "italic" }}>
                   &quot;{leader.message}&quot;
                 </Typography>
               </Paper>
@@ -327,7 +328,7 @@ export default function AboutPage() {
       </Container>
 
       {/* Global Presence Section */}
-      <Box sx={{ bgcolor: "#0a0f1c", py: 15, position: "relative", overflow: "hidden", borderTop: "1px solid rgba(255, 255, 255, 0.05)" }}>
+      <Box sx={{ bgcolor: "var(--bg-secondary)", py: 15, position: "relative", overflow: "hidden", borderTop: "1px solid var(--border-muted)" }}>
         <Box
           sx={{
             position: "absolute",
@@ -344,7 +345,7 @@ export default function AboutPage() {
               <Typography variant="h3" sx={{ fontWeight: 800, mb: 3, fontSize: { xs: "2rem", md: "2.5rem" } }}>
                 Global Presence
               </Typography>
-              <Typography variant="body2" sx={{ color: "#94a3b8", fontSize: "1rem", mb: 4, lineHeight: 1.7 }}>
+              <Typography variant="body2" sx={{ color: "var(--text-secondary)", fontSize: "1rem", mb: 4, lineHeight: 1.7 }}>
                 Headquartered in Silicon Valley with strategic hubs in London, Bangalore, and Tokyo, Miisco supports clients across 15 countries. Our global delivery model ensures 24/7 operational excellence and access to world-class talent.
               </Typography>
               <Grid container spacing={3}>
@@ -357,7 +358,7 @@ export default function AboutPage() {
                     <Typography variant="h4" sx={{ fontWeight: 800, color: "#0d7ff2" }}>
                       {stat.value}
                     </Typography>
-                    <Typography variant="caption" sx={{ color: "#64748b", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                    <Typography variant="caption" sx={{ color: "var(--text-secondary)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
                       {stat.label}
                     </Typography>
                   </Grid>
@@ -369,9 +370,9 @@ export default function AboutPage() {
                 sx={{
                   p: 5,
                   borderRadius: "24px",
-                  bgcolor: "rgba(255, 255, 255, 0.02)",
+                  bgcolor: "var(--bg-card)",
                   backdropFilter: "blur(20px)",
-                  border: "1px solid rgba(255,255,255,0.05)",
+                  border: "1px solid var(--border-muted)",
                   maxWidth: "500px",
                   ml: { lg: "auto" }
                 }}
@@ -388,7 +389,7 @@ export default function AboutPage() {
                   ].map((loc, i) => (
                     <Stack key={i} direction="row" spacing={2} alignItems="center">
                       <Box sx={{ width: 8, height: 8, borderRadius: "50%", bgcolor: "#0d7ff2" }} />
-                      <Typography sx={{ color: "#cbd5e1", fontSize: "0.9rem" }}>{loc}</Typography>
+                      <Typography sx={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}>{loc}</Typography>
                     </Stack>
                   ))}
                 </Stack>
@@ -409,10 +410,10 @@ export default function AboutPage() {
             border: "1px solid rgba(13, 127, 242, 0.2)",
           }}
         >
-          <Typography variant="h2" color={"white"} sx={{ fontWeight: 900, mb: 4, fontSize: { xs: "2.5rem", md: "3.5rem" } }}>
+          <Typography variant="h2" sx={{ color: "var(--text-main)", fontWeight: 900, mb: 4, fontSize: { xs: "2.5rem", md: "3.5rem" } }}>
             Join Our Mission
           </Typography>
-          <Typography variant="body1" sx={{ color: "#94a3b8", fontSize: "1.125rem", mb: 6, maxWidth: "600px", mx: "auto" }}>
+          <Typography variant="body1" sx={{ color: "var(--text-secondary)", fontSize: "1.125rem", mb: 6, maxWidth: "600px", mx: "auto" }}>
             We are always looking for exceptional talent to help us redefine digital excellence. If you are passionate about quality and innovation, we want to hear from you.
           </Typography>
           <Stack direction={{ xs: "column", sm: "row" }} spacing={2} justifyContent="center">
@@ -420,7 +421,7 @@ export default function AboutPage() {
               variant="contained"
               sx={{
                 bgcolor: "#0d7ff2",
-                color: "white",
+                color: "var(--text-main)",
                 px: 6,
                 py: 2,
                 borderRadius: "12px",
@@ -437,16 +438,16 @@ export default function AboutPage() {
               variant="outlined"
               href="/contact"
               sx={{
-                borderColor: "rgba(255,255,255,0.1)",
-                color: "white",
-                bgcolor: "#101922",
+                borderColor: "var(--border-strong)",
+                color: "var(--text-main)",
+                bgcolor: "var(--bg-card)",
                 px: 6,
                 py: 2,
                 borderRadius: "12px",
                 fontWeight: 800,
                 fontSize: "1.1rem",
                 textTransform: "none",
-                "&:hover": { borderColor: "rgba(255,255,255,0.2)", bgcolor: "#1a2633" },
+                "&:hover": { borderColor: "var(--border-hover)", bgcolor: "var(--bg-card-hover)" },
               }}
             >
               Talk to Us

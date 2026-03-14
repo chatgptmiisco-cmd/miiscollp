@@ -105,7 +105,7 @@ export default function CrossBrowserTestingPage() {
   };
 
   return (
-    <Box sx={{ bgcolor: "#0a0f1c", color: "white", minHeight: "100vh", pb: 15 }}>
+    <Box sx={{ bgcolor: "var(--bg-main)", color: "var(--text-main)", minHeight: "100vh", pb: 15 }}>
       {/* Hero Section */}
       <Box 
         sx={{ 
@@ -120,13 +120,13 @@ export default function CrossBrowserTestingPage() {
               separator={<NavigateNext fontSize="small" sx={{ color: "rgba(255,255,255,0.3)" }} />}
               sx={{ mb: 4 }}
             >
-              <MuiLink component={Link} href="/" sx={{ color: "rgba(255,255,255,0.5)", textDecoration: "none", "&:hover": { color: "#0d7ff2" } }}>
+              <MuiLink component={Link} href="/" sx={{ color: "var(--text-muted)", textDecoration: "none", "&:hover": { color: "#0d7ff2" } }}>
                 Home
               </MuiLink>
-              <MuiLink component={Link} href="/services" sx={{ color: "rgba(255,255,255,0.5)", textDecoration: "none", "&:hover": { color: "#0d7ff2" } }}>
+              <MuiLink component={Link} href="/services" sx={{ color: "var(--text-muted)", textDecoration: "none", "&:hover": { color: "#0d7ff2" } }}>
                 Services
               </MuiLink>
-              <Typography sx={{ color: "white", fontWeight: 700 }}>Cross Browser Testing Services</Typography>
+              <Typography sx={{ color: "var(--text-main)", fontWeight: 700 }}>Cross Browser Testing Services</Typography>
             </Breadcrumbs>
             
             <Typography
@@ -144,7 +144,7 @@ export default function CrossBrowserTestingPage() {
             <Typography
               variant="h6"
               sx={{
-                color: "#94a3b8",
+                color: "var(--text-secondary)",
                 maxWidth: "700px",
                 lineHeight: 1.6,
                 fontWeight: 400,
@@ -167,9 +167,9 @@ export default function CrossBrowserTestingPage() {
                   position: "relative",
                   borderRadius: "32px",
                   overflow: "hidden",
-                  boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
-                  border: "1px solid rgba(255,255,255,0.05)",
-                  bgcolor: "rgba(255,255,255,0.02)",
+                  boxShadow: "var(--shadow-lg)",
+                  border: "1px solid var(--border-muted)",
+                  bgcolor: "var(--bg-card)",
                   p: 4
                 }}
               >
@@ -187,14 +187,14 @@ export default function CrossBrowserTestingPage() {
               <Typography variant="h3" sx={{ fontWeight: 800, mb: 3, letterSpacing: "-0.02em" }}>
                 Cross Browser Testing Services
               </Typography>
-              <Typography variant="body1" sx={{ color: "#94a3b8", mb: 4, lineHeight: 1.8, fontSize: "1.1rem" }}>
+              <Typography variant="body1" sx={{ color: "var(--text-secondary)", mb: 4, lineHeight: 1.8, fontSize: "1.1rem" }}>
                 MIISCO&apos;s cross-browser testing services ensure your web application delivers a consistent experience across all browsers and devices. We test on real browsers to identify and fix compatibility issues before your users encounter them.
               </Typography>
               <Stack spacing={2.5}>
                 {features.map((text, i) => (
                   <Box key={i} sx={{ display: "flex", gap: 2 }}>
                     <CheckCircle sx={{ color: "#0d7ff2", mt: 0.5, flexShrink: 0 }} />
-                    <Typography sx={{ color: "white", fontWeight: 500 }}>{text}</Typography>
+                    <Typography sx={{ color: "var(--text-main)", fontWeight: 500 }}>{text}</Typography>
                   </Box>
                 ))}
               </Stack>
@@ -204,7 +204,7 @@ export default function CrossBrowserTestingPage() {
       </Container>
 
       {/* Main Section 2: Benefits */}
-      <Box sx={{ mt: 20, py: 15, bgcolor: "rgba(255,255,255,0.02)", borderTop: "1px solid rgba(255,255,255,0.05)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
+      <Box sx={{ mt: 20, py: 15, bgcolor: "var(--bg-card)", borderTop: "1px solid var(--border-muted)", borderBottom: "1px solid var(--border-muted)" }}>
         <Container maxWidth="lg">
           <Grid container spacing={8} alignItems="center">
             <Grid size={{ xs: 12, md: 6 }}>
@@ -212,7 +212,7 @@ export default function CrossBrowserTestingPage() {
                 <Typography variant="h3" sx={{ fontWeight: 800, mb: 4, letterSpacing: "-0.02em" }}>
                   Why You Need Cross Browser Testing
                 </Typography>
-                <Typography variant="body1" sx={{ color: "#94a3b8", mb: 4, lineHeight: 1.8, fontSize: "1.05rem" }}>
+                <Typography variant="body1" sx={{ color: "var(--text-secondary)", mb: 4, lineHeight: 1.8, fontSize: "1.05rem" }}>
                   Cross-browser testing is essential for ensuring your application works seamlessly across different browsers and devices. Our comprehensive approach helps you deliver consistent experiences to all users.
                 </Typography>
                 <Stack spacing={3}>
@@ -234,7 +234,7 @@ export default function CrossBrowserTestingPage() {
                       >
                         {i + 1}
                       </Box>
-                      <Typography sx={{ color: "#94a3b8", fontSize: "1.05rem", lineHeight: 1.6 }}>
+                      <Typography sx={{ color: "var(--text-secondary)", fontSize: "1.05rem", lineHeight: 1.6 }}>
                         {text}
                       </Typography>
                     </Box>
@@ -249,8 +249,8 @@ export default function CrossBrowserTestingPage() {
                     position: "relative",
                     borderRadius: "32px",
                     overflow: "hidden",
-                    border: "1px solid rgba(255,255,255,0.05)",
-                    bgcolor: "rgba(255,255,255,0.02)",
+                    border: "1px solid var(--border-muted)",
+                    bgcolor: "var(--bg-card)",
                     p: 4
                   }}
                 >
@@ -273,7 +273,7 @@ export default function CrossBrowserTestingPage() {
           <Typography variant="h3" sx={{ fontWeight: 800, mb: 2, letterSpacing: "-0.02em" }}>
             Why Choose Miisco for Cross Browser Testing
           </Typography>
-          <Typography variant="body1" sx={{ color: "#94a3b8", maxWidth: "700px", mx: "auto", fontSize: "1.1rem" }}>
+          <Typography variant="body1" sx={{ color: "var(--text-secondary)", maxWidth: "700px", mx: "auto", fontSize: "1.1rem" }}>
             Our expert team delivers comprehensive cross-browser testing services with cutting-edge tools and methodologies.
           </Typography>
         </Box>
@@ -286,12 +286,12 @@ export default function CrossBrowserTestingPage() {
                     p: 4,
                     height: "100%",
                     borderRadius: "24px",
-                    bgcolor: "rgba(255,255,255,0.02)",
-                    border: "1px solid rgba(255,255,255,0.05)",
+                    bgcolor: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
                     transition: "all 0.4s ease",
                     "&:hover": {
-                      bgcolor: "rgba(255,255,255,0.04)",
-                      borderColor: "rgba(13, 127, 242, 0.3)",
+                      bgcolor: "rgba(13, 127, 242, 0.04)",
+                      borderColor: "var(--border-hover)",
                       transform: "translateY(-8px)"
                     }
                   }}
@@ -308,10 +308,10 @@ export default function CrossBrowserTestingPage() {
                   >
                     {item.icon}
                   </Avatar>
-                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.5, color: "white" }}>
+                  <Typography variant="h6" sx={{ fontWeight: 800, mb: 1.5, color: "var(--text-main)" }}>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: "#94a3b8", lineHeight: 1.7 }}>
+                  <Typography variant="body2" sx={{ color: "var(--text-secondary)", lineHeight: 1.7 }}>
                     {item.desc}
                   </Typography>
                 </Paper>
@@ -327,7 +327,7 @@ export default function CrossBrowserTestingPage() {
           <Typography variant="h3" sx={{ fontWeight: 800, mb: 2, letterSpacing: "-0.02em" }}>
             Our Software Testing Process
           </Typography>
-          <Typography variant="body1" sx={{ color: "#94a3b8", maxWidth: "600px", mx: "auto" }}>
+          <Typography variant="body1" sx={{ color: "var(--text-secondary)", maxWidth: "600px", mx: "auto" }}>
             A systematic approach to ensure comprehensive cross-browser compatibility validation.
           </Typography>
         </Box>
@@ -364,7 +364,7 @@ export default function CrossBrowserTestingPage() {
                   >
                     {step.icon}
                   </Box>
-                  <Typography variant="subtitle2" sx={{ fontWeight: 800, textAlign: "center", color: "white" }}>
+                  <Typography variant="subtitle2" sx={{ fontWeight: 800, textAlign: "center", color: "var(--text-main)" }}>
                     {step.title}
                   </Typography>
                 </Stack>
@@ -381,7 +381,7 @@ export default function CrossBrowserTestingPage() {
             p: { xs: 6, md: 10 },
             textAlign: "center",
             borderRadius: "40px",
-            background: "linear-gradient(135deg, rgba(13, 127, 242, 0.1) 0%, rgba(10, 15, 28, 1) 100%)",
+            background: "linear-gradient(135deg, rgba(13, 127, 242, 0.06) 0%, var(--bg-secondary) 100%)",
             border: "1px solid rgba(13, 127, 242, 0.2)",
             position: "relative",
             overflow: "hidden"
@@ -390,7 +390,7 @@ export default function CrossBrowserTestingPage() {
           <Typography variant="h2" sx={{ fontWeight: 950, mb: 3, letterSpacing: "-0.02em" }}>
             Contact Miisco for Cross Browser Testing
           </Typography>
-          <Typography variant="h6" sx={{ color: "#94a3b8", mb: 8, maxWidth: "700px", mx: "auto", fontWeight: 400, lineHeight: 1.6 }}>
+          <Typography variant="h6" sx={{ color: "var(--text-secondary)", mb: 8, maxWidth: "700px", mx: "auto", fontWeight: 400, lineHeight: 1.6 }}>
             Need reliable cross-browser testing services? Our expert team is ready to help you ensure your application works seamlessly across all browsers and devices. Let&apos;s discuss your testing requirements.
           </Typography>
           <Button

@@ -35,7 +35,7 @@ export default function AnimatedCard({
     (x) =>
       `0 ${shadowY.get()}px ${shadowBlur.get()}px rgba(0,0,0,0.22), ${x}px ${shadowY.get()}px ${
         shadowBlur.get() * 0.6
-      }px rgba(0,0,0,0.12)`
+      }px var(--border-strong)`
   );
 
   // Hotspot gradient center
@@ -120,8 +120,8 @@ export default function AnimatedCard({
             borderRadius: 3,
             overflow: "hidden",
             position: "relative",
-            backgroundColor: "#0d111b",
-            border: "1px solid rgba(255,255,255,0.05)",
+            backgroundcolor: "var(--text-main)",
+            border: "1px solid var(--border-muted)",
           }}
         >
           {/* Media area */}
@@ -138,9 +138,9 @@ export default function AnimatedCard({
                   "data:image/svg+xml;utf8," +
                   encodeURIComponent(
                     `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'>
-                      <rect width='100%' height='100%' fill='#0a0f1c'/>
+                      <rect width='100%' height='100%' fill='var(--bg-main)'/>
                       <text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle'
-                        font-family='Inter, Arial' font-size='26' fill='rgba(255,255,255,.3)'>
+                        font-family='Inter, Arial' font-size='26' fill='rgba(0,0,0,.3)'>
                         Image unavailable
                       </text>
                     </svg>`
@@ -165,7 +165,7 @@ export default function AnimatedCard({
                 position: "absolute",
                 inset: 0,
                 background:
-                  "linear-gradient(180deg, rgba(10,15,28,0.0) 10%, rgba(10,15,28,0.6) 100%)",
+                  "linear-gradient(180deg, rgba(10,15,28,0.0) 10%, rgba(0,0,0,0.35) 100%)",
                 pointerEvents: "none",
               }}
             />
@@ -225,27 +225,27 @@ export default function AnimatedCard({
                 right: 0,
                 height: "100%",
                 width: "68%",
-                background: "rgba(13, 17, 27, 0.95)",
+                background: "rgba(255, 255, 255, 0.96)",
                 backdropFilter: "blur(12px)",
                 WebkitBackdropFilter: "blur(12px)",
-                boxShadow: "-20px 0 60px rgba(0,0,0,0.4)",
+                boxShadow: "-10px 0 30px var(--border-muted)",
                 display: "flex",
                 alignItems: "flex-end",
                 translateZ: 24 as unknown as string,
-                borderLeft: "1px solid rgba(255,255,255,0.06)"
+                borderLeft: "1px solid var(--border-muted)"
               }}
             >
               <motion.div variants={group} style={{ width: "100%" }}>
                 <CardContent sx={{ p: 4 }}>
                   <motion.div variants={item}>
-                    <Typography variant="h6" sx={{ fontWeight: 900, mb: 1, color: "white", lineHeight: 1.2 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 900, mb: 1, color: "var(--text-main)", lineHeight: 1.2 }}>
                       {title}
                     </Typography>
                   </motion.div>
                   <motion.div variants={item}>
                     <Typography
                       variant="body2"
-                      sx={{ color: "#94a3b8", lineHeight: 1.6 }}
+                      sx={{ color: "var(--text-secondary)", lineHeight: 1.6 }}
                     >
                       {description}
                     </Typography>

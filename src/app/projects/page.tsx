@@ -65,7 +65,7 @@ export default function CaseStudiesPage() {
   };
 
   return (
-    <Box sx={{ bgcolor: "#0a0f1c", color: "white", minHeight: "100vh", pb: 15 }}>
+    <Box sx={{ bgcolor: "var(--bg-main)", color: "var(--text-main)", minHeight: "100vh", pb: 15 }}>
       {/* Hero Section */}
       <Box sx={{ pt: { xs: 15, md: 25 }, pb: 10 }}>
         <Container maxWidth="lg">
@@ -85,7 +85,7 @@ export default function CaseStudiesPage() {
             <Typography
               variant="h6"
               sx={{
-                color: "#94a3b8",
+                color: "var(--text-secondary)",
                 maxWidth: "700px",
                 lineHeight: 1.6,
                 fontWeight: 400,
@@ -115,16 +115,16 @@ export default function CaseStudiesPage() {
                 <Paper
                   sx={{
                     borderRadius: "32px",
-                    bgcolor: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255, 255, 255, 0.05)",
+                    bgcolor: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
                     overflow: "hidden",
                     height: "100%",
                     transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
                     "&:hover": {
-                      bgcolor: "rgba(255, 255, 255, 0.04)",
+                      bgcolor: "rgba(13, 127, 242, 0.04)",
                       transform: "translateY(-12px)",
-                      borderColor: "rgba(13, 127, 242, 0.3)",
-                      boxShadow: "0 30px 60px rgba(0,0,0,0.5)",
+                      borderColor: "var(--border-hover)",
+                      boxShadow: "var(--shadow-lg)",
                       "& .study-image": { transform: "scale(1.1)" }
                     }
                   }}
@@ -150,7 +150,7 @@ export default function CaseStudiesPage() {
                         left: 24, 
                         bgcolor: "rgba(10, 15, 28, 0.8)",
                         backdropFilter: "blur(8px)",
-                        color: "white", 
+                        color: "#fff", 
                         px: 2, 
                         py: 0.8, 
                         borderRadius: "10px", 
@@ -167,13 +167,13 @@ export default function CaseStudiesPage() {
 
                   {/* Content Container */}
                   <Box sx={{ p: 4 }}>
-                    <Typography variant="overline" sx={{ color: "#94a3b8", fontWeight: 700 }}>
+                    <Typography variant="overline" sx={{ color: "var(--text-secondary)", fontWeight: 700 }}>
                       {study.client}
                     </Typography>
                     <Typography variant="h5" sx={{ fontWeight: 800, mt: 1, mb: 2 }}>
                       {study.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: "#94a3b8", mb: 4, lineHeight: 1.7 }}>
+                    <Typography variant="body2" sx={{ color: "var(--text-secondary)", mb: 4, lineHeight: 1.7 }}>
                       {study.description}
                     </Typography>
 
@@ -184,8 +184,8 @@ export default function CaseStudiesPage() {
                           label={tag} 
                           size="small" 
                           sx={{ 
-                            bgcolor: "rgba(255, 255, 255, 0.05)", 
-                            color: "white", 
+                            bgcolor: "rgba(0, 0, 0, 0.03)", 
+                            color: "var(--text-main)", 
                             fontWeight: 600,
                             borderRadius: "6px"
                           }} 
@@ -201,7 +201,7 @@ export default function CaseStudiesPage() {
                         textTransform: "none",
                         fontWeight: 800,
                         p: 0,
-                        "&:hover": { bgcolor: "transparent", color: "#fff" }
+                        "&:hover": { bgcolor: "transparent", color: "var(--text-main)" }
                       }}
                     >
                       Read Case Study
@@ -221,14 +221,14 @@ export default function CaseStudiesPage() {
             p: { xs: 6, md: 10 },
             textAlign: "center",
             borderRadius: "40px",
-            background: "linear-gradient(135deg, rgba(13, 127, 242, 0.1) 0%, rgba(10, 15, 28, 1) 100%)",
+            background: "linear-gradient(135deg, rgba(13, 127, 242, 0.06) 0%, var(--bg-secondary) 100%)",
             border: "1px solid rgba(13, 127, 242, 0.2)"
           }}
         >
           <Typography variant="h2" sx={{ fontWeight: 950, mb: 3, letterSpacing: "-0.02em" }}>
             Have a project in mind?
           </Typography>
-          <Typography variant="h6" sx={{ color: "#94a3b8", mb: 8, maxWidth: "600px", mx: "auto", fontWeight: 400, lineHeight: 1.6 }}>
+          <Typography variant="h6" sx={{ color: "var(--text-secondary)", mb: 8, maxWidth: "600px", mx: "auto", fontWeight: 400, lineHeight: 1.6 }}>
             Let&apos;s collaborate to turn your vision into a digital masterpiece. Our team of experts is ready to help you scale.
           </Typography>
           <Button

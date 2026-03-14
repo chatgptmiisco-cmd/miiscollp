@@ -98,7 +98,7 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
               overflow: "hidden",
               textDecoration: "none",
               bgcolor: "#0d111b",
-              border: "1px solid rgba(255,255,255,0.05)",
+              border: "1px solid var(--border-muted)",
               cursor: href ? "pointer" : "default",
             }}
           >
@@ -248,7 +248,7 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
                     display: "flex",
                     alignItems: "flex-end",
                     pointerEvents: "auto",
-                    borderLeft: "1px solid rgba(255,255,255,0.05)"
+                    borderLeft: "1px solid var(--border-muted)"
                   }}
                 >
                   <CardContent sx={{ p: 4, width: "100%" }}>
@@ -272,7 +272,7 @@ const FeatureTiltCard: React.FC<FeatureTiltCardProps> = ({
                       {title}
                     </Typography>
                     {description && (
-                      <Typography variant="body2" sx={{ color: "#94a3b8", lineHeight: 1.6 }}>
+                      <Typography variant="body2" sx={{ color: "var(--text-muted)", lineHeight: 1.6 }}>
                         {description}
                       </Typography>
                     )}

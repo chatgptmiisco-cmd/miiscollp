@@ -137,7 +137,7 @@ export default function ServicesPage() {
   };
 
   return (
-    <Box sx={{ bgcolor: "#0a0f1c", color: "white", minHeight: "100vh", pb: 15 }}>
+    <Box sx={{ bgcolor: "var(--bg-main)", color: "var(--text-main)", minHeight: "100vh", pb: 15 }}>
       {/* Hero Section */}
       <Box sx={{ pt: { xs: 15, md: 25 }, pb: 10 }}>
         <Container maxWidth="lg">
@@ -150,7 +150,7 @@ export default function ServicesPage() {
                 mb: 4,
                 letterSpacing: "-0.04em",
                 lineHeight: 1.1,
-                color: "white"
+                color: "var(--text-main)"
               }}
             >
               Precision <Box component="span" sx={{ color: "#0d7ff2" }}>Engineering</Box> & QA
@@ -158,7 +158,7 @@ export default function ServicesPage() {
             <Typography
               variant="h6"
               sx={{
-                color: "#94a3b8",
+                color: "var(--text-secondary)",
                 maxWidth: "700px",
                 lineHeight: 1.6,
                 fontWeight: 400,
@@ -182,15 +182,15 @@ export default function ServicesPage() {
                     p: 5,
                     height: "100%",
                     borderRadius: "24px",
-                    bgcolor: "rgba(255, 255, 255, 0.02)",
-                    border: "1px solid rgba(255, 255, 255, 0.05)",
+                    bgcolor: "var(--bg-card)",
+                    border: "1px solid var(--border-muted)",
                     transition: "all 0.4s ease",
                     display: "flex",
                     flexDirection: "column",
                     "&:hover": {
-                      bgcolor: "rgba(255, 255, 255, 0.04)",
+                      bgcolor: "rgba(13, 127, 242, 0.04)",
                       transform: "translateY(-10px)",
-                      borderColor: "rgba(13, 127, 242, 0.3)",
+                      borderColor: "var(--border-hover)",
                     },
                   }}
                 >
@@ -209,10 +209,10 @@ export default function ServicesPage() {
                   >
                     {service.icon}
                   </Box>
-                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 2, color: "white" }}>
+                  <Typography variant="h5" sx={{ fontWeight: 800, mb: 2, color: "var(--text-main)" }}>
                     {service.title}
                   </Typography>
-                  <Typography variant="body1" sx={{ color: "#94a3b8", lineHeight: 1.7, mb: 4, flexGrow: 1 }}>
+                  <Typography variant="body1" sx={{ color: "var(--text-secondary)", lineHeight: 1.7, mb: 4, flexGrow: 1 }}>
                     {service.description}
                   </Typography>
                   <Button
@@ -225,7 +225,7 @@ export default function ServicesPage() {
                       p: 0,
                       justifyContent: "flex-start",
                       "& .MuiButton-endIcon": { ml: 1 },
-                      "&:hover": { bgcolor: "transparent", color: "white" }
+                      "&:hover": { bgcolor: "transparent", color: "var(--text-main)" }
                     }}
                     endIcon={<ArrowForward sx={{ fontSize: 18 }} />}
                   >
@@ -245,7 +245,7 @@ export default function ServicesPage() {
             p: { xs: 6, md: 10 },
             textAlign: "center",
             borderRadius: "40px",
-            background: "linear-gradient(135deg, rgba(13, 127, 242, 0.1) 0%, rgba(10, 15, 28, 1) 100%)",
+            background: "linear-gradient(135deg, rgba(13, 127, 242, 0.06) 0%, var(--bg-secondary) 100%)",
             border: "1px solid rgba(13, 127, 242, 0.2)",
             position: "relative",
             overflow: "hidden"
@@ -271,7 +271,7 @@ export default function ServicesPage() {
                 fontWeight: 900,
                 mb: 3,
                 fontSize: { xs: "2.25rem", md: "3.5rem" },
-                color: "white"
+                color: "var(--text-main)"
               }}
             >
               Ready to start your project?
@@ -279,7 +279,7 @@ export default function ServicesPage() {
             <Typography
               variant="body1"
               sx={{
-                color: "#94a3b8",
+                color: "var(--text-secondary)",
                 mb: 6,
                 maxWidth: "600px",
                 mx: "auto",
@@ -296,7 +296,7 @@ export default function ServicesPage() {
                 href="/contact"
                 sx={{
                   bgcolor: "#0d7ff2",
-                  color: "white",
+                    color: "#fff",
                   px: 6,
                   py: 2,
                   borderRadius: "15px",
@@ -307,23 +307,6 @@ export default function ServicesPage() {
                 }}
               >
                 Get in Touch
-              </Button>
-              <Button
-                variant="outlined"
-                sx={{
-                  borderColor: "rgba(255, 255, 255, 0.2)",
-                  color: "white",
-                  px: 6,
-                  py: 2,
-                  borderRadius: "15px",
-                  fontWeight: 800,
-                  textTransform: "none",
-                  fontSize: "1.1rem",
-                  backdropFilter: "blur(4px)",
-                  "&:hover": { borderColor: "white", bgcolor: "rgba(255, 255, 255, 0.05)" },
-                }}
-              >
-                Our Methodology
               </Button>
             </Stack>
           </Box>

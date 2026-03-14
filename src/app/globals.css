@@ -3,14 +3,70 @@
 @tailwind utilities;
 
 :root {
-  --background: #0a0f1c;
-  --foreground: #ffffff;
+  /* LIGHT THEME VARIABLES */
+  --bg-main: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-card-hover: rgba(13, 127, 242, 0.04);
+  
+  --text-main: #0f172a;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --text-inverse: #ffffff;
+  
+  --border-muted: rgba(0, 0, 0, 0.06);
+  --border-light: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.12);
+  --border-hover: rgba(13, 127, 242, 0.3);
+  
+  --shadow-sm: 0 4px 20px rgba(0,0,0,0.04);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.06);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.08);
+
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --nav-menu: rgba(255, 255, 255, 0.98);
+  --nav-text: #475569;
+
+  --overlay-bg: rgba(255, 255, 255, 0.7);
+  --chip-bg: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme='dark'] {
+  /* DARK THEME VARIABLES */
+  --bg-main: #0a0f1c;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(255, 255, 255, 0.02);
+  --bg-card-hover: rgba(255, 255, 255, 0.04);
+  
+  --text-main: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: rgba(255,255,255,0.5);
+  --text-inverse: #0a0f1c;
+  
+  --border-muted: rgba(255, 255, 255, 0.05);
+  --border-light: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.1);
+  --border-hover: rgba(13, 127, 242, 0.2);
+
+  /* Note: shadow variables for dark theme should be darker */
+  --shadow-sm: 0 4px 20px rgba(0,0,0,0.3);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.4);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.5);
+
+  --nav-bg: rgba(10, 15, 28, 0.92);
+  --nav-menu: rgba(13, 17, 27, 0.98);
+  --nav-text: #ffffffb3;
+
+  --overlay-bg: rgba(10, 15, 28, 0.7);
+  --chip-bg: rgba(255, 255, 255, 0.05);
 }
 
 body {
   font-family: var(--font-geist-sans), "Inter", sans-serif;
-  background-color: #0a0f1c;
-  color: white;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -26,14 +82,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0f1c;
+  background: var(--bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--border-strong);
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--border-hover);
 }

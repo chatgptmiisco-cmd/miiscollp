@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { useTheme as useNextTheme } from "next-themes";
 import {
   AppBar,
   Toolbar,
@@ -26,6 +27,8 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import LightModeIcon from "@mui/icons-material/LightMode";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
@@ -37,6 +40,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  const { theme: nextTheme, setTheme } = useNextTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -50,8 +55,8 @@ export default function Navbar() {
   const nav = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { 
-      label: "Services", 
+    {
+      label: "Services",
       href: "/services",
       dropdown: [
         {
@@ -78,6 +83,7 @@ export default function Navbar() {
       ]
     },
     { label: "Projects", href: "/projects" },
+    { label: "Careers", href: "/careers" },
   ];
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -97,14 +103,14 @@ export default function Navbar() {
     <>
       <AppBar
         position="fixed"
-        elevation={mounted && scrolled ? 4 : 0}
+        elevation={mounted && scrolled ? 2 : 0}
         sx={{
           background: (mounted && scrolled) || pathname !== "/"
-            ? "rgba(17, 24, 39, 0.95)"
+            ? "var(--nav-bg)"
             : "transparent",
-          backdropFilter: (mounted && scrolled) || pathname !== "/" ? "blur(12px)" : "none",
+          backdropFilter: (mounted && scrolled) || pathname !== "/" ? "blur(16px)" : "none",
           transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-          borderBottom: (mounted && scrolled) || pathname !== "/" ? "1px solid rgba(255, 255, 255, 0.1)" : "none",
+          borderBottom: (mounted && scrolled) || pathname !== "/" ? "1px solid var(--border-muted)" : "none",
           py: mounted && scrolled ? 0.5 : 1.5,
         }}
       >
@@ -118,16 +124,16 @@ export default function Navbar() {
                 transition={{ duration: 0.5 }}
                 style={{ display: 'flex', alignItems: 'center', gap: '12px' }}
               >
-                <Box 
-                  sx={{ 
-                    width: 40, 
-                    height: 40, 
-                    bgcolor: '#0d7ff2', 
-                    borderRadius: '12px', 
-                    display: 'flex', 
-                    alignItems: 'center', 
+                <Box
+                  sx={{
+                    width: 40,
+                    height: 40,
+                    bgcolor: '#0d7ff2',
+                    borderRadius: '12px',
+                    display: 'flex',
+                    alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 0 20px rgba(13, 127, 242, 0.3)'
+                    boxShadow: '0 4px 16px rgba(13, 127, 242, 0.25)'
                   }}
                 >
                   <Typography sx={{ color: 'white', fontWeight: 900, fontSize: '1.2rem' }}>M</Typography>
@@ -137,7 +143,7 @@ export default function Navbar() {
                   sx={{
                     fontWeight: 950,
                     letterSpacing: "-0.04em",
-                    color: "white",
+                    color: (mounted && scrolled) || pathname !== "/" ? "var(--text-main)" : "var(--text-main)",
                     fontSize: { xs: "1.2rem", md: "1.5rem" }
                   }}
                 >
@@ -167,20 +173,20 @@ export default function Navbar() {
                         component={Link}
                         href={n.href}
                         sx={{
-                          color: isActive(n.href) || openMenu ? "#fff" : "rgba(255, 255, 255, 0.7)",
+                          color: isActive(n.href) || openMenu ? "var(--text-main)" : "var(--nav-text)",
                           fontWeight: 700,
                           px: 2,
                           py: 1,
                           fontSize: "0.95rem",
                           position: "relative",
                           textTransform: "none",
-                          "&:hover": { 
-                            color: "#fff",
-                            bgcolor: "rgba(255, 255, 255, 0.05)",
+                          "&:hover": {
+                            color: "var(--text-main)",
+                            bgcolor: "rgba(0, 0, 0, 0.04)",
                             borderRadius: "10px"
                           },
                         }}
-                        endIcon={<KeyboardArrowDownIcon sx={{ 
+                        endIcon={<KeyboardArrowDownIcon sx={{
                           transform: openMenu ? 'rotate(180deg)' : 'rotate(0)',
                           transition: 'transform 0.3s',
                           fontSize: 18
@@ -194,19 +200,19 @@ export default function Navbar() {
                         onClose={handleCloseMenu}
                         disableScrollLock
                         TransitionComponent={Fade}
-                        MenuListProps={{ 
-                          onMouseEnter: () => setAnchorEl(anchorEl), 
+                        MenuListProps={{
+                          onMouseEnter: () => setAnchorEl(anchorEl),
                           onMouseLeave: handleCloseMenu,
                           sx: { p: 0 }
                         }}
                         PaperProps={{
                           sx: {
                             mt: 1.5,
-                            bgcolor: "rgba(10, 15, 28, 0.98)",
+                            bgcolor: "var(--nav-menu)",
                             backdropFilter: "blur(25px)",
-                            border: "1px solid rgba(255, 255, 255, 0.05)",
+                            border: "1px solid var(--border-muted)",
                             borderRadius: "24px",
-                            boxShadow: "0 40px 100px rgba(0,0,0,0.6)",
+                            boxShadow: "0 20px 60px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.05)",
                             minWidth: "600px",
                             p: 4,
                           }
@@ -215,10 +221,10 @@ export default function Navbar() {
                         <Grid container spacing={5}>
                           {n.dropdown.map((category, idx) => (
                             <Grid size={{ xs: 12, md: idx === 0 ? 5 : 7 }} key={idx}>
-                              <Typography variant="overline" sx={{ 
-                                fontWeight: 900, 
-                                color: "#0d7ff2", 
-                                letterSpacing: 2, 
+                              <Typography variant="overline" sx={{
+                                fontWeight: 900,
+                                color: "#0d7ff2",
+                                letterSpacing: 2,
                                 mb: 2.5,
                                 display: "block",
                                 px: 1
@@ -236,21 +242,21 @@ export default function Navbar() {
                                       borderRadius: "12px",
                                       py: 1.5,
                                       px: 1,
-                                      color: "#94a3b8",
+                                      color: "var(--text-secondary)",
                                       transition: "all 0.2s ease",
                                       "&:hover": {
-                                        color: "white",
+                                        color: "var(--text-main)",
                                         bgcolor: "rgba(13, 127, 242, 0.05)",
-                                        "& .MuiTypography-root": { color: "white" }
+                                        "& .MuiTypography-root": { color: "var(--text-main)" }
                                       }
                                     }}
                                   >
-                                    <ListItemText 
-                                      primary={item.label} 
-                                      primaryTypographyProps={{ 
+                                    <ListItemText
+                                      primary={item.label}
+                                      primaryTypographyProps={{
                                         fontWeight: 600,
                                         fontSize: "0.9rem"
-                                      }} 
+                                      }}
                                     />
                                   </ListItemButton>
                                 ))}
@@ -258,10 +264,10 @@ export default function Navbar() {
                             </Grid>
                           ))}
                         </Grid>
-                        <Box sx={{ mt: 3, pt: 3, borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
-                          <Button 
-                            component={Link} 
-                            href="/services" 
+                        <Box sx={{ mt: 3, pt: 3, borderTop: "1px solid var(--border-muted)", textAlign: "center" }}>
+                          <Button
+                            component={Link}
+                            href="/services"
                             onClick={handleCloseMenu}
                             sx={{ color: "#0d7ff2", fontWeight: 800, textTransform: "none" }}
                           >
@@ -275,13 +281,13 @@ export default function Navbar() {
                       component={Link}
                       href={n.href}
                       sx={{
-                        color: isActive(n.href) ? "#fff" : "rgba(255, 255, 255, 0.7)",
+                        color: isActive(n.href) ? "var(--text-main)" : "var(--nav-text)",
                         fontWeight: 600,
                         px: 2,
                         position: "relative",
                         "&:hover": {
-                          color: "#fff",
-                          backgroundColor: "rgba(255, 255, 255, 0.05)",
+                          color: "var(--text-main)",
+                          backgroundColor: "rgba(0, 0, 0, 0.04)",
                         },
                         "&::after": {
                           content: '""',
@@ -290,7 +296,7 @@ export default function Navbar() {
                           left: "50%",
                           width: isActive(n.href) ? "20px" : "0px",
                           height: "2px",
-                          background: theme.palette.secondary.main,
+                          background: "#0d7ff2",
                           transition: "all 0.3s ease",
                           transform: "translateX(-50%)",
                         }
@@ -307,26 +313,19 @@ export default function Navbar() {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 style={{ display: 'flex', gap: '12px' }}
               >
-                <Button
-                  variant="outlined"
-                  component={Link}
-                  href="https://mngm.miiscollp.com/login"
-                  sx={{
-                    ml: 2,
-                    px: 3,
-                    borderRadius: "12px",
-                    textTransform: "none",
-                    fontWeight: 700,
-                    color: "white",
-                    borderColor: "rgba(255, 255, 255, 0.2)",
-                    "&:hover": {
-                      borderColor: "white",
-                      bgcolor: "rgba(255, 255, 255, 0.05)",
-                    },
-                  }}
-                >
-                  Portal
-                </Button>
+                {mounted && (
+                  <IconButton
+                    onClick={() => setTheme(nextTheme === "dark" ? "light" : "dark")}
+                    sx={{
+                      color: pathname === "/" && !scrolled ? "#fff" : "var(--text-main)",
+                      bgcolor: "rgba(0,0,0,0.05)",
+                      mr: 1,
+                      "&:hover": { bgcolor: "rgba(13, 127, 242, 0.1)", color: "#0d7ff2" }
+                    }}
+                  >
+                    {nextTheme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+                  </IconButton>
+                )}
                 <Button
                   variant="contained"
                   component={Link}
@@ -337,7 +336,8 @@ export default function Navbar() {
                     textTransform: "none",
                     fontWeight: 800,
                     bgcolor: "#0d7ff2",
-                    boxShadow: "0 10px 20px rgba(13, 127, 242, 0.2)",
+                    color: "#fff",
+                    boxShadow: "0 4px 16px rgba(13, 127, 242, 0.25)",
                     "&:hover": {
                       bgcolor: "#0b6ed1",
                       transform: "translateY(-2px)",
@@ -355,9 +355,9 @@ export default function Navbar() {
               onClick={() => setOpen(true)}
               sx={{
                 display: { md: "none" },
-                color: "white",
-                background: "rgba(255, 255, 255, 0.05)",
-                "&:hover": { background: "rgba(255, 255, 255, 0.1)" }
+                color: "var(--text-main)",
+                background: "rgba(0, 0, 0, 0.04)",
+                "&:hover": { background: "var(--border-light)" }
               }}
             >
               <MenuIcon />
@@ -378,54 +378,64 @@ export default function Navbar() {
           sx: {
             width: "100%",
             maxWidth: 320,
-            bgcolor: "#0a0f1c",
+            bgcolor: "var(--bg-card)",
             backgroundImage: "none",
-            color: "white",
+            color: "var(--text-main)",
             p: 3,
-            borderLeft: "1px solid rgba(255, 255, 255, 0.05)"
+            borderLeft: "1px solid var(--border-muted)"
           },
         }}
       >
         <Box sx={{ display: "flex", justifyContent: "flex-end", mb: 4 }}>
-          <IconButton onClick={() => setOpen(false)} sx={{ color: "white" }}>
+          <IconButton onClick={() => setOpen(false)} sx={{ color: "var(--text-main)" }}>
             <CloseIcon />
           </IconButton>
         </Box>
 
-        <Typography variant="h6" sx={{ fontWeight: 950, mb: 4, px: 2, letterSpacing: "-0.04em", color: "#0d7ff2" }}>
-          MIISCO
-        </Typography>
+        <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", mb: 4, px: 2 }}>
+          <Typography variant="h6" sx={{ fontWeight: 950, letterSpacing: "-0.04em", color: "#0d7ff2" }}>
+            MIISCO
+          </Typography>
+          {mounted && (
+            <IconButton
+              onClick={() => setTheme(nextTheme === "dark" ? "light" : "dark")}
+              sx={{ color: "var(--text-main)", bgcolor: "rgba(0,0,0,0.05)" }}
+            >
+              {nextTheme === "dark" ? <LightModeIcon /> : <DarkModeIcon />}
+            </IconButton>
+          )}
+        </Box>
 
         <List sx={{ gap: 1, display: "flex", flexDirection: "column" }}>
           {nav.map((n) => (
             <React.Fragment key={n.label}>
               {n.dropdown ? (
-                <Accordion sx={{ 
-                  background: "transparent", 
-                  color: "white", 
+                <Accordion sx={{
+                  background: "transparent",
+                  color: "var(--text-main)",
                   boxShadow: "none",
                   "&::before": { display: "none" }
                 }}>
-                  <AccordionSummary 
-                    expandIcon={<ExpandMoreIcon sx={{ color: "white" }} />}
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon sx={{ color: "var(--text-main)" }} />}
                     sx={{ p: 2, "&.Mui-expanded": { minHeight: 48 } }}
                   >
                     <Typography sx={{ fontWeight: 600 }}>{n.label}</Typography>
                   </AccordionSummary>
-                  <AccordionDetails sx={{ p: 0, bgcolor: "rgba(255,255,255,0.03)" }}>
-                    <ListItemButton 
-                      component={Link} 
+                  <AccordionDetails sx={{ p: 0, bgcolor: "rgba(0,0,0,0.02)" }}>
+                    <ListItemButton
+                      component={Link}
                       href={n.href}
                       onClick={() => setOpen(false)}
-                      sx={{ py: 1.5, borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+                      sx={{ py: 1.5, borderBottom: "1px solid var(--border-muted)" }}
                     >
-                      <ListItemText 
-                        primary="View All Services" 
-                        primaryTypographyProps={{ 
-                          fontSize: "0.9rem", 
+                      <ListItemText
+                        primary="View All Services"
+                        primaryTypographyProps={{
+                          fontSize: "0.9rem",
                           fontWeight: 700,
                           color: "#0d7ff2"
-                        }} 
+                        }}
                       />
                     </ListItemButton>
                     {n.dropdown.map((category, idx) => (
@@ -435,9 +445,9 @@ export default function Navbar() {
                         </Typography>
                         <List>
                           {category.items.map((item, iidx) => (
-                            <ListItemButton 
-                              key={iidx} 
-                              component={Link} 
+                            <ListItemButton
+                              key={iidx}
+                              component={Link}
                               href={item.href}
                               onClick={() => setOpen(false)}
                             >
@@ -459,10 +469,10 @@ export default function Navbar() {
                     mb: 1.5,
                     px: 3,
                     py: 2,
-                    backgroundColor: isActive(n.href) ? "rgba(13, 127, 242, 0.1)" : "transparent",
-                    color: isActive(n.href) ? "#0d7ff2" : "white",
+                    backgroundColor: isActive(n.href) ? "rgba(13, 127, 242, 0.08)" : "transparent",
+                    color: isActive(n.href) ? "#0d7ff2" : "var(--text-main)",
                     "&:hover": {
-                      backgroundColor: "rgba(255, 255, 255, 0.05)",
+                      backgroundColor: "rgba(0, 0, 0, 0.04)",
                     }
                   }}
                 >
@@ -490,7 +500,8 @@ export default function Navbar() {
               py: 1.5,
               borderRadius: 3,
               fontWeight: 700,
-              background: `linear-gradient(90deg, ${theme.palette.secondary.main}, ${theme.palette.secondary.dark})`,
+              background: "linear-gradient(90deg, #0d7ff2, #2563eb)",
+              color: "#fff",
             }}
           >
             Get in Touch
