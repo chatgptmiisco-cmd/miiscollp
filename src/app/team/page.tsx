@@ -60,7 +60,7 @@ const teamMembers: TeamMember[] = [
     avatar: "/founder.jpg",
     bio: "Visionary leader with 15+ years in IT services, driving Miisco's mission to redefine software quality standards across the globe.",
     skills: ["Strategic Vision", "Business Development", "Digital Transformation"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/mohit-maheshwari-71073b34/",
     email: "mohit@miiscollp.com",
   },
   {
@@ -70,7 +70,7 @@ const teamMembers: TeamMember[] = [
     avatar: "/shobhit.jpeg",
     bio: "Financial strategist ensuring Miisco's sustainable growth while building a culture of accountability and operational excellence.",
     skills: ["Financial Planning", "Risk Management", "Growth Strategy"],
-    linkedin: "#",
+    linkedin: "",
     email: "shobhit@miiscollp.com",
   },
   {
@@ -80,28 +80,101 @@ const teamMembers: TeamMember[] = [
     avatar: "/cofounder.jpg",
     bio: "Brand architect crafting Miisco's market presence and forging strategic partnerships with Fortune 500 companies worldwide.",
     skills: ["Brand Strategy", "Client Relations", "Market Expansion"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/vishal-maheshwari-902473114/",
     email: "vishal@miiscollp.com",
   },
   // Engineering
   {
     name: "Prateek Rajput",
-    role: "Lead Full-Stack Engineer",
+    role: "Senior Frontend Developer",
     department: "Engineering",
     avatar: "",
-    bio: "Architect of scalable web platforms, leading a team that delivers pixel-perfect, high-performance applications using modern tech stacks.",
-    skills: ["React", "Node.js", "AWS", "TypeScript"],
+    bio: "Senior Frontend Developer building fast, scalable web and mobile apps with React, React Native, Next.js, TypeScript, and Tailwind CSS.",
+    skills: ["React","React-native","Next.js", "TypeScript", "Tailwind CSS"],
+    linkedin: "https://www.linkedin.com/in/rajputprateek/",
+  },
+  {
+    name: "Abhishek Raj",
+    role: "Senior Full Stack Developer",
+    department: "Engineering",
+    avatar: "",
+    bio: "End-to-end engineering specialist, building robust platforms from databases to dynamic client experiences.",
+    skills: ["Node.js", "React","Python","Express","Next.js","TypeScript","Tailwind CSS"],
+    linkedin: "https://www.linkedin.com/in/carryadder/",
+  },
+  {
+    name: "Dhiraj Zawar",
+    role: "Full Stack Developer",
+    department: "Engineering",
+    avatar: "",
+    bio: "Architecting scalable backend architectures and integrating them flawlessly with modern frontends.",
+    skills: ["JavaScript", "Python", "SQL", "React-Native","React"],
+    linkedin: "https://www.linkedin.com/in/dhiraj-zawar-19424124a/",
+  },
+  {
+    name: "Deepesh Singh",
+    role: "QA & Backend Engineer",
+    department: "Engineering",
+    avatar: "",
+    bio: "Building resilient microservices and aggressively automating reliability checks across the platform.",
+    skills: ["Python", "AI-ML", "AWS", "Kubernetes", "Docker", "FastAPI", "node.js", "express.js"],
+    linkedin: "https://www.linkedin.com/in/asdeepesh/",
+  },
+  {
+    name: "Meghanshu Jain",
+    role: "Backend Developer",
+    department: "Engineering",
+    avatar: "",
+    bio: "Ensuring deep architectural integrity and reliability by combining software testing with core backend development.",
+    skills: ["Python", "Django", "FastAPI", "node.js", "express.js", "playwright","docker"],
+    linkedin: "https://www.linkedin.com/in/meghanshu-jain-180378219/",
+  },
+  {
+    name: "Aditya Salunkhe",
+    role: "FullStack Developer & Automation Engineer",
+    department: "Engineering",
+    avatar: "",
+    bio: "Fusing visually engaging frontends with automated testing pipelines to ensure continuous quality.",
+    skills: ["React", "React-native", "Next.js", "node.js", "express.js", "Selenium"],
+    linkedin: "https://www.linkedin.com/in/aditya-salunke-b96a88320/",
+  },
+
+  {
+    name: "Sanket Patil",
+    role: "QA & Backend Engineer",
+    department: "Engineering",
+    avatar: "",
+    bio: "Specializing in API automation, performance bottlenecks resolution, and backend stability.",
+    skills: ["PostgreSQL", "API Automation", "JMeter", "Python"],
     linkedin: "#",
+  },
+  {
+    name: "Rahul Sen",
+    role: "Frontend Developer",
+    department: "Engineering",
+    avatar: "",
+    bio: "Passionate about bridging the gap between design and technical implementation through elegant code.",
+    skills: ["HTML5", "CSS3", "JavaScript", "React"],
+    linkedin: "https://www.linkedin.com/in/rahulsenmobileapplicationdeveloper/",
   },
   // QA & Testing
   {
     name: "Gaurav Sharma",
-    role: "QA Lead",
+    role: "QA & Automation Lead",
     department: "QA & Testing",
     avatar: "",
-    bio: "Quality champion overseeing end-to-end testing strategies that have achieved zero critical bugs in production for 200+ releases.",
+    bio: "Quality champion overseeing end-to-end testing strategies that achieve zero critical bugs in production.",
     skills: ["Test Strategy", "Selenium", "Appium", "JIRA"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/gaurav-sharma-277505172/",
+  },
+  {
+    name: "Aditya Singh",
+    role: "QA Engineer",
+    department: "QA & Testing",
+    avatar: "",
+    bio: "Meticulous tester dedicated to uncovering edge cases and enforcing the highest standards of software quality.",
+    skills: ["Manual Testing", "Bug Tracking", "Test Cases", "Agile"],
+    linkedin: "https://www.linkedin.com/in/adityasinghse/",
   },
   // Design
   {
@@ -111,18 +184,15 @@ const teamMembers: TeamMember[] = [
     avatar: "",
     bio: "Design thinker transforming complex user journeys into elegant, intuitive interfaces that drive engagement and delight users.",
     skills: ["Figma", "Design Systems", "Prototyping", "User Research"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/tushar-mishra-bb3b13209/",
   },
-  // Operations
-
-
 ];
 
 const stats = [
-  { icon: <Groups sx={{ fontSize: 28 }} />, value: "50+", label: "Team Members" },
-  { icon: <EmojiEvents sx={{ fontSize: 28 }} />, value: "150+", label: "Projects Delivered" },
+  { icon: <Groups sx={{ fontSize: 28 }} />, value: "10+", label: "Team Members" },
+  { icon: <EmojiEvents sx={{ fontSize: 28 }} />, value: "120+", label: "Projects Delivered" },
   { icon: <TrendingUp sx={{ fontSize: 28 }} />, value: "98%", label: "Client Satisfaction" },
-  { icon: <Diversity3 sx={{ fontSize: 28 }} />, value: "4+", label: "Global Offices" },
+  // { icon: <Diversity3 sx={{ fontSize: 28 }} />, value: "4+", label: "Global Offices" },
 ];
 
 const departmentIcons: Record<string, React.ReactNode> = {

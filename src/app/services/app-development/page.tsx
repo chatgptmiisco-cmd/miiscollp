@@ -158,7 +158,7 @@ export default function AppDevelopmentPage() {
               >
                 <Box 
                   component="img" 
-                  src="/mobile_app_dev_phone_1773399947635.png" 
+                  src="/services/app-development.png" 
                   alt="App Development"
                   sx={{ width: "100%", display: "block" }}
                 />
@@ -241,7 +241,7 @@ export default function AppDevelopmentPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/mobile_ui_elements_3d_1773399973627.png" 
+                    src="/services/app-development.png" 
                     alt="App Benefits"
                     sx={{ width: "100%", display: "block" }}
                   />

@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 
 export async function POST(request: Request) {
   try {
-    const { fullName, email, projectType, message } = await request.json();
+    const { fullName, email, address, projectType, message } = await request.json();
 
     if (!fullName || !email || !message) {
       return NextResponse.json(
@@ -29,6 +29,7 @@ export async function POST(request: Request) {
       text: `
             Name: ${fullName}
             Email: ${email}
+            Address: ${address || 'N/A'}
             Project Type: ${projectType || 'N/A'}
             Message:
             ${message}
@@ -37,6 +38,7 @@ export async function POST(request: Request) {
         <h3>New Contact Form Submission</h3>
         <p><strong>Name:</strong> ${fullName}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Address:</strong> ${address || 'N/A'}</p>
         <p><strong>Project Type:</strong> ${projectType || 'N/A'}</p>
         <br />
         <p><strong>Message:</strong></p>

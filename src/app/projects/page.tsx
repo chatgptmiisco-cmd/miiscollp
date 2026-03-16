@@ -16,41 +16,85 @@ import Link from "next/link";
 
 const caseStudies = [
   {
-    title: "Global E-commerce Test Automation",
-    client: "Retail Giant",
-    category: "QA Automation",
-    description: "Implemented a full-scale end-to-end automation suite for a Fortune 500 retailer, reducing regression time from 3 days to 4 hours.",
-    image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Playwright", "Jenkins", "AWS"],
-    color: "#0d7ff2"
+    title: "Smart Matrimony",
+    client: "Internal Product",
+    category: "Digital Solution",
+    description: "Complete matrimonial platform with mobile app and website for connecting people and families.",
+    image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Mobile App", "Website", "Matrimonial"],
+    color: "#0d7ff2",
+    link: "https://smartmatrimony.ai/"
   },
   {
-    title: "Fintech API Security & Scaling",
-    client: "NeoBank",
-    category: "Backend & QA",
-    description: "Architected a secure GraphQL API layer and comprehensive contract testing framework to handle 10k+ concurrent requests.",
-    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Node.js", "GraphQL", "Postman"],
-    color: "#0d7ff2"
+    title: "Chess Guru",
+    client: "Internal Product",
+    category: "AI Platform",
+    description: "An advanced, AI-powered platform tailored for chess enthusiasts to learn, play, and master the game.",
+    image: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Web App", "AI Platform", "Chess Engine"],
+    color: "#0d7ff2",
+    link: "https://chessguru.ai/"
   },
   {
-    title: "Healthcare App Modernization",
-    client: "HealthTech Inc",
-    category: "Mobile & UI/UX",
-    description: "Redesigned and rebuilt a patient-facing mobile app using React Native, achieving a 4.8 star rating on App Store.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    tags: ["React Native", "Figma", "Firebase"],
-    color: "#0d7ff2"
+    title: "Global iGaming Platform Tests",
+    client: "Leading European iGaming Provider",
+    category: "Quality Assurance",
+    description: "Provided elite QA services for a high-traffic online gaming platform, executing rigorous functional and compliance testing to ensure flawless cross-platform performance.",
+    image: "https://images.unsplash.com/photo-1518544801976-3e159e50e5bb?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Gaming", "Compliance Testing", "Automated QA"],
+    color: "#0d7ff2",
+    link: ""
   },
   {
-    title: "Supply Chain IoT Dashboard",
-    client: "Logistics Pro",
-    category: "Web Development",
-    description: "Developed a real-time tracking dashboard for global logistics, integrating IoT data streams with live map visualizations.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
-    tags: ["Next.js", "socket.io", "Deck.gl"],
-    color: "#0d7ff2"
-  }
+    title: "Franchise Operations Portal",
+    client: "Global QSR Franchise Network",
+    category: "Quality Assurance",
+    description: "Delivered comprehensive test automation and QA for a massive restaurant network operating 230+ locations, verifying critical internal operations and supply chain software.",
+    image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
+    tags: ["QSR", "Operations App", "Test Automation"],
+    color: "#0d7ff2",
+    link: ""
+  },
+  {
+    title: "24/7 Global Diagnostics Network",
+    client: "International Healthcare Provider",
+    category: "Quality Assurance",
+    description: "Rigorously tested critical healthcare diagnostics infrastructure, enabling seamless, secure transmission of medical imaging with zero-downtime reliability through end-to-end QA.",
+    image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80",
+    tags: ["Healthcare", "Security Testing", "Reliability QA"],
+    color: "#0d7ff2",
+    link: ""
+  },
+  // {
+  //   title: "Government System",
+  //   client: "Public Sector",
+  //   category: "Development & QA",
+  //   description: "Architected a highly secure, compliant government portal prioritizing data privacy, performance under load, and strict QA standards.",
+  //   image: "https://images.unsplash.com/photo-1523266075923-3dbd183dcb7f?auto=format&fit=crop&w=1200&q=80",
+  //   tags: ["Security", "Compliance", "Load Testing"],
+  //   color: "#0d7ff2",
+  //   link: ""
+  // },
+  // {
+  //   title: "Social Media Management Tool",
+  //   client: "MarTech",
+  //   category: "Development & QA",
+  //   description: "Created a unified social media console for analytics and scheduling, ensuring cross-platform API stability through continuous testing.",
+  //   image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80",
+  //   tags: ["Analytics", "GraphQL", "Cypress"],
+  //   color: "#0d7ff2",
+  //   link: ""
+  // },
+  // {
+  //   title: "Jewelry E-commerce Platform",
+  //   client: "Luxury Retail",
+  //   category: "Development & QA",
+  //   description: "Delivered a premium digital storefront with complex inventory workflows and flawless checkout experiences verified by robust QA.",
+  //   image: "https://images.unsplash.com/photo-1515562141207-7a8ef6195084?auto=format&fit=crop&w=1200&q=80",
+  //   tags: ["E-commerce", "Next.js", "Payment Gateway"],
+  //   color: "#0d7ff2",
+  //   link: ""
+  // }
 ];
 
 export default function CaseStudiesPage() {
@@ -63,6 +107,9 @@ export default function CaseStudiesPage() {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.2 } }
   };
+
+  const internalProducts = caseStudies.filter(c => c.client === "Internal Product");
+  const clientProjects = caseStudies.filter(c => c.client !== "Internal Product");
 
   return (
     <Box sx={{ bgcolor: "var(--bg-main)", color: "var(--text-main)", minHeight: "100vh", pb: 15 }}>
@@ -98,8 +145,13 @@ export default function CaseStudiesPage() {
         </Container>
       </Box>
 
-      {/* Case Studies Grid */}
-      <Container maxWidth="lg">
+      {/* Proprietary Products */}
+      <Container maxWidth="lg" sx={{ mb: 12 }}>
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+          <Typography variant="h3" sx={{ fontWeight: 900, mb: 5, letterSpacing: "-0.02em" }}>
+            Our Proprietary <Box component="span" sx={{ color: "#0d7ff2" }}>Products</Box>
+          </Typography>
+        </motion.div>
         <Grid 
           container 
           spacing={4} 
@@ -109,7 +161,123 @@ export default function CaseStudiesPage() {
           viewport={{ once: true }} 
           variants={staggerContainer}
         >
-          {caseStudies.map((study, i) => (
+          {internalProducts.map((study, i) => (
+            <Grid size={{ xs: 12, md: 6 }} key={i}>
+              <motion.div variants={fadeInUp}>
+                <Paper
+                  sx={{
+                    borderRadius: "32px",
+                    background: "linear-gradient(145deg, rgba(13, 127, 242, 0.05) 0%, var(--bg-card) 100%)",
+                    border: "1px solid rgba(13, 127, 242, 0.3)",
+                    overflow: "hidden",
+                    height: "100%",
+                    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+                    position: "relative",
+                    "&:hover": {
+                      transform: "translateY(-12px)",
+                      borderColor: "#0d7ff2",
+                      boxShadow: "0 20px 40px rgba(13, 127, 242, 0.15)",
+                      "& .study-image": { transform: "scale(1.05)" }
+                    }
+                  }}
+                >
+                  <Box sx={{ position: "absolute", top: 0, left: 0, width: "100%", height: "4px", background: "linear-gradient(90deg, #0d7ff2, #60a5fa)", zIndex: 10 }} />
+                  {/* Image Container */}
+                  <Box sx={{ height: 260, overflow: "hidden", position: "relative" }}>
+                    <Box
+                      className="study-image"
+                      component="img"
+                      src={study.image}
+                      alt={study.title}
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        transition: "transform 0.8s ease"
+                      }}
+                    />
+                    <Chip 
+                      label="Featured Product" 
+                      sx={{ 
+                        position: "absolute", top: 24, left: 24, 
+                        bgcolor: "#0d7ff2", color: "#fff", fontWeight: 800, 
+                        fontSize: "0.75rem", letterSpacing: 1, textTransform: "uppercase" 
+                      }} 
+                    />
+                  </Box>
+
+                  {/* Content Container */}
+                  <Box sx={{ p: 4, pt: 5 }}>
+                    <Typography variant="h4" sx={{ fontWeight: 900, mb: 2 }}>
+                      {study.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ color: "var(--text-secondary)", mb: 4, lineHeight: 1.7, fontSize: "1.05rem" }}>
+                      {study.description}
+                    </Typography>
+
+                    <Stack direction="row" spacing={1} flexWrap="wrap" gap={1} mb={5}>
+                      {study.tags.map((tag, ti) => (
+                        <Chip 
+                          key={ti} 
+                          label={tag} 
+                          size="small" 
+                          sx={{ 
+                            bgcolor: "rgba(13, 127, 242, 0.1)", 
+                            color: "#0d7ff2", 
+                            fontWeight: 700,
+                            border: "1px solid rgba(13, 127, 242, 0.2)",
+                            borderRadius: "8px"
+                          }} 
+                        />
+                      ))}
+                    </Stack>
+
+                    <Button
+                      variant="contained"
+                      href={study.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      endIcon={<Launch />}
+                      fullWidth
+                      sx={{
+                        bgcolor: "#0d7ff2",
+                        color: "#fff",
+                        textTransform: "none",
+                        fontWeight: 800,
+                        py: 1.8,
+                        borderRadius: "12px",
+                        fontSize: "1.05rem",
+                        "&:hover": { bgcolor: "#0b6ed1", transform: "translateY(-2px)", boxShadow: "0 10px 20px rgba(13, 127, 242, 0.2)" },
+                        transition: "all 0.3s ease"
+                      }}
+                    >
+                      Visit Platform
+                    </Button>
+                  </Box>
+                </Paper>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+
+      {/* Case Studies Grid */}
+      <Container maxWidth="lg">
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}>
+          <Typography variant="h3" sx={{ fontWeight: 900, mb: 5, letterSpacing: "-0.02em" }}>
+            Client <Box component="span" sx={{ color: "#0d7ff2" }}>Success Stories</Box>
+          </Typography>
+        </motion.div>
+        <Grid 
+          container 
+          spacing={4} 
+          component={motion.div} 
+          initial="hidden" 
+          whileInView="visible" 
+          viewport={{ once: true }} 
+          variants={staggerContainer}
+        >
+          {clientProjects.map((study, i) => (
             <Grid size={{ xs: 12, md: 6 }} key={i}>
               <motion.div variants={fadeInUp}>
                 <Paper
@@ -193,19 +361,38 @@ export default function CaseStudiesPage() {
                       ))}
                     </Stack>
 
-                    <Button
-                      variant="text"
-                      endIcon={<ArrowForward />}
-                      sx={{
-                        color: study.color,
-                        textTransform: "none",
-                        fontWeight: 800,
-                        p: 0,
-                        "&:hover": { bgcolor: "transparent", color: "var(--text-main)" }
-                      }}
-                    >
-                      Read Case Study
-                    </Button>
+                    {study.link ? (
+                      <Button
+                        variant="text"
+                        href={study.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        endIcon={<Launch />}
+                        sx={{
+                          color: study.color,
+                          textTransform: "none",
+                          fontWeight: 800,
+                          p: 0,
+                          "&:hover": { bgcolor: "transparent", color: "var(--text-main)" }
+                        }}
+                      >
+                        View Live Project
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="text"
+                        endIcon={<ArrowForward />}
+                        sx={{
+                          color: study.color,
+                          textTransform: "none",
+                          fontWeight: 800,
+                          p: 0,
+                          "&:hover": { bgcolor: "transparent", color: "var(--text-main)" }
+                        }}
+                      >
+                        Read Case Study
+                      </Button>
+                    )}
                   </Box>
                 </Paper>
               </motion.div>

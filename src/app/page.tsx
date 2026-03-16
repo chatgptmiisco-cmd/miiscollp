@@ -279,15 +279,15 @@ function SectionProgressBar({
 }) {
   const { scrollYProgress } = (motion as any).useScroll
     ? (require("framer-motion") as any).useScroll({
-        target: sectionRef,
-        offset: ["start 80%", "end 20%"],
-      })
-    : { scrollYProgress: { onChange: () => {} } };
+      target: sectionRef,
+      offset: ["start 80%", "end 20%"],
+    })
+    : { scrollYProgress: { onChange: () => { } } };
   const scaleX = (motion as any).useSpring
     ? (require("framer-motion") as any).useSpring(scrollYProgress, {
-        stiffness: 120,
-        damping: 20,
-      })
+      stiffness: 120,
+      damping: 20,
+    })
     : undefined;
 
   return (
@@ -341,7 +341,7 @@ export default function HomePage(): React.ReactElement {
         />
         <motion.div
           aria-hidden
-          animate={{ 
+          animate={{
             x: ["0%", "5%", "-5%", "0%"],
             y: ["0%", "2%", "-2%", "0%"]
           }}
@@ -378,7 +378,7 @@ export default function HomePage(): React.ReactElement {
                     fontSize: { xs: "2.8rem", md: "5.5rem" },
                   }}
                 >
-                  Engineering <Box component="span" sx={{ 
+                  Engineering <Box component="span" sx={{
                     background: "linear-gradient(90deg, #0d7ff2 0%, #00d4ff 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent"
@@ -386,16 +386,16 @@ export default function HomePage(): React.ReactElement {
                 </Typography>
                 <Typography
                   variant="h6"
-                  sx={{ 
-                    mb: 6, 
-                    color: "var(--text-secondary)", 
-                    maxWidth: "600px", 
+                  sx={{
+                    mb: 6,
+                    color: "var(--text-secondary)",
+                    maxWidth: "600px",
                     lineHeight: 1.6,
                     fontSize: { xs: "1.1rem", md: "1.25rem" },
                     fontWeight: 400
                   }}
                 >
-                  We partner with ambitious product teams to harden releases, 
+                  We partner with ambitious product teams to harden releases,
                   eliminate regression bottlenecks, and guarantee premium user experiences.
                 </Typography>
 
@@ -411,7 +411,7 @@ export default function HomePage(): React.ReactElement {
                       fontSize: "1rem",
                       background: "linear-gradient(90deg, #0d7ff2, #2563eb)",
                       boxShadow: "0 8px 24px rgba(13, 127, 242, 0.3)",
-                      "&:hover": { 
+                      "&:hover": {
                         background: "linear-gradient(90deg, #2563eb, #0d7ff2)",
                         transform: "translateY(-2px)",
                         boxShadow: "0 12px 32px rgba(13, 127, 242, 0.4)",
@@ -458,9 +458,9 @@ export default function HomePage(): React.ReactElement {
                         </Typography>
                         <Typography
                           variant="caption"
-                          sx={{ 
-                            color: "var(--text-secondary)", 
-                            textTransform: "uppercase", 
+                          sx={{
+                            color: "var(--text-secondary)",
+                            textTransform: "uppercase",
                             fontWeight: 700,
                             letterSpacing: 1
                           }}
@@ -501,7 +501,7 @@ export default function HomePage(): React.ReactElement {
                     variant="body1"
                     sx={{ color: "var(--text-secondary)", mb: 4, lineHeight: 1.7 }}
                   >
-                    Rapid automation onboarding • CI/CD gating • Performance 
+                    Rapid automation onboarding • CI/CD gating • Performance
                     and API testing • Web/Mobile coverage • Full Security Audits
                   </Typography>
                   <Divider
@@ -532,7 +532,7 @@ export default function HomePage(): React.ReactElement {
       </Box>
 
       {/* Trust Bar */}
-      <Box sx={{ py: 10, borderTop: "1px solid var(--border-muted)", bgcolor: "rgba(0,0,0,0.02)" }}>
+      <Box sx={{ py: 10, borderTop: "1px solid var(--border-muted)", borderBottom: "1px solid var(--border-muted)", bgcolor: "rgba(0,0,0,0.02)" }}>
         <Container maxWidth="lg">
           <Typography
             variant="overline"
@@ -552,13 +552,13 @@ export default function HomePage(): React.ReactElement {
               spacing={{ xs: 4, md: 10 }}
               sx={{ flexWrap: "wrap", gap: 3, opacity: 0.6 }}
             >
-              {["Everlight", "AITRCM", "Delight DRG", "FinServ Plus"].map((brand, i) => (
+              {["Everlight", "AITRCM", "Delight DRG"].map((brand, i) => (
                 <Typography
                   key={i}
                   variant="h5"
                   sx={{
                     color: "var(--text-main)",
-                    fontWeight: 900,
+                    fontWeight: 800,
                     letterSpacing: -1,
                     transition: "all 0.3s ease",
                     cursor: "default",
@@ -626,113 +626,7 @@ export default function HomePage(): React.ReactElement {
         </Grid>
       </Container> */}
 
-      <Box
-        sx={{
-          py: { xs: 15, md: 20 },
-          position: "relative",
-          overflow: "hidden",
-          bgcolor: "var(--bg-main)",
-        }}
-      >
-        {/* Decorative background blobs */}
-        <Box
-          sx={{
-            position: "absolute",
-            top: "10%",
-            right: "-5%",
-            width: "400px",
-            height: "400px",
-            background: `radial-gradient(circle, ${theme.palette.secondary.main}11 0%, transparent 70%)`,
-            filter: "blur(60px)",
-            zIndex: 0,
-          }}
-        />
-        <Box
-          sx={{
-            position: "absolute",
-            bottom: "5%",
-            left: "-5%",
-            width: "350px",
-            height: "350px",
-            background: `radial-gradient(circle, ${theme.palette.primary.main}08 0%, transparent 70%)`,
-            filter: "blur(50px)",
-            zIndex: 0,
-          }}
-        />
 
-        <Container maxWidth="lg" sx={{ position: "relative", zIndex: 1 }}>
-          <Box sx={{ mb: 10, textAlign: { xs: "center", md: "left" } }}>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <Typography 
-                variant="h2" 
-                sx={{ 
-                  fontWeight: 950, 
-                  mb: 3, 
-                  letterSpacing: "-0.03em",
-                  fontSize: { xs: "2.5rem", md: "4rem" },
-                  color: "var(--text-main)"
-                }}
-              >
-                Featured <Box component="span" sx={{ color: "#0d7ff2" }}>Showcase</Box>
-              </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  color: "var(--text-secondary)", 
-                  maxWidth: "600px",
-                  mx: { xs: "auto", md: 0 },
-                  fontSize: "1.2rem",
-                  lineHeight: 1.6
-                }}
-              >
-                Explore our landmark projects where engineering precision meets creative digital solutions.
-              </Typography>
-            </motion.div>
-          </Box>
-
-          <Grid 
-            container 
-            spacing={4}
-            component={motion.div}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.15,
-                },
-              },
-            }}
-          >
-            {featured.map((c, i) => (
-              <Grid key={i} size={{ xs: 12, sm: 12, md: 4 }}>
-                <motion.div
-                  variants={{
-                    hidden: { opacity: 0, y: 30 },
-                    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
-                  }}
-                >
-                  <AnimatedRevealCard
-                    title={c.title}
-                    description={c.description}
-                    image={c.image}
-                    priority={i < 2}
-                  />
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
-        </Container>
-      </Box>
-      
       {/* Why Choose Miisco Section */}
       <Box
         sx={{
@@ -766,11 +660,11 @@ export default function HomePage(): React.ReactElement {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <Typography 
-                variant="h2" 
-                sx={{ 
-                  fontWeight: 950, 
-                  mb: 3, 
+              <Typography
+                variant="h2"
+                sx={{
+                  fontWeight: 950,
+                  mb: 3,
                   letterSpacing: "-0.03em",
                   fontSize: { xs: "2.5rem", md: "4rem" },
                   color: "var(--text-main)"
@@ -778,10 +672,10 @@ export default function HomePage(): React.ReactElement {
               >
                 The Miisco <Box component="span" sx={{ color: "#0d7ff2" }}>Edge</Box>
               </Typography>
-              <Typography 
-                variant="body1" 
-                sx={{ 
-                  color: "var(--text-secondary)", 
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "var(--text-secondary)",
                   maxWidth: "700px",
                   mx: "auto",
                   fontSize: "1.2rem",
@@ -793,8 +687,8 @@ export default function HomePage(): React.ReactElement {
             </motion.div>
           </Box>
 
-          <Grid 
-            container 
+          <Grid
+            container
             spacing={4}
             component={motion.div}
             initial="hidden"
@@ -856,20 +750,20 @@ export default function HomePage(): React.ReactElement {
                     >
                       {item.icon}
                     </Box>
-                    <Typography 
-                      variant="h5" 
-                      sx={{ 
-                        fontWeight: 800, 
-                        mb: 2, 
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        fontWeight: 800,
+                        mb: 2,
                         color: "var(--text-main)"
                       }}
                     >
                       {item.title}
                     </Typography>
-                    <Typography 
-                      variant="body1" 
-                      sx={{ 
-                        color: "var(--text-secondary)", 
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        color: "var(--text-secondary)",
                         lineHeight: 1.7,
                         fontSize: "1rem"
                       }}
@@ -914,7 +808,7 @@ export default function HomePage(): React.ReactElement {
                   }}
                 >
                   <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
-                    Smart Matrimony
+                    Smart Matrimony 
                   </Typography>
                   <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
                     Complete matrimonial platform with mobile app and website
@@ -932,11 +826,11 @@ export default function HomePage(): React.ReactElement {
                         key={tag}
                         label={tag}
                         size="small"
-                        sx={{ 
-                          bgcolor: "rgba(13, 127, 242, 0.1)", 
-                          color: "#0d7ff2", 
+                        sx={{
+                          bgcolor: "rgba(13, 127, 242, 0.1)",
+                          color: "#0d7ff2",
                           border: "1px solid rgba(13, 127, 242, 0.2)",
-                          fontWeight: 700 
+                          fontWeight: 700
                         }}
                       />
                     ))}
@@ -951,7 +845,7 @@ export default function HomePage(): React.ReactElement {
                       fontWeight: 800,
                       px: 4,
                       borderRadius: 3,
-                      "&:hover": { 
+                      "&:hover": {
                         bgcolor: "#0b6ed1",
                         transform: "translateY(-2px)",
                         boxShadow: "0 10px 20px rgba(13, 127, 242, 0.2)"
@@ -984,11 +878,10 @@ export default function HomePage(): React.ReactElement {
                   }}
                 >
                   <Typography variant="h5" sx={{ fontWeight: 800, mb: 2 }}>
-                    Market Briefs
+                    Chess Guru
                   </Typography>
                   <Typography variant="body1" sx={{ mb: 3, opacity: 0.9 }}>
-                    Comprehensive market analysis and financial insights
-                    platform with mobile app and web interface.
+                    An advanced, AI-powered platform tailored for chess enthusiasts to learn, play, and master the game.
                   </Typography>
                   <Stack
                     direction="row"
@@ -997,23 +890,23 @@ export default function HomePage(): React.ReactElement {
                     useFlexGap
                     sx={{ mb: 4 }}
                   >
-                    {["Mobile App", "Website", "Market Analysis"].map((tag) => (
+                    {["Web App", "AI Platform", "Chess Engine"].map((tag) => (
                       <Chip
                         key={tag}
                         label={tag}
                         size="small"
-                        sx={{ 
-                          bgcolor: "rgba(13, 127, 242, 0.1)", 
-                          color: "#0d7ff2", 
+                        sx={{
+                          bgcolor: "rgba(13, 127, 242, 0.1)",
+                          color: "#0d7ff2",
                           border: "1px solid rgba(13, 127, 242, 0.2)",
-                          fontWeight: 700 
+                          fontWeight: 700
                         }}
                       />
                     ))}
                   </Stack>
                   <Button
                     variant="contained"
-                    href="https://marketbriefs.co.in/"
+                    href="https://chessguru.ai/"
                     target="_blank"
                     rel="noopener noreferrer"
                     sx={{
@@ -1021,7 +914,7 @@ export default function HomePage(): React.ReactElement {
                       fontWeight: 800,
                       px: 4,
                       borderRadius: 3,
-                      "&:hover": { 
+                      "&:hover": {
                         bgcolor: "#0b6ed1",
                         transform: "translateY(-2px)",
                         boxShadow: "0 10px 20px rgba(13, 127, 242, 0.2)"

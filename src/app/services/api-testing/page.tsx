@@ -174,7 +174,7 @@ export default function APITestingPage() {
               >
                 <Box 
                   component="img" 
-                  src="/api/placeholder/600/400" 
+                  src="/services/api-testing.png" 
                   alt="API Testing"
                   sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                 />
@@ -255,7 +255,7 @@ export default function APITestingPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/api/placeholder/600/400" 
+                    src="/services/api-testing.png" 
                     alt="Testing Benefits"
                     sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                   />

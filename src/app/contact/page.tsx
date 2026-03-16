@@ -30,6 +30,7 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     fullName: "",
     email: "",
+    address: "",
     projectType: "",
     message: ""
   });
@@ -71,7 +72,7 @@ export default function ContactPage() {
           success: true,
           message: "Thank you! Your inquiry has been sent successfully."
         });
-        setFormData({ fullName: "", email: "", projectType: "", message: "" });
+        setFormData({ fullName: "", email: "", address: "", projectType: "", message: "" });
       } else {
         setStatus({
           loading: false,
@@ -282,6 +283,17 @@ export default function ContactPage() {
                         variant="outlined"
                         sx={textFieldStyles}
                         required
+                      />
+                    </Grid>
+                    <Grid size={{ xs: 12 }}>
+                      <TextField 
+                        label="Address"
+                        name="address"
+                        value={formData.address}
+                        onChange={handleChange}
+                        fullWidth 
+                        variant="outlined"
+                        sx={textFieldStyles}
                       />
                     </Grid>
                     <Grid size={{ xs: 12 }}>

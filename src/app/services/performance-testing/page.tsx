@@ -172,7 +172,7 @@ export default function PerformanceTestingPage() {
               >
                 <Box 
                   component="img" 
-                  src="/api/placeholder/600/400" 
+                  src="/services/performance-testing.png" 
                   alt="Performance Testing"
                   sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                 />
@@ -253,7 +253,7 @@ export default function PerformanceTestingPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/api/placeholder/600/400" 
+                    src="/services/performance-testing.png" 
                     alt="Testing Benefits"
                     sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                   />

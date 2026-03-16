@@ -161,7 +161,7 @@ export default function WebDevelopmentPage() {
               >
                 <Box 
                   component="img" 
-                  src="/web_dev_laptop_1773399361351.png" 
+                  src="/services/web-development.png" 
                   alt="Web Development"
                   sx={{ width: "100%", display: "block" }}
                 />
@@ -243,7 +243,7 @@ export default function WebDevelopmentPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/abstract_3d_elements_1773399388032.png" 
+                    src="/services/web-development.png" 
                     alt="Web Benefits"
                     sx={{ width: "100%", display: "block" }}
                   />

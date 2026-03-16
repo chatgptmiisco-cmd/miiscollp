@@ -171,7 +171,7 @@ export default function SecurityTestingPage() {
               >
                 <Box 
                   component="img" 
-                  src="/api/placeholder/600/400" 
+                  src="/services/security-testing.png" 
                   alt="Security Testing"
                   sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                 />
@@ -252,7 +252,7 @@ export default function SecurityTestingPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/api/placeholder/600/400" 
+                    src="/services/security-testing.png" 
                     alt="Testing Benefits"
                     sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                   />

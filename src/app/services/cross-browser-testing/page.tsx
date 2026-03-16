@@ -175,7 +175,7 @@ export default function CrossBrowserTestingPage() {
               >
                 <Box 
                   component="img" 
-                  src="/api/placeholder/600/400" 
+                  src="/services/cross-browser-testing.png" 
                   alt="Cross Browser Testing"
                   sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                 />
@@ -256,7 +256,7 @@ export default function CrossBrowserTestingPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/api/placeholder/600/400" 
+                    src="/services/cross-browser-testing.png" 
                     alt="Testing Benefits"
                     sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                   />

@@ -38,29 +38,31 @@ import Link from "next/link";
 
 const jobs = [
   {
-    title: "QA Engineer (Manual & Automation)",
-    location: "Remote / Hybrid",
-    type: "Full-time",
-    description: "Ensure the highest quality of our digital products. You'll lead test strategies and build robust automation suites using Playwright/Selenium.",
-    skills: ["Testing", "Automation", "Playwright", "CI/CD"],
-    salary: "₹8 - 15 LPA",
-    color: "#0d7ff2",
-  },
-  {
     title: "Senior Full Stack Developer",
     location: "Remote / Mathura",
     type: "Full-time",
     description: "Build scalable web applications using React, Next.js, and Node.js. Join our core engineering team to deliver high-impact solutions.",
     skills: ["React", "Next.js", "Node.js", "PostgreSQL"],
-    salary: "₹12 - 25 LPA",
+    salary: "Competitive",
     color: "#0d7ff2",
   },
+
   {
-    title: "UI/UX Designer",
-    location: "Remote",
-    type: "Contract",
-    description: "Create stunning, user-centric designs. You will be responsible for end-to-end design from wireframing to high-fidelity prototypes.",
-    skills: ["Figma", "Adobe CC", "Prototyping", "UX Research"],
+    title: "Digital Marketing Video Editor",
+    location: "Goverdhan, Mathura U.P.",
+    type: "Full-time (WFO)",
+    description: `Role Responsibilities:
+• Edit videos for social media platforms (Instagram, Facebook, YouTube) and marketing campaigns.
+• Convert raw footage into professional videos with motion graphics, effects, and subtitles.
+• Collaborate with the team to ensure brand guidelines are met.
+
+Qualifications & Experience:
+• Any Graduate or Diploma in Video Editing, Multimedia, or related field.
+• 1–3 years experience (Freshers with strong portfolio welcome).
+
+Contact for Details & Interview:
+📞 Vishal: 8871801191 | 📞 Mohit: 9911065583`,
+    skills: ["Premiere Pro", "After Effects", "Social Media", "Video Editing"],
     salary: "Competitive",
     color: "#0d7ff2",
   },
@@ -89,6 +91,7 @@ export default function CareersPage() {
     fullName: "",
     email: "",
     jobPosition: "",
+    location: "",
     portfolioLink: "",
     resumeLink: ""
   });
@@ -109,11 +112,15 @@ export default function CareersPage() {
   };
 
   const handleOpen = () => setOpen(true);
+  const handleApplyClick = (jobTitle: string) => {
+    setFormData(prev => ({ ...prev, jobPosition: jobTitle }));
+    setOpen(true);
+  };
   const handleClose = () => {
     setOpen(false);
     setSelectedFile(null); // Reset file selection on close
     setIsDragging(false);
-    setFormData({ fullName: "", email: "", jobPosition: "", portfolioLink: "", resumeLink: "" }); // Reset form
+    setFormData({ fullName: "", email: "", jobPosition: "", location: "", portfolioLink: "", resumeLink: "" }); // Reset form
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -139,7 +146,7 @@ export default function CareersPage() {
       // Basic validation for allowed file types
       const file = e.dataTransfer.files[0];
       const validTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
-      
+
       if (validTypes.includes(file.type) || file.name.endsWith('.pdf') || file.name.endsWith('.doc') || file.name.endsWith('.docx')) {
         setSelectedFile(file);
       } else {
@@ -150,12 +157,13 @@ export default function CareersPage() {
 
   const handleSubmit = async () => {
     setStatus({ loading: true, error: false, success: false, message: "" });
-    
+
     // We must use FormData because we are sending a file
     const pushData = new FormData();
     pushData.append('fullName', formData.fullName);
     pushData.append('email', formData.email);
     pushData.append('jobPosition', formData.jobPosition);
+    pushData.append('location', formData.location);
     pushData.append('portfolioLink', formData.portfolioLink);
     pushData.append('resumeLink', formData.resumeLink);
     if (selectedFile) {
@@ -214,9 +222,9 @@ export default function CareersPage() {
   return (
     <Box sx={{ bgcolor: "var(--bg-main)", color: "var(--text-main)", minHeight: "100vh", pb: 15 }}>
       {/* Hero Section */}
-      <Box 
-        sx={{ 
-          pt: { xs: 15, md: 25 }, 
+      <Box
+        sx={{
+          pt: { xs: 15, md: 25 },
           pb: 10,
           background: "radial-gradient(circle at 20% 30%, rgba(13, 127, 242, 0.08) 0%, transparent 60%)"
         }}
@@ -254,7 +262,7 @@ export default function CareersPage() {
               variant="contained"
               sx={{
                 bgcolor: "#0d7ff2",
-                    color: "#fff",
+                color: "#fff",
                 px: 6,
                 py: 2.5,
                 borderRadius: "15px",
@@ -361,7 +369,7 @@ export default function CareersPage() {
                       <Typography variant="h4" sx={{ fontWeight: 800, color: "var(--text-main)" }}>
                         {job.title}
                       </Typography>
-                      
+
                       <Stack direction="row" spacing={3} sx={{ color: "var(--text-secondary)" }} flexWrap="wrap" gap={1}>
                         <Stack direction="row" spacing={1} alignItems="center">
                           <LocationOn sx={{ fontSize: 18 }} />
@@ -377,36 +385,37 @@ export default function CareersPage() {
                         </Stack>
                       </Stack>
 
-                      <Typography variant="body1" sx={{ color: "var(--text-secondary)", lineHeight: 1.6, maxWidth: "700px" }}>
+                      <Typography variant="body1" sx={{ color: "var(--text-secondary)", lineHeight: 1.6, maxWidth: "700px", whiteSpace: "pre-line" }}>
                         {job.description}
                       </Typography>
 
                       <Stack direction="row" spacing={1} flexWrap="wrap" gap={1} pt={1}>
                         {job.skills.map((skill, si) => (
-                          <Chip 
-                            key={si} 
-                            label={skill} 
-                            sx={{ 
-                              bgcolor: "rgba(0, 0, 0, 0.03)", 
-                              color: "var(--text-main)", 
+                          <Chip
+                            key={si}
+                            label={skill}
+                            sx={{
+                              bgcolor: "rgba(0, 0, 0, 0.03)",
+                              color: "var(--text-main)",
                               fontWeight: 600,
                               borderRadius: "8px",
                               border: "1px solid var(--border-light)"
-                            }} 
+                            }}
                             size="small"
                           />
                         ))}
                       </Stack>
                     </Stack>
                   </Grid>
-                  
+
                   <Grid size={{ xs: 12, md: 4 }} sx={{ textAlign: { xs: "left", md: "right" } }}>
                     <Button
                       variant="contained"
+                      onClick={() => handleApplyClick(job.title)}
                       endIcon={<ArrowForward />}
                       sx={{
                         bgcolor: "#0d7ff2",
-                    color: "#fff",
+                        color: "#fff",
                         px: 5,
                         py: 2,
                         borderRadius: "12px",
@@ -466,8 +475,8 @@ export default function CareersPage() {
         </Paper>
       </Container>
       {/* Resume Application Modal */}
-      <Dialog 
-        open={open} 
+      <Dialog
+        open={open}
         onClose={handleClose}
         PaperProps={{
           sx: {
@@ -480,11 +489,11 @@ export default function CareersPage() {
           }
         }}
       >
-        <DialogTitle sx={{ 
-          m: 0, 
-          p: 3, 
-          pb: 2, 
-          fontWeight: 800, 
+        <DialogTitle sx={{
+          m: 0,
+          p: 3,
+          pb: 2,
+          fontWeight: 800,
           fontSize: "1.5rem",
           display: 'flex',
           justifyContent: 'space-between',
@@ -503,77 +512,90 @@ export default function CareersPage() {
             <Typography variant="body2" sx={{ color: "var(--text-secondary)", mb: 1 }}>
               Tell us a bit about yourself and we'll get back to you soon.
             </Typography>
-            <TextField 
-              fullWidth 
-              label="Full Name" 
+            <TextField
+              fullWidth
+              label="Full Name"
               name="fullName"
               value={formData.fullName}
               onChange={handleChange}
-              variant="outlined" 
+              variant="outlined"
               required
               InputProps={{
                 sx: { color: "var(--text-main)", borderRadius: "12px", "& fieldset": { borderColor: "var(--border-strong)", transition: "all 0.3s ease" }, "&:hover fieldset": { borderColor: "var(--border-hover)" }, "&.Mui-focused fieldset": { borderColor: "#0d7ff2" } }
               }}
               InputLabelProps={{ sx: { color: "var(--text-muted)", "&.Mui-focused": { color: "#0d7ff2" } } }}
             />
-            <TextField 
-              fullWidth 
-              label="Email Address" 
+            <TextField
+              fullWidth
+              label="Email Address"
               type="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              variant="outlined" 
+              variant="outlined"
               required
               InputProps={{
                 sx: { color: "var(--text-main)", borderRadius: "12px", "& fieldset": { borderColor: "var(--border-strong)", transition: "all 0.3s ease" }, "&:hover fieldset": { borderColor: "var(--border-hover)" }, "&.Mui-focused fieldset": { borderColor: "#0d7ff2" } }
               }}
               InputLabelProps={{ sx: { color: "var(--text-muted)", "&.Mui-focused": { color: "#0d7ff2" } } }}
             />
-            <TextField 
-              fullWidth 
-              label="Job Position" 
+            <TextField
+              fullWidth
+              label="Job Position"
               placeholder="e.g. Full Stack Developer"
               name="jobPosition"
               value={formData.jobPosition}
               onChange={handleChange}
-              variant="outlined" 
+              variant="outlined"
               InputProps={{
                 sx: { color: "var(--text-main)", borderRadius: "12px", "& fieldset": { borderColor: "var(--border-strong)", transition: "all 0.3s ease" }, "&:hover fieldset": { borderColor: "var(--border-hover)" }, "&.Mui-focused fieldset": { borderColor: "#0d7ff2" } }
               }}
               InputLabelProps={{ sx: { color: "var(--text-muted)", "&.Mui-focused": { color: "#0d7ff2" } } }}
             />
-            <TextField 
-              fullWidth 
-              label="LinkedIn / GitHub Profile (Optional)" 
+            <TextField
+              fullWidth
+              label="Location"
+              placeholder="e.g. Remote, Mathura"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              variant="outlined"
+              InputProps={{
+                sx: { color: "var(--text-main)", borderRadius: "12px", "& fieldset": { borderColor: "var(--border-strong)", transition: "all 0.3s ease" }, "&:hover fieldset": { borderColor: "var(--border-hover)" }, "&.Mui-focused fieldset": { borderColor: "#0d7ff2" } }
+              }}
+              InputLabelProps={{ sx: { color: "var(--text-muted)", "&.Mui-focused": { color: "#0d7ff2" } } }}
+            />
+            <TextField
+              fullWidth
+              label="LinkedIn / GitHub Profile (Optional)"
               placeholder="https://..."
               name="portfolioLink"
               value={formData.portfolioLink}
               onChange={handleChange}
-              variant="outlined" 
+              variant="outlined"
               InputProps={{
                 sx: { color: "var(--text-main)", borderRadius: "12px", "& fieldset": { borderColor: "var(--border-strong)", transition: "all 0.3s ease" }, "&:hover fieldset": { borderColor: "var(--border-hover)" }, "&.Mui-focused fieldset": { borderColor: "#0d7ff2" } }
               }}
               InputLabelProps={{ sx: { color: "var(--text-muted)", "&.Mui-focused": { color: "#0d7ff2" } } }}
             />
-            <TextField 
-              fullWidth 
-              label="Resume Link (Google Drive, Dropbox, etc.)" 
+            <TextField
+              fullWidth
+              label="Resume Link (Google Drive, Dropbox, etc.)"
               name="resumeLink"
               value={formData.resumeLink}
               onChange={handleChange}
-              variant="outlined" 
+              variant="outlined"
               InputProps={{
                 sx: { color: "var(--text-main)", borderRadius: "12px", "& fieldset": { borderColor: "var(--border-strong)", transition: "all 0.3s ease" }, "&:hover fieldset": { borderColor: "rgba(13, 127, 242, 0.5)" }, "&.Mui-focused fieldset": { borderColor: "#0d7ff2" } }
               }}
               InputLabelProps={{ sx: { color: "var(--text-muted)", "&.Mui-focused": { color: "#0d7ff2" } } }}
             />
-            
+
             <Typography variant="body2" sx={{ color: "var(--text-muted)", textAlign: "center", fontWeight: 600 }}>
               — OR —
             </Typography>
 
-            <Box 
+            <Box
               onDragOver={onDragOver}
               onDragLeave={onDragLeave}
               onDrop={onDrop}
@@ -628,20 +650,20 @@ export default function CareersPage() {
           </Stack>
         </DialogContent>
         <DialogActions sx={{ p: 3, pt: 1, pb: 4, justifyContent: "flex-end" }}>
-          <Button 
-            onClick={handleClose} 
+          <Button
+            onClick={handleClose}
             sx={{ color: "var(--text-secondary)", textTransform: "none", fontWeight: 700, mr: 1 }}
           >
             Cancel
           </Button>
-          <Button 
-            onClick={handleSubmit} 
+          <Button
+            onClick={handleSubmit}
             disabled={status.loading || (!formData.fullName || !formData.email || (!formData.resumeLink && !selectedFile))}
-            variant="contained" 
+            variant="contained"
             endIcon={status.loading ? <CircularProgress size={20} color="inherit" /> : <ArrowForward />}
-            sx={{ 
+            sx={{
               bgcolor: "#0d7ff2",
-                    color: "#fff",
+              color: "#fff",
               borderRadius: "10px",
               px: 3,
               textTransform: "none",
@@ -657,7 +679,7 @@ export default function CareersPage() {
             {status.loading ? "Sending..." : "Submit Application"}
           </Button>
         </DialogActions>
-        
+
         {/* Modal-specific error message */}
         {status.error && (
           <Box sx={{ px: 3, pb: 3 }}>
@@ -667,16 +689,16 @@ export default function CareersPage() {
           </Box>
         )}
       </Dialog>
-      
+
       {/* Global Success Indicator across page */}
-      <Snackbar 
-        open={status.success} 
-        autoHideDuration={6000} 
+      <Snackbar
+        open={status.success}
+        autoHideDuration={6000}
         onClose={() => setStatus(prev => ({ ...prev, success: false }))}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <Alert 
-          onClose={() => setStatus(prev => ({ ...prev, success: false }))} 
+        <Alert
+          onClose={() => setStatus(prev => ({ ...prev, success: false }))}
           severity="success"
           variant="filled"
           sx={{ width: '100%', borderRadius: 2 }}

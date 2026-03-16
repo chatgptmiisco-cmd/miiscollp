@@ -8,6 +8,7 @@ export async function POST(request: Request) {
     const fullName = formData.get('fullName') as string;
     const email = formData.get('email') as string;
     const jobPosition = formData.get('jobPosition') as string;
+    const location = formData.get('location') as string;
     const portfolioLink = formData.get('portfolioLink') as string;
     const resumeLink = formData.get('resumeLink') as string;
     const resumeFile = formData.get('resumeFile') as File | null;
@@ -53,6 +54,7 @@ export async function POST(request: Request) {
             Name: ${fullName}
             Email: ${email}
             Job Position: ${jobPosition || 'N/A'}
+            Location: ${location || 'N/A'}
             Profile/Portfolio Link: ${portfolioLink || 'N/A'}
             Resume Link: ${resumeLink || 'File Attached'}
       `,
@@ -61,6 +63,7 @@ export async function POST(request: Request) {
         <p><strong>Name:</strong> ${fullName}</p>
         <p><strong>Email:</strong> ${email}</p>
         <p><strong>Job Position:</strong> ${jobPosition || 'N/A'}</p>
+        <p><strong>Location:</strong> ${location || 'N/A'}</p>
         <p><strong>LinkedIn / GitHub:</strong> ${
           portfolioLink ? `<a href="${portfolioLink}">${portfolioLink}</a>` : 'N/A'
         }</p>

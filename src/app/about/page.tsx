@@ -328,7 +328,7 @@ export default function AboutPage() {
       </Container>
 
       {/* Global Presence Section */}
-      <Box sx={{ bgcolor: "var(--bg-secondary)", py: 15, position: "relative", overflow: "hidden", borderTop: "1px solid var(--border-muted)" }}>
+      {/* <Box sx={{ bgcolor: "var(--bg-secondary)", py: 15, position: "relative", overflow: "hidden", borderTop: "1px solid var(--border-muted)" }}>
         <Box
           sx={{
             position: "absolute",
@@ -397,7 +397,7 @@ export default function AboutPage() {
             </Grid>
           </Grid>
         </Container>
-      </Box>
+      </Box> */}
 
       {/* Join Our Mission Section */}
       <Container maxWidth="lg" sx={{ py: 15 }}>

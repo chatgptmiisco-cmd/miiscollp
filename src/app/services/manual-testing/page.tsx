@@ -175,7 +175,7 @@ export default function ManualTestingPage() {
               >
                 <Box 
                   component="img" 
-                  src="/api/placeholder/600/400" 
+                  src="/services/manual-testing.png" 
                   alt="Manual Testing"
                   sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                 />
@@ -256,7 +256,7 @@ export default function ManualTestingPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/api/placeholder/600/400" 
+                    src="/services/manual-testing.png" 
                     alt="Testing Benefits"
                     sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                   />

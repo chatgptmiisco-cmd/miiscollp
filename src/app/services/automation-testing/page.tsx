@@ -170,7 +170,7 @@ export default function AutomationTestingPage() {
               >
                 <Box 
                   component="img" 
-                  src="/api/placeholder/600/400" 
+                  src="/services/automation-testing.png" 
                   alt="Automation Testing"
                   sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                 />
@@ -251,7 +251,7 @@ export default function AutomationTestingPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/api/placeholder/600/400" 
+                    src="/services/automation-testing.png" 
                     alt="Testing Benefits"
                     sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                   />

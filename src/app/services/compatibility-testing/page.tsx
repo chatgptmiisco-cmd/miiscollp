@@ -173,7 +173,7 @@ export default function CompatibilityTestingPage() {
               >
                 <Box 
                   component="img" 
-                  src="/api/placeholder/600/400" 
+                  src="/services/compatibility-testing.png" 
                   alt="Compatibility Testing"
                   sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                 />
@@ -254,7 +254,7 @@ export default function CompatibilityTestingPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/api/placeholder/600/400" 
+                    src="/services/compatibility-testing.png" 
                     alt="Testing Benefits"
                     sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                   />

@@ -43,9 +43,9 @@ const socialLinks = [
 ];
 
 const contactInfo = [
-  { icon: Email, text: "info@miiscollp.com" },
-  { icon: Phone, text: "+91 9911065583" },
-  { icon: LocationOn, text: "Mathura, Uttar Pradesh, India" },
+  { icon: Email, text: "Vishal@miiscollp.com" },
+  { icon: Phone, text: "+91 7000285287" },
+  { icon: LocationOn, text: "dynamic colony infront of siya ram baba aashram goverdhan 281502" },
 ];
 
 export default function Footer() {

@@ -160,7 +160,7 @@ export default function MobileQAPage() {
               >
                 <Box 
                   component="img" 
-                  src="/api/placeholder/600/400" 
+                  src="/services/mobile-qa.png" 
                   alt="Mobile App Testing"
                   sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                 />
@@ -245,7 +245,7 @@ export default function MobileQAPage() {
                 >
                   <Box 
                     component="img" 
-                    src="/api/placeholder/600/400" 
+                    src="/services/mobile-qa.png" 
                     alt="Testing Benefits"
                     sx={{ width: "100%", display: "block", borderRadius: "16px" }}
                   />
