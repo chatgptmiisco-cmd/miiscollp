@@ -1248,7 +1248,7 @@ export default function HomePage(): React.ReactElement {
                     },
                   }}
                 >
-                  See Case Studies
+                  See Our Work
                 </Button>
               </Stack>
             </Grid>
