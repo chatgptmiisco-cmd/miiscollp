@@ -532,7 +532,7 @@ export default function HomePage(): React.ReactElement {
       </Box>
 
       {/* Trust Bar */}
-      <Box sx={{ py: 10, borderTop: "1px solid var(--border-muted)", borderBottom: "1px solid var(--border-muted)", bgcolor: "rgba(0,0,0,0.02)" }}>
+      {/* <Box sx={{ py: 10, borderTop: "1px solid var(--border-muted)", borderBottom: "1px solid var(--border-muted)", bgcolor: "rgba(0,0,0,0.02)" }}>
         <Container maxWidth="lg">
           <Typography
             variant="overline"
@@ -571,7 +571,7 @@ export default function HomePage(): React.ReactElement {
             </Stack>
           </motion.div>
         </Container>
-      </Box>
+      </Box> */}
 
       {/* Quick Services Cards */}
       {/* <Container maxWidth="lg" sx={{ mt: 2, mb: 6 }}>
@@ -624,7 +624,7 @@ export default function HomePage(): React.ReactElement {
             </Grid>
           ))}
         </Grid>
-      </Container> */}
+      </Container> */}   
 
 
       {/* Why Choose Miisco Section */}
@@ -1215,6 +1215,7 @@ export default function HomePage(): React.ReactElement {
                 <Button
                   variant="contained"
                   size="large"
+                  href="/contact"
                   sx={{
                     bgcolor: "#fff",
                     color: "var(--text-main)",
@@ -1233,6 +1234,7 @@ export default function HomePage(): React.ReactElement {
                 <Button
                   size="large"
                   variant="outlined"
+                  href="/projects"
                   sx={{
                     borderColor: "rgba(255,255,255,0.4)",
                     color: "#fff",

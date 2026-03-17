@@ -377,8 +377,9 @@ export default function Navbar() {
         PaperProps={{
           sx: {
             width: "100%",
-            maxWidth: 320,
-            bgcolor: "var(--bg-card)",
+            maxWidth: { xs: "100%", sm: 380 },
+            bgcolor: "var(--nav-menu)",
+            backdropFilter: "blur(24px)",
             backgroundImage: "none",
             color: "var(--text-main)",
             p: 3,
