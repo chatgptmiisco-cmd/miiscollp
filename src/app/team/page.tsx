@@ -176,16 +176,6 @@ const teamMembers: TeamMember[] = [
     skills: ["Manual Testing", "Bug Tracking", "Test Cases", "Agile"],
     linkedin: "https://www.linkedin.com/in/adityasinghse/",
   },
-  // Design
-  {
-    name: "Tushar Mishra",
-    role: "UI/UX Design Lead",
-    department: "Design",
-    avatar: "/team/Tushar.jpg",
-    bio: "Design thinker transforming complex user journeys into elegant, intuitive interfaces that drive engagement and delight users.",
-    skills: ["Figma", "Design Systems", "Prototyping", "User Research"],
-    linkedin: "https://www.linkedin.com/in/tushar-mishra-bb3b13209/",
-  },
 ];
 
 const stats = [
